@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 3: Biosphere and Environmental Pollution</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin: 16px 0 8px 0;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin: 10px 0 4px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Images */
+    .img-box {
+      margin: 14px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: #f1f5f9;
+      text-align: center;
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 12px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Callout Boxes */
+    .alert-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    .analogy-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    .formula-box {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      font-size: 1.05rem;
+      color: #0f172a;
+      text-align: center;
+    }
+
+    /* Interactive Quiz */
+    .quiz-container {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 24px;
+    }
+    .quiz-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .question-block {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: var(--primary);
+    }
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: bold;
+    }
+    .option-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+    .feedback {
+      display: none;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .feedback.show {
+      display: block;
+    }
+    .feedback.correct-text {
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .feedback.wrong-text {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>🌍 TOPIC 3: Biosphere & Environmental Pollution</h1>
+    <p>Earth's Spheres, Assimilative Capacity, Classification of Pollutants & Health Effects</p>
+  </header>
+
+  <!-- 1. What is the biosphere? -->
+  <div class="card">
+    <h2>1. What is the Biosphere?</h2>
+    <p>According to your lecture, the <strong>biosphere</strong> is the global ecological system where life exists. It overlaps with three major physical spheres of Earth:</p>
+    <ul>
+      <li><strong>Atmosphere</strong> — air.</li>
+      <li><strong>Hydrosphere</strong> — water.</li>
+      <li><strong>Lithosphere</strong> — land and the solid outer part of Earth.</li>
+    </ul>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/y7Q7WifATdxkdYn6mlEfSPh3fxc0QodZEbC69rwtGanWHyOFY2fUXypZOywrFc__n_85Cju4xMZDIbnB_q2qupqsgNEGAEagCdv7niwleXyRBsCgbNYBS0u4G6jIN8zXbEhl1kqWhM8NeEexIuIJFYTo5rHfR27yUop9Ctm8G_tOBvsa3x2O_qorGIKGRM0S?purpose=fullsize" alt="Earth's Spheres">
+      <div class="img-caption">Intersections of Atmosphere, Hydrosphere, and Lithosphere</div>
+    </div>
+
+    <h3>A. Atmosphere — The Air Sphere</h3>
+    <p>The layer of gases surrounding Earth. It is important because it:</p>
+    <ul>
+      <li>Contains gases essential for life.</li>
+      <li>Helps recycle nutrients and life-supporting materials.</li>
+      <li>Helps regulate climate.</li>
+    </ul>
+    <div class="analogy-box">
+      🌬️ <strong>Analogy:</strong> Think of the atmosphere as Earth's breathing space. Without suitable atmospheric conditions, life as we know it would not survive.
+    </div>
+
+    <h3>B. Hydrosphere — The Water Sphere</h3>
+    <p>Consists of all Earth's water bodies, including oceans, lakes, streams, and shallow groundwater bodies.</p>
+    <div class="analogy-box">
+      💧 <strong>Analogy:</strong> The hydrosphere is Earth's water storage system. Humans need it for drinking, cooking, farming and sanitation.
+    </div>
+
+    <h3>C. Lithosphere — The Land Sphere</h3>
+    <p>Represents the rigid, solid outermost shell of Earth. It:</p>
+    <ul>
+      <li>Provides a physical foundation for terrestrial ecosystems and human settlements.</li>
+      <li>Supplies minerals, metals and fossil fuels.</li>
+      <li>Provides minerals and nutrients needed for plant growth.</li>
+    </ul>
+    <div class="analogy-box">
+      ⛰️ <strong>Analogy:</strong> The lithosphere is Earth's foundation and resource storehouse.
+    </div>
+
+    <h3>Important Connection: Pedosphere</h3>
+    <p>Your lecture introduces the <strong>pedosphere</strong>, meaning the soil mantle of Earth. It is the zone where the atmosphere, hydrosphere, lithosphere and biosphere intersect.</p>
+    <div class="alert-box">
+      🌱 <strong>Think of soil</strong> as the dynamic meeting place for air, water, minerals, and living organisms.
+    </div>
+  </div>
+
+  <!-- 2. What is biosphere pollution? -->
+  <div class="card">
+    <h2>2. What is Biosphere Pollution?</h2>
+    <p>Your lecture defines <strong>biosphere pollution</strong> as undesirable effects caused by natural or human-made pollutants on the physical, chemical or biological qualities of the biosphere, which may harm humans, animals and plants.</p>
+
+    <h3>Key Definitions:</h3>
+    <ul>
+      <li><strong>Pollutant:</strong> A substance or agent that causes pollution.</li>
+      <li><strong>Pollution:</strong> The harmful change or adverse effect produced by pollutants.</li>
+      <li><strong>Pollution Concentration:</strong> The amount of pollutant present in a particular environmental volume.</li>
+    </ul>
+
+    <div class="analogy-box">
+      🏭 <strong>An everyday example:</strong> Imagine a river used by a community for drinking water. A factory releases chemical waste into it. When the concentration becomes high enough to make the water unsafe, the river is polluted.
+    </div>
+
+    <div class="alert-box">
+      ⚠️ <strong>Important Exam Point:</strong> The presence of a pollutant alone does not automatically mean that the environment is polluted. Its <strong>concentration</strong> and <strong>biological effects</strong> matter.
+    </div>
+  </div>
+
+  <!-- 3. Pollution assimilative capacity -->
+  <div class="card">
+    <h2>3. Pollution Assimilative Capacity</h2>
+    <p><strong>Pollution assimilative capacity</strong> is the dynamic ability of the biosphere to absorb, dilute and break down pollutants without causing harmful effects to humans and the ecosystem.</p>
+
+    <div class="analogy-box">
+      🌊 <strong>Think of a river receiving waste:</strong><br>
+      • If a small amount of biodegradable waste enters it, the river can break it down.<br>
+      • If enormous amounts enter continuously, the river can no longer handle the load.
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/nMK-CxUMlRRjEsgFGaHnprXMWONse0bGTqCyamUQ3VY0rNF27009CWGcjbMmZMJ6VcjCK7orRwqGo1Qaz6IZLIpzCeEsS7_akxV6VsY8yP2BAZFZsAdiApAd7m1FPS5oTP60_9ceoUdxguL0a27nXIEx80Fx65RadvlOql2n6zkU7FEaHbIMO1mka8qiB0yN?purpose=fullsize" alt="Water Pollution Assimilation">
+      <div class="img-caption">Assimilation and degradation limits of aquatic environments</div>
+    </div>
+
+    <p>The lecture emphasizes that this capacity is <strong>finite</strong>. It depends on:</p>
+    <ul>
+      <li><strong>Nature of the pollutant</strong> — how easily it can be absorbed, diluted or degraded.</li>
+      <li><strong>Condition of the receiving environment</strong> — its existing state and volume.</li>
+      <li><strong>Magnitude of pollution</strong> — the rate and amount of pollutant loading.</li>
+    </ul>
+
+    <h3>Assimilative Capacity Formula:</h3>
+    <div class="formula-box">
+      AC = Q × (C<sub>max</sub> - C<sub>bg</sub>)
+    </div>
+    <p>Where:</p>
+    <ul>
+      <li><strong>AC:</strong> Assimilative capacity (mass per unit time).</li>
+      <li><strong>Q:</strong> Volumetric flow rate of the receiving medium (volume per unit time).</li>
+      <li><strong>C<sub>max</sub>:</strong> Maximum permissible pollutant concentration standard.</li>
+      <li><strong>C<sub>bg</sub>:</strong> Background or existing pollutant concentration already present.</li>
+    </ul>
+    <p><em>The capacity depends on the flow rate and the margin between permissible concentration and existing baseline contamination.</em></p>
+  </div>
+
+  <!-- 4. Classification of biosphere pollutants -->
+  <div class="card">
+    <h2>4. Classification of Biosphere Pollutants</h2>
+    <p>Your lecture classifies pollutants according to four criteria:</p>
+
+    <h3>A. Based on Resistance to Treatment</h3>
+    <ul>
+      <li><strong>Persistent Pollutants:</strong> Highly resistant to natural and engineered treatment processes. <em>Examples:</em> Pesticides, nuclear wastes, plastics.</li>
+      <li><strong>Non-persistent Pollutants:</strong> Readily broken down or treated. <em>Examples:</em> Domestic sewage, biodegradable organic wastes.</li>
+    </ul>
+    <div class="analogy-box">
+      🧠 <strong>Memory trick:</strong> Persistent = stays for a long time; Non-persistent = easily decomposed or treated.
+    </div>
+
+    <h3>B. Based on Origin</h3>
+    <ul>
+      <li><strong>Natural Pollutants:</strong> Originate from geochemical or natural processes (e.g., minerals from eroded rocks, volcanic emissions).</li>
+      <li><strong>Man-made (Anthropogenic) Pollutants:</strong> Generated by human activities (e.g., sewage, industrial chemical effluents).</li>
+    </ul>
+
+    <h3>C. Based on Source</h3>
+    <ul>
+      <li><strong>Point Source:</strong> An identifiable, localized discharge point. <em>Example:</em> A factory wastewater discharge pipe.</li>
+      <li><strong>Non-point Source:</strong> Diffuse, broad runoff that cannot be traced to a single outlet. <em>Example:</em> Agricultural fertilizer and pesticide runoff, urban stormwater.</li>
+    </ul>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/HekVyZ_yibKtyBCYUb4mtmayIJWz6LZOR3J5FJ9UYjJBTgtcDF5_o84wleHvqkoZa-OzaVH18wWN3sqzaQmrmzPJYviQuFOATuujqyKZQvW3OGQNo0AuDQBBMln3VFMRGVMheV7vueZmSOqDLLoNqc_RqTUc3uXcBxExjKkAAxMcYxbmzJwyn7pE1rbMZjj7?purpose=fullsize" alt="Point Source Pipe">
+      <div class="img-caption">Point source: Direct, identifiable industrial outlet</div>
+    </div>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/WbwE27nefvQT1hdQ87HSgITRCHbxnhMhX1vtCMJ41pmZk-4jBxKybu8ZKaI5WtQ7ARwNW7zMSc98RCYeHVzqoEbdOkenm8T4_uFEuG_R5E8KR5fBnhMx9OV-yMqs3c0ak63EG539uy_8ZX9cPhiJs063-cLctabQglGMif1wWr4C_B-z5QZ-_vLmuU4EyB-p?purpose=fullsize" alt="Non-point agricultural runoff">
+      <div class="img-caption">Non-point source: Diffuse agricultural and watershed runoff</div>
+    </div>
+
+    <h3>D. Based on Nature</h3>
+    <ul>
+      <li><strong>Primary Pollutants:</strong> Emitted directly from identifiable sources into the environment. <em>Examples:</em> Carbon monoxide (CO), nitrogen oxides (NO<sub>x</sub>), particulate dust.</li>
+      <li><strong>Secondary Pollutants:</strong> Formed through chemical or photochemical reactions between primary pollutants and atmospheric components. <em>Examples:</em> Tropospheric ozone (O<sub>3</sub>), photochemical smog.</li>
+    </ul>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/9-cUFOEsW-Mg_FEDgTjIKc-wEi32ifOGoxnRI_CwUdmsB8g2Sov5Z6njCjGSVkpuNVkSAXjZFeetlyGy2_St2dQKeJbqpg0vvcAfHEgmzWFFpNyZKlSN6-ZkdqEzT19Y8JCo7svwOar1lPzN2-UWHLuwsxqWbmVsAm1v-6Z7YgWC88fL0pw8TQM25vBky4t9?purpose=fullsize" alt="Photochemical Smog">
+      <div class="img-caption">Secondary pollution: Formation of photochemical smog</div>
+    </div>
+
+    <div class="alert-box">
+      ⚠️ <strong>A Tricky Distinction:</strong> A vehicle emits primary pollutants directly from its exhaust pipe (CO, NO<sub>x</sub>). Sunlight subsequently triggers reactions converting these into ozone and smog (secondary pollutants).
+    </div>
+
+    <h3>Classification Matrix:</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Classification Basis</th><th>Categories</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Resistance to Treatment</strong></td><td>Persistent vs. Non-persistent</td></tr>
+          <tr><td><strong>Origin</strong></td><td>Natural vs. Man-made</td></tr>
+          <tr><td><strong>Source</strong></td><td>Point vs. Non-point</td></tr>
+          <tr><td><strong>Nature</strong></td><td>Primary vs. Secondary</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5. What causes biosphere pollution? -->
+  <div class="card">
+    <h2>5. Causes of Biosphere Pollution</h2>
+    <p>Your lecture distinguishes two primary causal streams:</p>
+    
+    <h3>A. Human Activities (Anthropogenic):</h3>
+    <ul>
+      <li>Rapid population growth (Overpopulation).</li>
+      <li>Unplanned urbanization and expansion of informal settlements.</li>
+      <li>Industrialization, resource extraction, and developmental projects.</li>
+    </ul>
+
+    <h3>B. Natural Processes:</h3>
+    <ul>
+      <li>Weathering, erosion, and leaching of heavy metals from mineral deposits.</li>
+      <li>Volcanic eruptions venting ash, SO<sub>2</sub>, and acid gases.</li>
+      <li>Natural biological activity (e.g., anaerobic methane production).</li>
+    </ul>
+  </div>
+
+  <!-- 6. Major forms of environmental pollution -->
+  <div class="card">
+    <h2>6. Major Forms of Environmental Pollution</h2>
+
+    <!-- Air Pollution -->
+    <h3>A. Air Pollution</h3>
+    <p>Occurs when harmful substances contaminate the atmospheric layer.</p>
+    <ul>
+      <li><strong>Natural Sources:</strong> Volcanic eruptions, wild forest fires, dust storms, pollen/spores, decomposition of organic matter.</li>
+      <li><strong>Human-made Sources:</strong> Motor vehicle transportation, fossil fuel combustion, industrial emissions, domestic heating.</li>
+    </ul>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/v3-Cl4M1skuv-rkHo8IbPM9Tb5nHPSLsnBMJNHBPruMsyZIbVBqvjcpeltgJebYTZ1aXfaA-xC_l6mRczbfBgcIRm3yId-BYHK2r-LrxFcE9WcZkB_SU9FCn7yrjZtKPrOKUOpYV7Nu_QmFZAbFL9SwCJt12L-aE3QG50yfzm8WfxEqjkPpUlOGPb24lZX3b?purpose=fullsize" alt="Air Pollutants">
+      <div class="img-caption">Industrial air emissions and particulate matter</div>
+    </div>
+
+    <h4>Key Chemical Air Pollutants:</h4>
+    <p><strong>1. Sulfur Dioxide (SO<sub>2</sub>):</strong></p>
+    <ul>
+      <li><em>Sources:</em> Burning sulfur-rich coal/oil, volcanic eruptions, ore smelting.</li>
+      <li><em>Health Effects:</em> Bronchoconstriction, severe airway irritation, exacerbation of asthma, impaired lung function; fatal pulmonary edema in extreme concentrations.</li>
+      <li><em>Acid Rain Link:</em> Oxidizes to form <strong>sulfuric acid (H<sub>2</sub>SO<sub>4</sub>)</strong>.</li>
+    </ul>
+
+    <p><strong>2. Nitrogen Oxides (NO<sub>x</sub>):</strong></p>
+    <ul>
+      <li><em>Sources:</em> High-temperature combustion engines and industrial boilers.</li>
+      <li><em>Effects:</em> Precursor for photochemical smog and ground-level ozone.</li>
+      <li><em>Acid Rain Link:</em> Oxidizes to form <strong>nitric acid (HNO<sub>3</sub>)</strong>.</li>
+    </ul>
+
+    <!-- Water Pollution -->
+    <h3>B. Water Pollution</h3>
+    <p>Occurs when pollutants degrade water quality, rendering it hazardous for human consumption or ecosystems. Four physicochemical categories: Inorganic, Organic, Radioactive, and Thermal.</p>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/_uRTwGRhEFzJ_nHlyVLnzyDO0FiCSpgBTW6KAsTIsveAWzXBkHXpr6RxsWXJCz_1IHxTMlH4tTcAVWgcqFJG1-MNhv2uTly3dqB20OqSFjuza7eR61yElcCWZnSY84YID5e9RG8GZmP2wK8y7SxjNJjkD1kAbBXXaK8dhbUBpmC-nxouUtf9Fe1G_FjHJfXi?purpose=fullsize" alt="Water Pollution">
+      <div class="img-caption">Industrial wastewater discharge into water bodies</div>
+    </div>
+
+    <h4>Important Inorganic Water Contaminants:</h4>
+    <p><strong>1. Cadmium (Cd):</strong></p>
+    <ul>
+      <li><em>Sources:</em> Zinc smelting, corrosion of galvanized pipes, batteries, plastics stabilizer, incineration.</li>
+      <li><em>Health Effects:</em> <strong>Replaces calcium in bones</strong> (severe osteomalacia/fractures); enzyme inactivation; linked to renal, skeletal, and lung malignancies.</li>
+    </ul>
+
+    <p><strong>2. Lead (Pb):</strong></p>
+    <ul>
+      <li><em>Sources:</em> Leaded pipes/fittings, mining, battery manufacturing, industrial emissions.</li>
+      <li><em>Health Effects:</em> <strong>Impaired neurocognitive development</strong> and reduced IQ in children; motor deficits; hepatic/renal injury; anemia; reproductive complications.</li>
+    </ul>
+
+    <!-- Soil Pollution -->
+    <h3>C. Soil Pollution</h3>
+    <p>Soil originates from lithospheric weathering and organic humus decomposition. Soil contaminants degrade soil fertility and accumulate in food chains.</p>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/ZCY9EwGtfPw6x1dnxDPNkHN77knvzMLN6BrLgJroDzP7ud4QZWdo6HkCFFGIZhQVm11FCfIWYd_XEpE15beDzJ1TvnVyZa-AdRWXueTCRtm8nsyzsEmmU8PaA6tgzaUP8ow8I-zzAohd84x88pK-ZMo9TTcLDm01tBgDMz2k3CQyzjAhlNF8TYZ7Gxu5YjTe?purpose=fullsize" alt="Soil Pollution">
+      <div class="img-caption">Agricultural soil contamination and degradation</div>
+    </div>
+
+    <div class="alert-box">
+      ⚡ <strong>Biomagnification:</strong> Persistent, fat-soluble pollutants (e.g., mercury, organochlorines) increase in concentration at progressively higher trophic levels in a food web (e.g., Plankton → Small fish → Predatory fish → Humans).
+    </div>
+
+    <!-- Noise Pollution -->
+    <h3>D. Noise Pollution</h3>
+    <p>Unwanted or disturbing sound that interferes with physiological and psychological well-being, predominantly prevalent in urban settings (horns, traffic, aircraft, manufacturing machinery).</p>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/MC4xqGxWg95GHvXOroEv4VsI1nVjlkmmuzNuCdmjzmaVv-OCeu2cmvNeTS10nbjUYcFxylLzbAvjxVgbO9d7ovjRBOhUiV9sydfJHtd7u8Q1bFpt57glHf5PFS8bSfp9eecBKB23RxjUI_PdAuc2Z9RYrUqhfgXWnz7ylDR5Dbg6EY_l7af1hCWNISq4Yytc?purpose=fullsize" alt="Urban Noise">
+      <div class="img-caption">Urban vehicular congestion and noise exposure</div>
+    </div>
+
+    <h4>Health Effects of Excessive Noise:</h4>
+    <ul>
+      <li>Sleep disturbance, fatigue, reduced cognitive/worker performance.</li>
+      <li>Permanent sensorineural hearing impairment (exposure <strong>&gt;85 dB</strong>).</li>
+      <li>Cardiovascular activation (elevated blood pressure and heart rate).</li>
+      <li>Psychological tension, chronic stress, irritability, impaired infant development.</li>
+    </ul>
+
+    <h4>Ethiopian National Standards for Permissible Noise Levels:</h4>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Zone Category</th><th>Maximum Permissible Level</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Residential Area</strong></td><td><strong>55 dB</strong></td></tr>
+          <tr><td><strong>Commercial / Business Area</strong></td><td><strong>65 dB</strong></td></tr>
+          <tr><td><strong>Industrial Area</strong></td><td><strong>75 dB</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. Health effects classification -->
+  <div class="card">
+    <h2>7. Toxicological Classification of Pollution Effects</h2>
+    <p>Your lecture highlights three major systemic mechanisms through which environmental toxins compromise health:</p>
+
+    <h3>1. Teratogenic Effects</h3>
+    <p>Agents crossing placental boundaries during gestation, producing structural or functional birth defects in the developing embryo.</p>
+    <ul>
+      <li><em>Examples:</em> Lead, mercury, persistent pesticides, carbon monoxide, fine particulates, alcohol, tobacco smoke.</li>
+      <li><em>Critical Window:</em> <strong>Weeks 3–8 of gestation</strong> (period of embryonic organogenesis).</li>
+    </ul>
+
+    <h3>2. Endocrine-Disrupting Effects</h3>
+    <p>Exogenous chemical agents that interfere with the synthesis, secretion, transport, binding, or action of natural hormones.</p>
+    <ul>
+      <li><em>Mechanisms:</em> Hormone mimicry, receptor blockade, enzymatic disruption.</li>
+      <li><em>Examples:</em> Bisphenol A (BPA), phthalates, PCBs, dioxins, organophosphate insecticides.</li>
+    </ul>
+
+    <h3>3. Carcinogenic Effects</h3>
+    <p>Pollutants that directly damage DNA (genotoxic) or promote neoplastic transformation and malignant cell proliferation.</p>
+    <ul>
+      <li><em>Examples:</em> Arsenic, Cadmium, Chromium (VI), Nickel, Benzene, Asbestos fibres, fine particulate matter, Aflatoxins.</li>
+    </ul>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Effect</th><th>Core Pathophysiological Definition</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Teratogenic</strong></td><td>Causes structural or functional congenital malformations during embryonic development</td></tr>
+          <tr><td><strong>Endocrine-disrupting</strong></td><td>Deregulates endogenous hormonal signaling pathways</td></tr>
+          <tr><td><strong>Carcinogenic</strong></td><td>Induces DNA mutations driving malignant neoplasms</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 8. Prevention and control -->
+  <div class="card">
+    <h2>8. Prevention and Control of Pollution</h2>
+    <p>Public health prioritizes <strong>primary prevention</strong> (stopping pollution at its generation source):</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Domain</th><th>Practical Control Measures</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Air</strong></td><td>Cleaner renewable energy, vehicular emission scrubbers, industrial electrostatic precipitators</td></tr>
+          <tr><td><strong>Water</strong></td><td>Secondary & tertiary sewage treatment, protecting catchment watersheds, industrial effluent neutralizers</td></tr>
+          <tr><td><strong>Soil</strong></td><td>Integrated pest management (reducing synthetic pesticides), secure sanitary landfills, recycling</td></tr>
+          <tr><td><strong>Noise</strong></td><td>Zoning laws, acoustic architectural barriers, machinery dampeners, personal hearing protection</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="analogy-box">
+      🛡️ <strong>Public Health Principle:</strong> Controlling the environmental source of pollution protects entire communities simultaneously, whereas treating individual patients only addresses the downstream damage.
+    </div>
+  </div>
+
+  <!-- 9. Revision Summary Sheet -->
+  <div class="card">
+    <h2>9. High-Yield Revision Sheet</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Key Term</th><th>Core Definition</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Biosphere</strong></td><td>Global ecological zone where all life exists</td></tr>
+          <tr><td><strong>Atmosphere</strong></td><td>Gas mantle surrounding Earth</td></tr>
+          <tr><td><strong>Hydrosphere</strong></td><td>All liquid, frozen, and subsurface water reservoirs</td></tr>
+          <tr><td><strong>Lithosphere</strong></td><td>Solid outer rock/crust shell</td></tr>
+          <tr><td><strong>Pedosphere</strong></td><td>Earth's soil mantle (intersection of all spheres)</td></tr>
+          <tr><td><strong>Assimilative Capacity</strong></td><td>Finite natural capacity to dilute/neutralize waste without harm</td></tr>
+          <tr><td><strong>Persistent Pollutant</strong></td><td>Non-biodegradable, resistant to standard treatment (e.g., plastics, DDT)</td></tr>
+          <tr><td><strong>Non-persistent Pollutant</strong></td><td>Biodegradable waste readily broken down (e.g., sewage)</td></tr>
+          <tr><td><strong>Point Source</strong></td><td>Single, identifiable discharge point (e.g., pipe)</td></tr>
+          <tr><td><strong>Non-point Source</strong></td><td>Dispersed, diffuse watershed or urban runoff</td></tr>
+          <tr><td><strong>Primary Pollutant</strong></td><td>Emitted directly in harmful form (e.g., CO, SO<sub>2</sub>)</td></tr>
+          <tr><td><strong>Secondary Pollutant</strong></td><td>Formed via environmental reactions (e.g., Ozone, Photochemical Smog)</td></tr>
+          <tr><td><strong>Biomagnification</strong></td><td>Progressive accumulation of toxins up trophic food chains</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 10. Interactive Quiz -->
+  <div class="quiz-container">
+    <div class="quiz-header">📝 Self-Assessment Quiz (Click to Check)</div>
+    <div id="quiz-mount"></div>
+  </div>
+
+</div>
+
+<script>
+  const quizData = [
+    {
+      q: "Question 1. A river receives a small quantity of biodegradable organic waste and completely breaks it down without ecological damage. Which concept explains this capacity?",
+      options: [
+        "A. Biomagnification",
+        "B. Pollution assimilative capacity",
+        "C. Secondary photochemical pollution",
+        "D. Persistent toxic bioaccumulation"
+      ],
+      correct: 1,
+      exp: "Correct! Assimilative capacity describes the natural, dynamic ability of an ecosystem to absorb, dilute, and degrade waste without detrimental harm."
+    },
+    {
+      q: "Question 2. A factory discharges chemical wastewater directly through an identifiable, discrete outflow pipe into an adjacent stream. This source is classified as:",
+      options: [
+        "A. Non-point source",
+        "B. Natural source",
+        "C. Point source",
+        "D. Diffuse secondary source"
+      ],
+      correct: 2,
+      exp: "Correct! Point sources are localized, discrete, and easily traceable outlets such as factory pipes and sewage drains."
+    },
+    {
+      q: "Question 3. Nitrogen oxides emitted from motor vehicle tailpipes react with hydrocarbons in the presence of solar radiation to form photochemical smog. What type of pollutant is this smog?",
+      options: [
+        "A. Persistent inorganic pollutant",
+        "B. Primary pollutant",
+        "C. Natural geological pollutant",
+        "D. Secondary pollutant"
+      ],
+      correct: 3,
+      exp: "Correct! Secondary pollutants (like smog and ozone) are not emitted directly but form via chemical/photochemical reactions in the atmosphere."
+    },
+    {
+      q: "Question 4. An industrial chemical crosses the placenta during weeks 3–8 of embryonic gestation and alters maternal hormone regulation. Which toxicological effects are demonstrated?",
+      options: [
+        "A. Endocrine-disrupting and teratogenic effects",
+        "B. Acoustic trauma and noise impairment",
+        "C. Thermal stratification effects only",
+        "D. Lithospheric mechanical weathering"
+      ],
+      correct: 0,
+      exp: "Correct! Chemicals causing developmental defects in utero are teratogenic, while those interfering with hormonal messaging are endocrine disruptors."
+    },
+    {
+      q: "Question 5. A lake contains traces of methylmercury. Analysis demonstrates that large predatory pike fish exhibit concentrations thousands of times higher than plankton. Which process accounts for this?",
+      options: [
+        "A. Geochemical weathering",
+        "B. Atmospheric assimilation",
+        "C. Biomagnification",
+        "D. Hydrodynamic dilution"
+      ],
+      correct: 2,
+      exp: "Correct! Biomagnification refers to the progressive increase in pollutant concentration across sequential trophic levels in a food chain."
+    }
+  ];
+
+  const quizMount = document.getElementById('quiz-mount');
+
+  quizData.forEach((item, qIdx) => {
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block';
+
+    const title = document.createElement('div');
+    title.className = 'question-title';
+    title.innerText = item.q;
+    qBlock.appendChild(title);
+
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+
+    item.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = optText;
+
+      btn.addEventListener('click', () => {
+        const allBtns = qBlock.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+
+        if (optIdx === item.correct) {
+          btn.classList.add('correct');
+          feedback.className = 'feedback show correct-text';
+          feedback.innerHTML = "✅ " + item.exp;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+          feedback.className = 'feedback show wrong-text';
+          feedback.innerHTML = "❌ ትክክለኛው መልስ፦ " + item.options[item.correct] + "<br>" + item.exp;
+        }
+      });
+
+      qBlock.appendChild(btn);
+    });
+
+    qBlock.appendChild(feedback);
+    quizMount.appendChild(qBlock);
+  });
+</script>
+
+</body>
+</html>

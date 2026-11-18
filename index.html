@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecology & Environmental Health — Study Portal</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Hero Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 26px 20px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 14px rgba(13, 148, 136, 0.28);
+      text-align: center;
+    }
+    header h1 {
+      font-size: 1.45rem;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    header p {
+      font-size: 0.9rem;
+      opacity: 0.92;
+    }
+
+    /* Progress Tracker Card */
+    .progress-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+    }
+    .progress-bar-bg {
+      background: #e2e8f0;
+      height: 10px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      background: linear-gradient(90deg, #10b981, #0d9488);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 6px;
+    }
+
+    /* Search Box */
+    .search-box {
+      margin-bottom: 18px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      font-size: 0.95rem;
+      outline: none;
+      background: #fff;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+    }
+
+    /* Topic Cards Grid */
+    .topics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .topic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .topic-card.completed {
+      border-left: 5px solid var(--success);
+      background: #fbfdfc;
+    }
+
+    .topic-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .topic-badge {
+      background: var(--badge-bg);
+      color: var(--primary-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .topic-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .topic-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.45;
+    }
+
+    /* Actions */
+    .topic-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-open {
+      flex: 1;
+      text-align: center;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn-open:hover {
+      background: var(--primary-dark);
+    }
+    .btn-check {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-check.checked {
+      background: #dcfce7;
+      border-color: #86efac;
+      color: #15803d;
+    }
+
+    /* Footer Note */
+    footer {
+      text-align: center;
+      margin: 28px 0 16px 0;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>🌍 Ecology & Environmental Health</h1>
+    <p>Comprehensive 10-Topic Medical Study Portal</p>
+  </header>
+
+  <!-- Progress Tracker -->
+  <div class="progress-card">
+    <div class="progress-header">
+      <span>የጥናት ሂደት (Study Progress)</span>
+      <span id="progress-text">0 / 10 የተጠናቀቁ</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- Search Filter -->
+  <div class="search-box">
+    <input type="text" id="search-input" class="search-input" placeholder="🔍 በርዕስ ወይም በይዘት ፈልግ (ለምሳሌ፡ Water, Waste, Vector...)...">
+  </div>
+
+  <!-- Topics List -->
+  <div class="topics-list" id="topics-list"></div>
+
+  <!-- Footer -->
+  <footer>
+    <p>💡 ማሳሰቢያ፡ ይህን ፋይል ከ 10ሩ ቶፒኮች ጋር በአንድ ፎልደር ውስጥ አስቀምጠው።</p>
+  </footer>
+
+</div>
+
+<script>
+  const topicsData = [
+    {
+      num: 1,
+      file: "Topic 1 Ecology.html",
+      title: "TOPIC 1: Introduction to Ecology and Environmental Health",
+      desc: "የስነ-ምህዳር ፍቺ፣ ባዮቲክ እና አባዮቲክ ክፍሎች፣ 7ቱ የስነ-ምህዳር ደረጃዎች (Hierarchy)፣ 7ቱ የአካባቢ ጤና ዘርፎች።",
+      keywords: "ecology biotic abiotic population community ecosystem biome biosphere malaria scope water waste"
+    },
+    {
+      num: 2,
+      file: "Topic 2 Ecology.html",
+      title: "TOPIC 2: Human Ecology and Human–Environment Interaction",
+      desc: "የሰው ልጅ ስነ-ምህዳር፣ የጤናው ሶስት ማዕዘን (Population, Behavior, Habitat)፣ አምስቱ የስነ-ምህዳር አመለካከቶች (Deterministic, Possibilistic...)",
+      keywords: "human ecology triangle population behavior habitat determinism teleology possibilism stone age modern age"
+    },
+    {
+      num: 3,
+      file: "Topic 3 Ecology.html",
+      title: "TOPIC 3: Biosphere and Environmental Pollution",
+      desc: "የመሬት 4ቱ ከባቢዎች (Atmosphere, Hydrosphere, Lithosphere, Pedosphere)፣ Assimilative Capacity ቀመር፣ የአየር፣ የውሃ፣ የአፈር እና የድምፅ ብክለት (85dB/Ethiopian standards)።",
+      keywords: "biosphere pollution assimilative capacity atmosphere hydrosphere lithosphere pedosphere air water soil noise decibel lead cadmium teratogenic"
+    },
+    {
+      num: 4,
+      file: "Topic 4 Ecology.html",
+      title: "TOPIC 4: Ecology of Health and Disease",
+      desc: "Spontaneous Generation vs Germ Theory፣ Dynamic Equilibrium፣ 5ቱ Maladaptation ምሳሌዎች (Dams, Volta, Brazil...)፣ የኤፒዲሚዮሎጂ ሶስት ማዕዘን (Agent, Host, Environment) እና T-P-P።",
+      keywords: "disease ecology spontaneous generation germ theory dynamic equilibrium maladaptation schistosomiasis agent host environment time place person"
+    },
+    {
+      num: 5,
+      file: "Topic 5 Ecology.html",
+      title: "TOPIC 5: Housing and Institutional Health",
+      desc: "የመኖሪያ ቤቶች ደረጃ (Standard, Substandard, Slum, Blighted area)፣ 5ቱ የ WHO መርሆዎች፣ የሙቀት፣ የብርሃንና የመስኮት መስፈርቶች፣ የእንግሊዝ የተጠቃሚዎች ሕግ፣ የተቋማት ጤና።",
+      keywords: "housing slum substandard blighted area physiological psychological ventilation temperature lighting foot-candles overcrowding institutional"
+    },
+    {
+      num: 6,
+      file: "Topic 6 Ecology.html",
+      title: "TOPIC 6: Water Supply and WASH",
+      desc: "አራቱ የውሃ በሽታዎች (Waterborne, Water-washed, Water-based, Water-related)፣ Blue Baby Syndrome፣ የቤት ውስጥ ማጣሪያዎች (Sand >60cm, Candle, SODIS, Boiling)፣ የማዘጋጃ ቤት የውሃ ማጣሪያ 9 ደረጃዎች።",
+      keywords: "water supply wash waterborne water-washed water-based water-related cadmium lead nitrate blue baby sand filter candle sodis coagulation flocculation"
+    },
+    {
+      num: 7,
+      file: "Topic 7 Ecology.html",
+      title: "TOPIC 7: Sanitation and Waste Management",
+      desc: "የደረቅ ቆሻሻ 4 ደረጃዎች፣ Composting፣ Sanitary Landfill፣ Incinerator ክልከላዎች፣ VIP Latrine እና Sewerage፣ የሆስፒታል ቆሻሻ የቀለም ኮዶች (Black, Yellow, Safety box)።",
+      keywords: "sanitation solid waste composting landfill incineration vip latrine water carriage healthcare waste sharps safety box segregation black yellow"
+    },
+    {
+      num: 8,
+      file: "Topic 8 Ecology.html",
+      title: "TOPIC 8: Vector Control and Food Hygiene",
+      desc: "ሜካኒካል vs ባዮሎጂካል ቬክተሮች፣ 4ቱ የስርጭት ዓይነቶች (Propagative, Cyclo-developmental...)፣ 6ቱ የቁጥጥር ስልቶች፣ 3ቱ የምግብ ወለድ በሽታዎች፣ 8ቱ የምግብ ንፅህና መርሆዎች እና Cross-contamination።",
+      keywords: "vector control mosquitoes housefly biological mechanical propagative food hygiene salmonella bacillus cereus intoxication cross contamination"
+    },
+    {
+      num: 9,
+      file: "Topic 9 Ecology.html",
+      title: "TOPIC 9: Occupational Health and Safety",
+      desc: "Safety vs Health፣ 6ቱ የስራ ላይ አደጋዎች፣ የሙቀት ህመሞች (Cramps, Exhaustion, Stroke)፣ ጨረሮች፣ የስራ ላይ በሽታዎች (Silicosis, Byssinosis, Bagassosis, Benzene)፣ Hierarchy of Controls።",
+      keywords: "occupational health safety physical mechanical chemical biological ergonomic psychosocial heat stroke radiation noise silicosis byssinosis ppe substitution"
+    },
+    {
+      num: 10,
+      file: "Topic 10 Ecology.html",
+      title: "TOPIC 10: Infection Prevention and Control (IPC)",
+      desc: "Nosocomial Infections (>48 ሰዓት)፣ 5ቱ የስርጭት መንገዶች፣ Standard Precautions፣ WHO 5 Moments of Hand Hygiene፣ PPE፣ Contact/Droplet/Airborne Precautions (MRSA, Pertussis, TB)።",
+      keywords: "infection prevention control ipc nosocomial hai standard precautions hand hygiene who moments ppe contact droplet airborne tuberculosis mrsa"
+    }
+  ];
+
+  const topicsList = document.getElementById('topics-list');
+  const searchInput = document.getElementById('search-input');
+  const progressBar = document.getElementById('progress-bar');
+  const progressText = document.getElementById('progress-text');
+
+  // Load completed state from LocalStorage
+  let completedTopics = JSON.parse(localStorage.getItem('completed_ecology_topics') || '[]');
+
+  function updateProgress() {
+    const total = topicsData.length;
+    const count = completedTopics.length;
+    const percent = Math.round((count / total) * 100);
+    progressBar.style.width = percent + '%';
+    progressText.innerText = `${count} / ${total} የተጠናቀቁ (${percent}%)`;
+  }
+
+  function renderTopics(filter = '') {
+    topicsList.innerHTML = '';
+    const query = filter.toLowerCase().trim();
+
+    topicsData.forEach(topic => {
+      const match = topic.title.toLowerCase().includes(query) ||
+                    topic.desc.toLowerCase().includes(query) ||
+                    topic.keywords.toLowerCase().includes(query);
+
+      if (!match) return;
+
+      const isCompleted = completedTopics.includes(topic.num);
+
+      const card = document.createElement('div');
+      card.className = `topic-card ${isCompleted ? 'completed' : ''}`;
+      card.id = `card-${topic.num}`;
+
+      card.innerHTML = `
+        <div class="topic-top">
+          <span class="topic-badge">Topic ${topic.num}</span>
+          <span style="font-size:0.75rem; color:#64748b;">${topic.file}</span>
+        </div>
+        <div class="topic-title">${topic.title}</div>
+        <div class="topic-desc">${topic.desc}</div>
+        <div class="topic-actions">
+          <a href="${topic.file}" class="btn-open">📖 አንብብ (Open)</a>
+          <button class="btn-check ${isCompleted ? 'checked' : ''}" onclick="toggleComplete(${topic.num})">
+            ${isCompleted ? '✔ ተጠናቋል' : '○ አጥንቼዋለሁ'}
+          </button>
+        </div>
+      `;
+
+      topicsList.appendChild(card);
+    });
+
+    if (topicsList.children.length === 0) {
+      topicsList.innerHTML = `<div style="text-align:center; padding:30px; color:#64748b;">ምንም የተገኘ ቶፒክ የለም!</div>`;
+    }
+  }
+
+  window.toggleComplete = function(num) {
+    if (completedTopics.includes(num)) {
+      completedTopics = completedTopics.filter(n => n !== num);
+    } else {
+      completedTopics.push(num);
+    }
+    localStorage.setItem('completed_ecology_topics', JSON.stringify(completedTopics));
+    updateProgress();
+    renderTopics(searchInput.value);
+  };
+
+  searchInput.addEventListener('input', (e) => {
+    renderTopics(e.target.value);
+  });
+
+  // Initial render
+  updateProgress();
+  renderTopics();
+</script>
+
+</body>
+</html>

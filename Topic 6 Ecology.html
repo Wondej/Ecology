@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 6: Water Supply and WASH</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin: 16px 0 8px 0;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin: 10px 0 4px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Images */
+    .img-box {
+      margin: 14px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: #f1f5f9;
+      text-align: center;
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 12px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Callout Boxes */
+    .alert-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    .analogy-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Interactive Quiz */
+    .quiz-container {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 24px;
+    }
+    .quiz-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .question-block {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: var(--primary);
+    }
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: bold;
+    }
+    .option-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+    .feedback {
+      display: none;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .feedback.show {
+      display: block;
+    }
+    .feedback.correct-text {
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .feedback.wrong-text {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>💧 TOPIC 6: Water Supply and WASH</h1>
+    <p>Water Resources, Biological & Chemical Contaminants, Treatment Technologies, and WASH</p>
+  </header>
+
+  <!-- 1. Water sources in the biosphere -->
+  <div class="card">
+    <h2>1. Water Sources in the Biosphere</h2>
+    <p>Your PDF emphasizes that <strong>only about 0.3% of Earth's total water</strong> is accessible fresh water available for human consumption and socio-economic development.</p>
+    
+    <div class="alert-box">
+      ⚠️ <strong>Vital Fact:</strong> Although Earth appears to have abundant water resources, only a very tiny fraction (0.3%) is fresh and accessible.
+    </div>
+
+    <h3>Major Natural Water Sources:</h3>
+    <ul>
+      <li><strong>Surface Water:</strong> Rivers, freshwater lakes, seasonal streams, and artificial reservoirs.</li>
+      <li><strong>Groundwater:</strong> Water stored within subsurface aquifers, accessed via dug wells, tube wells, and natural springs.</li>
+      <li><strong>Rainwater:</strong> Atmospheric precipitation collected from catchment surfaces and roofs.</li>
+      <li><strong>Municipal / Public Supplies:</strong> Treated bulk water piped to households and institutions.</li>
+    </ul>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/OWdDFRNcuzvxC-jS9uDieoNaYDqk7SSTtEMwSckZjJ-GrVRRP-KeRrtNvzdZFvz3x7asBOyhtScDer3w56JNfUwY0-6hK7EwWFYFN9mB1FE88y3yZHIplKfHnCUhTr7TtCaXujZDciGwlGqYuQSKrO5t3s4cGjQ6eEXKkv5Gavq_Qg_lyDeCkES0xv8B39K4?purpose=fullsize" alt="Water Security Plan">
+      <div class="img-caption">Catchment protection and community water security management</div>
+    </div>
+
+    <div class="analogy-box">
+      🔎 <strong>Important Concept:</strong> Water that appears crystal-clear is <strong>not necessarily safe</strong> to drink. It may harbor invisible enteric pathogens, viruses, or dissolved toxic inorganic heavy metals.
+    </div>
+  </div>
+
+  <!-- 2. Biological contamination of water -->
+  <div class="card">
+    <h2>2. Biological Contamination & Water-Associated Diseases</h2>
+    <p><strong>Pathogens</strong> are disease-causing biological agents (bacteria, viruses, protozoans, parasitic worms) that infect exposed hosts.</p>
+    <p>Your PDF classifies water-associated diseases into four distinct epidemiological categories:</p>
+
+    <h3>A. Waterborne Diseases</h3>
+    <p>Caused by the direct ingestion of drinking water contaminated with fecal pathogens.</p>
+    <ul>
+      <li><em>Examples:</em> Acute watery diarrhea, cholera, typhoid fever, bacillary dysentery (shigellosis), Hepatitis A and E.</li>
+      <li><em>Analogy:</em> You drink contaminated water, and the pathogen enters your digestive tract.</li>
+      <li><em>Primary Control:</em> <strong>Disinfection</strong> (chlorination, boiling) and protection of water sources.</li>
+    </ul>
+
+    <h3>B. Water-Washed Diseases</h3>
+    <p>Infections caused or aggravated by a deficiency in water volume for personal cleanliness, face washing, and clothes laundering.</p>
+    <ul>
+      <li><em>Examples:</em> Trachoma, scabies, conjunctivitis, louse-borne typhus.</li>
+      <li><em>Analogy:</em> Water is too scarce to wash faces and clothes regularly, allowing pathogens to persist on skin and mucous membranes.</li>
+      <li><em>Primary Control:</em> <strong>Increasing the quantity and accessibility</strong> of water for personal hygiene.</li>
+    </ul>
+
+    <h3>C. Water-Based Diseases</h3>
+    <p>Infections where the pathogenic parasite spends part of its essential biological life cycle inside an aquatic intermediate host (such as aquatic snails or crustaceans).</p>
+    <ul>
+      <li><em>Examples:</em> Schistosomiasis (bilharzia), Dracunculiasis (Guinea worm disease).</li>
+      <li><em>Analogy:</em> The pathogen requires an aquatic creature to develop; humans become infected through skin penetration or drinking water containing intermediate hosts.</li>
+      <li><em>Primary Control:</em> Avoid contact with infested water bodies and <strong>eliminate intermediate snail/cyclops hosts</strong>.</li>
+    </ul>
+
+    <h3>D. Water-Related (Vector-Borne) Diseases</h3>
+    <p>Diseases transmitted by insect vectors that breed in or bite near water environments.</p>
+    <ul>
+      <li><em>Examples:</em> Malaria (<em>Anopheles</em> mosquitoes), Dengue fever, Yellow fever (<em>Aedes</em> mosquitoes), Onchocerciasis (Blackfly / river blindness), African Trypanosomiasis (Tsetse fly).</li>
+      <li><em>Primary Control:</em> <strong>Eliminate vector breeding habitats</strong>, larviciding, and personal vector protection (bed nets).</li>
+    </ul>
+  </div>
+
+  <!-- 3. Comparison Table -->
+  <div class="card">
+    <h2>3. Comparison of Water-Associated Disease Categories</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Transmission Route / Etiology</th><th>Classic Examples</th><th>Primary Intervention</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Waterborne</strong></td>
+            <td>Ingestion of fecally contaminated water</td>
+            <td>Cholera, Typhoid, Hepatitis A</td>
+            <td>Water disinfection & protection</td>
+          </tr>
+          <tr>
+            <td><strong>Water-washed</strong></td>
+            <td>Inadequate volume for hygiene & washing</td>
+            <td>Trachoma, Scabies</td>
+            <td>Abundant water supply for hygiene</td>
+          </tr>
+          <tr>
+            <td><strong>Water-based</strong></td>
+            <td>Aquatic intermediate host involved</td>
+            <td>Schistosomiasis, Guinea worm</td>
+            <td>Avoid contact; snail/host control</td>
+          </tr>
+          <tr>
+            <td><strong>Water-related</strong></td>
+            <td>Insect vectors breeding in/near water</td>
+            <td>Malaria, Yellow fever, River blindness</td>
+            <td>Breeding site drainage; vector control</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="analogy-box">
+      🧠 <strong>Memory Trick:</strong><br>
+      • <strong>Borne</strong> = Drink it.<br>
+      • <strong>Washed</strong> = Not enough water to wash with.<br>
+      • <strong>Based</strong> = Aquatic intermediate host lives in the base water.<br>
+      • <strong>Related</strong> = Insect vector relates to water for breeding.
+    </div>
+  </div>
+
+  <!-- 4. Physicochemical water pollution -->
+  <div class="card">
+    <h2>4. Physicochemical Water Pollution</h2>
+    <p>Your PDF categorizes non-biological water pollutants into four distinct classes:</p>
+
+    <h3>A. Inorganic Chemical Pollutants</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Pollutant</th><th>Industrial / Environmental Sources</th><th>Human Health Effects</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cadmium (Cd)</strong></td>
+            <td>Zinc extraction, galvanized plumbing, battery manufacturing, steel, plastics</td>
+            <td>Severe osteomalacia (bone pain/fractures), enzyme damage, renal cancer</td>
+          </tr>
+          <tr>
+            <td><strong>Lead (Pb)</strong></td>
+            <td>Corrosion of lead pipes, smelting, mining, leaded gasoline/coal combustion</td>
+            <td>Childhood cognitive deficit, developmental delays, encephalopathy, kidney injury</td>
+          </tr>
+          <tr>
+            <td><strong>Mercury (Hg)</strong></td>
+            <td>Fossil fuel burning, pesticides, industrial electronics, thermometers</td>
+            <td>Neurological damage, ataxia, blindness, congenital teratogenic defects</td>
+          </tr>
+          <tr>
+            <td><strong>Arsenic (As)</strong></td>
+            <td>Geological rock leaching, pesticide runoff, mining tailings, smelting</td>
+            <td>Hyperkeratosis, peripheral neuropathy, cutaneous and visceral cancers</td>
+          </tr>
+          <tr>
+            <td><strong>Nitrate / Nitrite</strong></td>
+            <td>Synthetic nitrogen fertilizers, agricultural runoff, livestock feedlots, pit latrines</td>
+            <td><strong>Methemoglobinemia</strong> ("Blue Baby Syndrome") & aquatic eutrophication</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert-box">
+      👶 <strong>Blue Baby Syndrome (Methemoglobinemia):</strong> Ingested nitrates are converted into nitrites in the immature gut of infants under one year. Nitrites oxidize hemoglobin into <em>methemoglobin</em>, which cannot bind oxygen, producing severe hypoxia and cyanosis (bluish skin tint).
+    </div>
+
+    <h3>B. Organic Pollutants</h3>
+    <p>Originates from domestic sewage, animal manure, agricultural runoff, paper mills, petroleum spills, synthetic pesticides, and pharmaceutical residues.</p>
+    <ul>
+      <li><strong>Oxygen Depletion:</strong> Microorganisms decompose organic matter and consume dissolved oxygen, leading to aquatic hypoxia and fish suffocation.</li>
+      <li><strong>Bioaccumulation:</strong> Persistent synthetic pesticides (e.g., organochlorines) accumulate in aquatic food chains.</li>
+    </ul>
+
+    <h3>C. Radioactive Pollutants</h3>
+    <p>Radionuclides such as <strong>Strontium-90</strong>, <strong>Cesium-137</strong>, and <strong>Plutonium isotopes</strong> derived from uranium mining, nuclear power generation, and medical radioisotopes, causing DNA mutations and cancers.</p>
+
+    <h3>D. Thermal Pollution</h3>
+    <p>Discharge of high-temperature industrial cooling effluent into natural water bodies. Heated water holds significantly less dissolved oxygen, causing thermal shock to fish and altering biodegradation rates.</p>
+  </div>
+
+  <!-- 5. Water treatment for potable supply -->
+  <div class="card">
+    <h2>5. Water Treatment for Potable Supply</h2>
+    <p><strong>Potable water</strong> is water whose physical, chemical, and biological qualities make it safe and wholesome for lifetime human consumption.</p>
+
+    <h3>Treatment Objectives:</h3>
+    <ul>
+      <li>Eliminate pathogenic organisms and toxic chemical compounds.</li>
+      <li>Remove aesthetic defects (unpleasant turbidity, color, taste, or odor).</li>
+      <li>Precipitate excess hardness minerals (calcium, magnesium) and adjust pH.</li>
+      <li>Regulate trace chemicals (e.g., fluoridation for dental protection or defluoridation where fluoride is excessive).</li>
+      <li>Expel unwanted dissolved gases (H<sub>2</sub>S, CO<sub>2</sub>) via aeration.</li>
+    </ul>
+  </div>
+
+  <!-- 6. Small-scale water treatment -->
+  <div class="card">
+    <h2>6. Small-Scale & Household Water Treatment (HWTS)</h2>
+    <p>Applied at the household level, in emergency refugee settings, and in non-piped rural communities.</p>
+
+    <h3>A. Plain Storage</h3>
+    <p>Allowing raw water to stand undisturbed for 24–48 hours enables heavier suspended particulates, silt, and parasitic ova to settle gravitationally, reducing turbidity and bacterial load.</p>
+
+    <h3>B. Physical Filtration</h3>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/I5fRNFg7KRioPGzGDETvD1GNjD1bVN88FzTlDTlSmp8rwhvIUCsDrL85AgV_GVkNY8O8oQEVJ0MQStLGMJUfdR8Fqen-9nPdsLr3nSa69uMg4yEtApd_S2vlVgw2syFwLzl9-ef7oOPPiMWzJYR2w-YvWWHuYVUKgER_GkHRL8YgC0yCZKKeeW61LLBhdkqV?purpose=fullsize" alt="Slow sand filtration">
+      <div class="img-caption">Sand filtration: Low-cost biological and physical purification</div>
+    </div>
+    <ul>
+      <li><strong>Household Sand Filter:</strong> Layered sand and gravel in an upright container. The PDF specifies a <strong>minimum sand bed depth &gt; 60 cm</strong>. Removes turbidity, taste, odor, protozoan cysts, and helminth ova.</li>
+      <li><strong>Ceramic Candle Filter:</strong> Porous cylinder made of unglazed porcelain with a pore-size rating of <strong>0.3–50 μm</strong>, filtering bacteria and protozoa.</li>
+      <li><strong>Stone Filtration:</strong> Utilizes local porous minerals (e.g., <em>Baha stone</em> in the PDF) for mineral and chemical adsorption.</li>
+      <li><strong>Cloth Filtration:</strong> Multi-folded clean cloth straining coarse suspended material and Guinea worm cyclops.</li>
+    </ul>
+
+    <h3>C. Chemical & Physical Disinfection</h3>
+    <ol>
+      <li>
+        <strong>Boiling:</strong> Vigorous boiling for <strong>15–20 minutes</strong> destroys vegetative bacteria, viruses, and cysts. It is the most reliable household method. (Flat taste can be remedied by shaking water to re-aerate).
+      </li>
+      <li>
+        <strong>Solar Disinfection (SODIS):</strong> Transparent PET plastic bottles filled with low-turbidity water are exposed to direct sunlight for at least 6 hours. Synergy between <strong>solar UV-A radiation</strong> and <strong>thermal heating</strong> inactivates pathogens.
+        <div class="img-box">
+          <img src="https://images.openai.com/static-rsc-4/NaQDCdeVccnXHtTTkixC1camClf66IIvzrOGlY7s-KKOYCy0oetVy5xxYzQxXxGEkadaqchauzzXiOOQq_wd8BrdfwndA8QEMAlvmX4NHK86xSeKWj76Wnd7TwE75u32QY-KNp8Sr0gEN_OYiHu8vwZ-qe2gXbGz_8dwtKduBhzVMd7RnoiroClNZQFtWccT?purpose=fullsize" alt="Solar Disinfection SODIS">
+          <div class="img-caption">SODIS: Clean PET bottles exposed to direct sunlight for solar UV-A and thermal pasteurization</div>
+        </div>
+      </li>
+      <li>
+        <strong>Iodine Compounds:</strong> 2% tincture of iodine added at a dose of <strong>2 drops per liter</strong> of clear water. High cost and medicinal odor limit long-term use.
+      </li>
+      <li>
+        <strong>Colloidal Silver:</strong> Exerts an oligodynamic antimicrobial effect in stored vessels; effective but relatively expensive.
+      </li>
+    </ol>
+  </div>
+
+  <!-- 7. Large-scale water treatment -->
+  <div class="card">
+    <h2>7. Large-Scale Conventional Water Treatment</h2>
+    <p>Municipal water works follow a rigorous sequential physicochemical treatment train:</p>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/uk8BSE4eJl5v-gE3L726ABTjWpbFdiiAMBifYc-ZP42PVrc_LkVcxJ8voR4u1O8BkSrDnf1pwcSfgDkOGA4-ymiIEh7EtHLo8Hph0nhSqOpj7D815NC9R622gpDh7TJNqkotXdBPEYKQJjR8YmiVvY_eafVtJv5UVVy369Jt_5Xo0lfOgHWOi9TLkq9kwfph?purpose=fullsize" alt="Municipal Water System">
+      <div class="img-caption">Conventional water treatment: Multi-barrier purification stages</div>
+    </div>
+
+    <h3>The 9 Conventional Stages in Order:</h3>
+    <ol>
+      <li><strong>Raw Water Intake:</strong> Pumping water from reservoir, river, or lake.</li>
+      <li><strong>Screening:</strong> Metal bars intercept coarse debris (branches, leaves, trash).</li>
+      <li><strong>Plain Sedimentation:</strong> Gravitational settling of coarse mineral silt.</li>
+      <li><strong>Coagulation:</strong> Rapid chemical dosing with coagulants (e.g., <strong>alum / aluminum sulfate</strong>) to neutralize electrostatic charges on colloidal clay particles.</li>
+      <li><strong>Flocculation:</strong> Slow, gentle paddle mixing enabling destabilized particles to collide and aggregate into visible, settleable clumps called <strong>flocs</strong>.</li>
+      <li><strong>Sedimentation (Clarification):</strong> Water rests in large basins where heavy flocs settle out as bottom sludge.</li>
+      <li><strong>Filtration:</strong> Clarified water passes through rapid sand or dual-media beds to capture remaining fine suspended matter.</li>
+      <li><strong>Disinfection:</strong> Dosing with <strong>chlorine gas (Cl<sub>2</sub>)</strong> or hypochlorite to achieve pathogen inactivation and provide residual protection against recontamination in distribution mains.</li>
+      <li><strong>Storage & Distribution:</strong> Purified water enters closed service reservoirs and piped municipal distribution networks.</li>
+    </ol>
+
+    <div class="alert-box">
+      ⚠️ <strong>Crucial Exam Order:</strong><br>
+      <strong>Coagulation</strong> (chemical addition) → <strong>Flocculation</strong> (gentle mixing to build flocs) → <strong>Sedimentation</strong> (settling of flocs) → <strong>Filtration</strong> → <strong>Disinfection</strong>.
+    </div>
+  </div>
+
+  <!-- 8. WASH: Water, Sanitation and Hygiene -->
+  <div class="card">
+    <h2>8. WASH: Water, Sanitation and Hygiene</h2>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/cgSrV4M5w09iyAYq99A5JrByv6g5J1zQLTmaPfF8-BfDRZfcMQl9ATTOlfEHAQx50Pun4vT2CBflw7XJvk2S1BogpGpin8ojKzxWZQmGGbjYW5ZKT2aPlrsD9P1XLXKx2FFqR6wiis_eHzLZRckYIRD0m0ql1Yu_ZgkA6iLyOiD_40q6rG1QunXnKjJjmkPN?purpose=fullsize" alt="WASH Concept">
+      <div class="img-caption">WASH framework: Safe water, sanitary infrastructure, and hygienic behaviors</div>
+    </div>
+
+    <h3>The Three Integrated Pillars:</h3>
+    <ul>
+      <li><strong>W — Water:</strong> Equitable access to sufficient, safe potable water for drinking, food preparation, and personal cleaning.</li>
+      <li><strong>A / S — Sanitation:</strong> Safe isolation and hygienic disposal of human excreta, solid waste, and municipal wastewater.</li>
+      <li><strong>H — Hygiene:</strong> Behavior change practices, primarily <strong>handwashing with soap</strong> at critical moments (after defecation, before eating/preparing food).</li>
+    </ul>
+
+    <div class="analogy-box">
+      🛡️ <strong>The Synergistic Rule:</strong> Safe water alone cannot break fecal-oral transmission if open defecation persists and hands remain unwashed. <strong>Water + Sanitation + Hygiene</strong> must operate concurrently to control enteric pathogens like <em>Vibrio cholerae</em>.
+    </div>
+  </div>
+
+  <!-- 9. Quick revision table -->
+  <div class="card">
+    <h2>9. High-Yield Revision Table</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Concept</th><th>High-Yield Takeaway</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Accessible Fresh Water</strong></td><td>Only ~0.3% of Earth's total water is available for human use</td></tr>
+          <tr><td><strong>Waterborne</strong></td><td>Contracted by swallowing contaminated water (Cholera, Typhoid)</td></tr>
+          <tr><td><strong>Water-washed</strong></td><td>Inadequate water quantity for personal hygiene (Trachoma, Scabies)</td></tr>
+          <tr><td><strong>Water-based</strong></td><td>Aquatic intermediate host involved (Schistosomiasis, Guinea worm)</td></tr>
+          <tr><td><strong>Water-related</strong></td><td>Insect vectors breeding in/near water (Malaria, Yellow fever)</td></tr>
+          <tr><td><strong>Cadmium Poisoning</strong></td><td>Causes osteomalacia (bone damage) by displacing bone calcium</td></tr>
+          <tr><td><strong>Blue Baby Syndrome</strong></td><td>Excess nitrates induce methemoglobinemia in infants &lt;1 year</td></tr>
+          <tr><td><strong>Household Sand Filter</strong></td><td>Minimum sand bed thickness must be greater than 60 cm</td></tr>
+          <tr><td><strong>Candle Filter</strong></td><td>Porous unglazed porcelain cylinder with pores 0.3–50 μm</td></tr>
+          <tr><td><strong>Disinfection Boiling Time</strong></td><td>15–20 minutes of vigorous rolling boil</td></tr>
+          <tr><td><strong>Municipal Treatment Order</strong></td><td>Coagulation → Flocculation → Sedimentation → Filtration → Disinfection</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 10. Interactive Quiz -->
+  <div class="quiz-container">
+    <div class="quiz-header">📝 Self-Assessment Quiz (Click to Check)</div>
+    <div id="quiz-mount"></div>
+  </div>
+
+</div>
+
+<script>
+  const quizData = [
+    {
+      q: "Question 1. A patient contracts severe cholera after drinking water contaminated with fecal Vibrio cholerae. How is this disease epidemiologically categorized?",
+      options: [
+        "A. Water-washed disease",
+        "B. Water-based disease",
+        "C. Waterborne disease",
+        "D. Water-related disease"
+      ],
+      correct: 2,
+      exp: "Correct! Waterborne diseases result directly from swallowing water that carries viable fecal-oral pathogens."
+    },
+    {
+      q: "Question 2. An arid village has a piped water point, but volume is severely restricted. Schoolchildren develop widespread trachoma and scabies due to inadequate washing. This is classified as:",
+      options: [
+        "A. Waterborne disease",
+        "B. Water-washed disease",
+        "C. Water-based disease",
+        "D. Water-related disease"
+      ],
+      correct: 1,
+      exp: "Correct! Water-washed diseases occur when there is an insufficient quantity of water available for regular face, body, and clothing hygiene."
+    },
+    {
+      q: "Question 3. Which sequence correctly reflects the consecutive stages of conventional surface-water purification immediately following chemical coagulation?",
+      options: [
+        "A. Filtration → flocculation → sedimentation → disinfection",
+        "B. Flocculation → sedimentation → filtration → disinfection",
+        "C. Disinfection → sedimentation → filtration → storage",
+        "D. Sedimentation → coagulation → flocculation → filtration"
+      ],
+      correct: 1,
+      exp: "Correct! Coagulation is followed by Flocculation (particle clumping) → Sedimentation (floc settling) → Filtration (sand beds) → Disinfection (chlorination)."
+    },
+    {
+      q: "Question 4. An infant develops severe cyanosis and respiratory distress (methemoglobinemia) following formula preparation with shallow well water. Which contaminant is responsible?",
+      options: [
+        "A. Cadmium",
+        "B. Elemental Lead",
+        "C. Nitrate",
+        "D. Metallic Mercury"
+      ],
+      correct: 2,
+      exp: "Correct! Excess nitrate/nitrite causes 'Blue Baby Syndrome' (methemoglobinemia) in infants under 1 year by oxidizing hemoglobin."
+    },
+    {
+      q: "Question 5. A household uses a porous ceramic candle filter to treat drinking water and subsequently doses it with chlorine. Which statement accurately compares these two interventions?",
+      options: [
+        "A. Filtration and disinfection achieve identical physical outcomes",
+        "B. Filtration removes suspended solids and parasites, while disinfection targets and inactivates microorganisms",
+        "C. Disinfection completely demineralizes hard water",
+        "D. Physical filtration alone guarantees complete viral inactivation"
+      ],
+      correct: 1,
+      exp: "Correct! Filtration physically traps suspended particles and larger microbes, whereas chemical disinfection kills or inactivates remaining pathogens."
+    }
+  ];
+
+  const quizMount = document.getElementById('quiz-mount');
+
+  quizData.forEach((item, qIdx) => {
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block';
+
+    const title = document.createElement('div');
+    title.className = 'question-title';
+    title.innerText = item.q;
+    qBlock.appendChild(title);
+
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+
+    item.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = optText;
+
+      btn.addEventListener('click', () => {
+        const allBtns = qBlock.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+
+        if (optIdx === item.correct) {
+          btn.classList.add('correct');
+          feedback.className = 'feedback show correct-text';
+          feedback.innerHTML = "✅ " + item.exp;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+          feedback.className = 'feedback show wrong-text';
+          feedback.innerHTML = "❌ ትክክለኛው መልስ፦ " + item.options[item.correct] + "<br>" + item.exp;
+        }
+      });
+
+      qBlock.appendChild(btn);
+    });
+
+    qBlock.appendChild(feedback);
+    quizMount.appendChild(qBlock);
+  });
+</script>
+
+</body>
+</html>

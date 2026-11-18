@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 8: Vector Control and Food Hygiene</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin: 16px 0 8px 0;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin: 10px 0 4px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Images */
+    .img-box {
+      margin: 14px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: #f1f5f9;
+      text-align: center;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    @media (max-width: 480px) {
+      .img-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 12px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Callout Boxes */
+    .alert-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    .analogy-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Interactive Quiz */
+    .quiz-container {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 24px;
+    }
+    .quiz-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .question-block {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: var(--primary);
+    }
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: bold;
+    }
+    .option-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+    .feedback {
+      display: none;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .feedback.show {
+      display: block;
+    }
+    .feedback.correct-text {
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .feedback.wrong-text {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>🦟 TOPIC 8: Vector Control and Food Hygiene</h1>
+    <p>Arthropod Vectors, Biological Transmission, Foodborne Pathology & Safe Handling</p>
+  </header>
+
+  <!-- PART 1: VECTOR CONTROL -->
+  <div class="card">
+    <h2>PART 1: Vector Control</h2>
+    
+    <h3>1. What is a Vector?</h3>
+    <p>A <strong>vector</strong> is an organism, commonly an insect (arthropod) or rodent, that transmits infectious disease-causing agents to humans.</p>
+    <ul>
+      <li><strong>Mosquitoes:</strong> Transmit malaria, dengue, yellow fever, and Zika.</li>
+      <li><strong>Houseflies:</strong> Mechanically carry enteric pathogens directly to food.</li>
+      <li><strong>Fleas:</strong> Transmit plague (<em>Yersinia pestis</em>).</li>
+      <li><strong>Sandflies:</strong> Transmit leishmaniasis.</li>
+      <li><strong>Ticks:</strong> Transmit Lyme disease and viral hemorrhagic fevers.</li>
+    </ul>
+
+    <div class="img-grid">
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/o_bVaHIleN3Q7lz8ACpxXV40twIMqlDHzpDBQDy7uaIWoyQysmB2ACs159wB_Td3RxPyXoX2QP-PSAQgCh0sqOW_-xPKmX8Z9PEOEqYdNiwiKn89nrRF0fmQlHsD3Lw5WYe6ZWlXPJXVXwaIVuAMEgpNJLCcIjQl7A2ghfwabwQr8X9LUjUFRGD13PYZhjjf?purpose=fullsize" alt="Mosquito Life Cycle">
+        <div class="img-caption">Mosquito lifecycle: Egg, larva, pupa, adult</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/_RxCS6lrKo4ZSqDd9lne2Y5wAwvrx68OfK0obAqnXW6776_CziuyUSMsbQRtg2idW8ZDtMt1bU9mCiWVkuoTvs0BugVk9AhoSNiN9uVRHKpNtltfOlOQSXF37P0VyK5rYyLWpKdzP5TxSabNGz0fRF0Hmu6UF8jwDk56a3hLeAkTjoMvhkbmggixA3Z38D2z?purpose=fullsize" alt="Housefly Close-up">
+        <div class="img-caption">Housefly: Mechanical carrier of pathogens</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/deL5H1NEkqKW7RXfsZx5pLvFXpIRvybpApAyLTkcDFsRg9RwRnNQqW7zZ-YFjCnZ6JN-YJIh3x0DR9feOGD24cX2gIS9v_JNJ8nQcJQDuz-K4VvO8Vm3E00hbHnyZVJxt2IqGA18VnZRkH9IIi_z3YjlffJlZqdo4Wgg1u7eA45OJJJwx9eR5ubdwXD2KqY9?purpose=fullsize" alt="Sandfly">
+        <div class="img-caption">Sandfly: Vector of leishmaniasis</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/CQUZSo2kkjL4tGto-AylOUansB1E73qPqaOPBlWTmnDCDwtjkBwq_Qsq2agGsPi1Aj7baYkynlEbzJ9mFyUt9eVxvZwwc7-ieNnsvgNLi2-ze8TxuWYs6cVGHTGA6n5sGqTsbFue6YAE4m8TKiD84rrXF6cqEP8dsl7YMQijSL0MHPrp4H0g16PCxizEUyRy?purpose=fullsize" alt="Tick">
+        <div class="img-caption">Ticks: Vectors of Lyme disease and rickettsia</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Types of vectors -->
+  <div class="card">
+    <h2>2. Classification of Vectors</h2>
+    
+    <h3>A. Mechanical Vectors</h3>
+    <p>Transmit pathogens <strong>passively</strong> by carrying them externally on their feet, mouthparts, body hairs, or gastrointestinal tract without biological multiplication or structural development.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/bmnXqDrMzqt76JjKpgqsuueTV_c3-KT3YSgKcLG_l1QG3q8DUQADE6tZbmlZCKZvLgborqrSnwE4mLajPC4SMmq6RJ-OUfGWZZGpgpCu-dLLVXAS6k48fVA-No0pnBDmjtzSKaF7N1zgURXqBFX89uDRJ4yCNR0-StkPx9eluiKNuiNg9RVb_T0_bt57Syge?purpose=fullsize" alt="Musca domestica">
+      <div class="img-caption">Musca domestica: Passive mechanical transfer from feces to food</div>
+    </div>
+
+    <h3>B. Biological Vectors</h3>
+    <p>The disease-causing pathogen undergoes essential physiological development, multiplication, or sexual cycles inside the vector's body prior to transmission.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/M322zHGhk-Aad6eYr2Oeh55hI0HODD_1vcfvNY4rysulWZ61Qy4XX62WLpoVJ-lvo80PgxsHy0Sl_z7an9ujtsREnG40hDt4w1JYifnywvpeLIv-75BEZljeE5LX1P8Hw9CiWtjqYC4mDgXEAttmwBdTwEju67e0AJ1XVcjRBqI_7GzIi_LXQHm2mFde9XZZ?purpose=fullsize" alt="Malaria biological transmission">
+      <div class="img-caption">Plasmodium sporogony inside Anopheles mosquito</div>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>Mechanical Vector</th><th>Biological Vector</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Mode of Transport</strong></td><td>Passive surface carriage</td><td>Active internal development / multiplication</td></tr>
+          <tr><td><strong>Pathogen Development</strong></td><td>None required</td><td>Essential biological cycle occurs inside vector</td></tr>
+          <tr><td><strong>Classic Examples</strong></td><td>Houseflies, Cockroaches</td><td>Mosquitoes (Malaria), Ticks (Lyme), Sandflies</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="analogy-box">
+      🚗 <strong>Analogy:</strong> A mechanical vector is like a dirty vehicle carrying dust from one place to another. A biological vector acts as a biological incubator where the pathogen matures and multiplies.
+    </div>
+  </div>
+
+  <!-- 3. Four types of biological disease transmission -->
+  <div class="card">
+    <h2>3. Four Modes of Biological Transmission (High Yield)</h2>
+    
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Transmission Type</th><th>Developmental Changes?</th><th>Pathogen Multiplication?</th><th>Exam Examples</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Propagative</strong></td>
+            <td><strong>No</strong> (Morphology remains same)</td>
+            <td><strong>Yes</strong> (Multiplies in number)</td>
+            <td>Yellow fever virus, Louse-borne relapsing fever</td>
+          </tr>
+          <tr>
+            <td><strong>2. Cyclo-developmental</strong></td>
+            <td><strong>Yes</strong> (Undergoes developmental stages)</td>
+            <td><strong>No</strong> (No numerical multiplication)</td>
+            <td>Lymphatic filariasis (<em>Wuchereria bancrofti</em> microfilariae)</td>
+          </tr>
+          <tr>
+            <td><strong>3. Transovarian (Hereditary)</strong></td>
+            <td>Passed into vector ovarian eggs</td>
+            <td>Maintains infection across generations</td>
+            <td>Tick-borne relapsing fever</td>
+          </tr>
+          <tr>
+            <td><strong>4. Cyclo-propagative</strong></td>
+            <td><strong>Yes</strong> (Cyclic morphological transitions)</td>
+            <td><strong>Yes</strong> (Undergoes massive multiplication)</td>
+            <td>Malaria (<em>Plasmodium</em> species in <em>Anopheles</em>)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="analogy-box">
+      🧠 <strong>Mnemonic:</strong><br>
+      • <strong>Propagative</strong> = Propagation only (Multiply alone).<br>
+      • <strong>Cyclo-developmental</strong> = Developmental cycle only (Transform alone).<br>
+      • <strong>Transovarian</strong> = Ovaries/Eggs to next generation.<br>
+      • <strong>Cyclo-propagative</strong> = Both transform AND multiply!
+    </div>
+  </div>
+
+  <!-- 4. Important vectors and diseases -->
+  <div class="card">
+    <h2>4. Summary of Medically Important Vectors</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Vector</th><th>Pathology / Disease Transmitted</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Anopheles mosquito</strong></td><td>Malaria (<em>Plasmodium</em>)</td></tr>
+          <tr><td><strong>Aedes mosquito</strong></td><td>Dengue fever, Yellow fever, Zika virus</td></tr>
+          <tr><td><strong>Culex mosquito</strong></td><td>Japanese encephalitis, Lymphatic filariasis</td></tr>
+          <tr><td><strong>Aquatic snails</strong></td><td>Schistosomiasis (Bilharzia)</td></tr>
+          <tr><td><strong>Blackflies (Simulium)</strong></td><td>Onchocerciasis (River blindness)</td></tr>
+          <tr><td><strong>Fleas (Xenopsylla)</strong></td><td>Plague (<em>Yersinia pestis</em>), Murine typhus</td></tr>
+          <tr><td><strong>Body Lice (Pediculus)</strong></td><td>Epidemic typhus, Louse-borne relapsing fever</td></tr>
+          <tr><td><strong>Sandflies (Phlebotomus)</strong></td><td>Leishmaniasis (Kala-azar, cutaneous)</td></tr>
+          <tr><td><strong>Ticks</strong></td><td>Lyme disease, Crimean-Congo hemorrhagic fever</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert-box">
+      ⚠️ <strong>Exam Trap:</strong> Do not confuse the <strong>vector</strong> with the <strong>pathogen</strong>! For example, <em>Anopheles</em> is the arthropod vector; <em>Plasmodium</em> is the protozoan pathogen.
+    </div>
+  </div>
+
+  <!-- 5. Methods of vector control -->
+  <div class="card">
+    <h2>5. Methods of Vector Control</h2>
+    <p>Your PDF presents six integrated approaches:</p>
+
+    <h3>1. Personal Protection</h3>
+    <p>Wearing protective long-sleeved clothing, window screening, sleeping under Insecticide-Treated Nets (ITNs/LLINs), and topical repellents (DEET).</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/_EXMey_kS0X8DrqxnRGJRQ_4U7sRImhHVgxHChymMwOwxLxjm0eKGLm8mjDIPRbdXVooqPtqyI5FhOtUtJC-H9uj6SmbclnNaDRlK2mwCjIbiQTc7teEb0atQDfuVaoswnZiCiQ7Wbu6044QEQKy5AH9XSdc5N7ixHcYTzDAmXxD4kP_Xf6Cij3SSmFgQ7Xn?purpose=fullsize" alt="Insecticide Treated Nets">
+      <div class="img-caption">Distribution and utilization of long-lasting insecticidal nets (LLINs)</div>
+    </div>
+
+    <h3>2. Chemical Control</h3>
+    <p>Application of synthetic insecticides (Indoor Residual Spraying - IRS) and larvicides (e.g., malathion, propoxur). <em>Historical note: PDF mentions historical organochlorines (DDT, lindane, aldrin) strictly for taxonomic reference.</em></p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/EKoOfR4FiX4qmYBoC6uSfwvZRw2dHLtt3FUlcoHhg_GOhyGJlLjr5-YVaKBZoyg8U4b0C4zqNUmChz3HYaSG74Oo_DVzDFPKXa87UkI7tvan6oyAInPxxnDjw7inpNOjh13RHNrFmP0NsoZ2iJvuxau3cMVYeGvT1ZQLppl9IXKfcID9BWuZ_Hd9FAXI624w?purpose=fullsize" alt="Indoor Residual Spraying">
+      <div class="img-caption">Indoor Residual Spraying (IRS) and chemical vector control</div>
+    </div>
+
+    <h3>3. Environmental Manipulation (Source Reduction)</h3>
+    <p>Eliminating breeding sites by draining standing stagnant water, ditching, clearing discarded tires, and covering domestic water storage jars.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/lJfCiW_5p1hd6bedU9LUf8C4y4QaVdxT83SREKNhDSrCJ6p17n9Etn8aGgkdrKFo2sHOMrmeCSgT0e9g7Nfjt1C8I9qjjPtGMBMBXmS8npWWG5hE2ADT8aA2bliHmyi7CgU-IxyjzvK30xnDX8vUBQkjZT_Rhhu-qEQpFOuPNQ_qtOknZE68-qsjJR8VMV57?purpose=fullsize" alt="Source Reduction">
+      <div class="img-caption">Eliminating stagnant larval breeding containers around homes</div>
+    </div>
+
+    <h3>4. Biological Control</h3>
+    <p>Introducing natural predators or pathogens targeting larval stages:</p>
+    <ul>
+      <li><em>Gambusia affinis</em> (larvivorous "mosquito fish") stocked in standing pools.</li>
+      <li><em>Bacillus thuringiensis israelensis</em> (Bti) bacterial bio-larvicide.</li>
+      <li>Dragonfly nymphs preying on larvae.</li>
+    </ul>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/QybxiOg_PfCezaXAnQDDkEaiQhB81z1f3nEwxCWUAURLY1m9Nm6-zI07HUSqI-cvdbk7Z4uZ7r5jDhHjvFdsoOfrcUqZumbmh_XX9UwQvckzH7m9NhdIGnszb19PGONDFV-AcaPnrkmLqCW-ZyvroKysN86FrBoZKOBtU2X7_21Pbwf_eJKxxa2Sj7cU_PLd?purpose=fullsize" alt="Gambusia affinis">
+      <div class="img-caption">Gambusia affinis: Larvivorous fish consuming mosquito larvae</div>
+    </div>
+
+    <h3>5. Genetic Control</h3>
+    <p>Sterilizing male insects using gamma radiation or chemosterilants (Sterile Insect Technique) or releasing genetically modified strains to crash vector reproductive viability.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/2NbgJEJotyINtauYpVaKOVAEk-9PVGhtdXNnynGk3tGvQwP5Q-RZK1SKnHSI-9rVQ3bg28-QzHDYHe_p34PJ7Kd_EamHofE_CQ_PBDehjfw1YEGVn0QS6z9A6Lg9NsN7i629ioorp0oHvxnOXrhjHDEpN3KWBmyyIddKrfdtz7mzlltNjCo2ahKb7s7yl1iP?purpose=fullsize" alt="Genetic mosquito control">
+      <div class="img-caption">Release of sterile or genetically modified mosquitoes to suppress wild populations</div>
+    </div>
+
+    <h3>6. Rodents and Public Health</h3>
+    <p>Rats and mice contaminate domestic environments and transmit lethal zoonoses:</p>
+    <div class="alert-box">
+      🐀 <strong>Hantavirus Pulmonary Syndrome (HPS):</strong> Contracted by inhaling aerosolized dust particles contaminated with urine, dried droppings, or saliva from infected rodents. Can cause acute, rapidly fatal respiratory failure.
+    </div>
+  </div>
+
+  <!-- PART 2: FOOD HYGIENE -->
+  <div class="card">
+    <h2>PART 2: Food Hygiene</h2>
+
+    <h3>7. What is Food Hygiene?</h3>
+    <p>According to your PDF, <strong>food hygiene</strong> encompasses all conditions and measures necessary to ensure the safety, wholesomeness, and suitability of food at every stage of its growth, production, distribution, preparation, and final consumption (farm to fork).</p>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/xi63zhFbkVFYQ3SJj_j3sNplcd4idbaGcOtGCGRb36CGGCkc4QKoqC3wveAZnQpkxbI6Kwzg0VfjB3-acsqAGVg9aDf6EW3_zbbunZwJ2dnNzk59wEYpSe7NXZ7QXnXfGjiVha8Pf558NKk1iIKdQlf1nBiEoiFJXh67-rP88WuY6KgHPKrGnFTDhEoeHyZW?purpose=fullsize" alt="Food Handling">
+      <div class="img-caption">Sanitary food handling, preparation, and glove utilization</div>
+    </div>
+
+    <h3>Points of Potential Contamination:</h3>
+    <ul>
+      <li><strong>Production:</strong> Agricultural runoff, raw sewage irrigation, infected livestock.</li>
+      <li><strong>Transportation:</strong> Unrefrigerated dirty transport trucks.</li>
+      <li><strong>Preparation:</strong> Infected food handlers, unwashed hands, contaminated cutting boards.</li>
+      <li><strong>Storage:</strong> Temperature danger zone, fly and rodent infestations.</li>
+      <li><strong>Consumption:</strong> Undercooked meats, unwashed raw produce.</li>
+    </ul>
+  </div>
+
+  <!-- 8 & 9. Foodborne Diseases -->
+  <div class="card">
+    <h2>8. Foodborne Diseases Classification</h2>
+    <p>Foodborne illnesses result from ingesting food containing pathogenic biological, chemical, or physical agents. Your PDF makes a critical tripartite distinction:</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Clinical Category</th><th>Pathophysiological Mechanism</th><th>Classic Example</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>A. Foodborne Infection</strong></td>
+            <td>Ingestion of food containing <strong>viable, living pathogens</strong> that colonize, invade, and multiply within the host intestine.</td>
+            <td><em>Salmonella</em> species, <em>Campylobacter jejuni</em></td>
+          </tr>
+          <tr>
+            <td><strong>B. Foodborne Intoxication</strong></td>
+            <td>Ingestion of food containing <strong>pre-formed exotoxins</strong> produced by microorganisms multiplying in the food prior to consumption.</td>
+            <td><em>Clostridium botulinum</em> (Botulism), <em>Staphylococcus aureus</em> enterotoxin</td>
+          </tr>
+          <tr>
+            <td><strong>C. Toxicoinfection (Toxin-Mediated)</strong></td>
+            <td>Ingestion of large numbers of <strong>viable bacteria</strong> that subsequently sporulate or release enterotoxins <em>in vivo</em> inside the digestive tract.</td>
+            <td><em>Clostridium perfringens</em>, <em>Bacillus cereus</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>High-Risk Vulnerable Populations:</h3>
+    <ul>
+      <li>Infants and toddlers</li>
+      <li>Elderly persons (&gt;65 years)</li>
+      <li>Immunocompromised patients (cancer, organ transplant, HIV/AIDS)</li>
+      <li>Pregnant women (risk of fetal loss via <em>Listeria</em> or <em>Toxoplasma</em>)</li>
+      <li>Malnourished, nutrient-deprived individuals</li>
+    </ul>
+  </div>
+
+  <!-- 10. Common Foodborne Illnesses -->
+  <div class="card">
+    <h2>9. Common Foodborne Illnesses (High Yield Table)</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Illness</th><th>Causative Organism</th><th>Typical Food Vehicle & Clinical Profile</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Salmonellosis</strong></td>
+            <td><em>Salmonella enterica</em></td>
+            <td>Raw/undercooked poultry, cracked eggs, contaminated meat; fever, vomiting, diarrhea.</td>
+          </tr>
+          <tr>
+            <td><strong>Campylobacteriosis</strong></td>
+            <td><em>Campylobacter jejuni</em></td>
+            <td>Raw chicken meat, unpasteurized milk; severe abdominal cramps and bloody diarrhea.</td>
+          </tr>
+          <tr>
+            <td><strong>E. coli (STEC)</strong></td>
+            <td>Shiga toxin-producing <em>E. coli</em></td>
+            <td>Undercooked minced beef, raw milk, contaminated produce; bloody diarrhea, Hemolytic Uremic Syndrome (HUS).</td>
+          </tr>
+          <tr>
+            <td><strong>Listeriosis</strong></td>
+            <td><em>Listeria monocytogenes</em></td>
+            <td>Unpasteurized soft cheeses, cold deli meats; high mortality in fetuses (miscarriages) and meningitis in neonates.</td>
+          </tr>
+          <tr>
+            <td><strong>Botulism</strong></td>
+            <td><em>Clostridium botulinum</em></td>
+            <td>Improperly canned alkaline foods, preserved meats; lethal neuroparalytic flaccid paralysis.</td>
+          </tr>
+          <tr>
+            <td><strong>B. cereus Poisoning</strong></td>
+            <td><em>Bacillus cereus</em></td>
+            <td><strong>Leftover fried rice</strong> and stews kept at room temperature; rapid emetic vomiting and diarrhea.</td>
+          </tr>
+          <tr>
+            <td><strong>Shigellosis</strong></td>
+            <td><em>Shigella dysenteriae</em></td>
+            <td>Fecally contaminated food/water; severe tenesmus and bacillary dysentery (blood + mucus).</td>
+          </tr>
+          <tr>
+            <td><strong>Toxoplasmosis</strong></td>
+            <td><em>Toxoplasma gondii</em></td>
+            <td>Undercooked pork/mutton or produce contaminated with cat feces; congenital hydrocephalus/chorioretinitis.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 11. Principles of Food Hygiene -->
+  <div class="card">
+    <h2>10. The 8 Core Principles of Food Hygiene</h2>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/kPIjinE2nDNf5EEFWLiCpy83Z33vPTXBZRhAx6xWwh6-UsH3hUhAYfxeAiGxB1SH1zfUAl5r9YUebDeelhLuoe-Fk3W29I2Krcncp6GXULW0Y30DW-pUdru36mfsVq7i9-i2I-uFGoJTaWsXRI5IBNNOXTKYJiW9xD9kldYIIr_iB38cR5WtzghNe9fULxIQ?purpose=fullsize" alt="Handwashing">
+      <div class="img-caption"><strong>1. Maintain Personal Hygiene:</strong> Thorough handwashing with soap prior to food handling</div>
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/Gg8guSMjDyB1dOWiGbv0t433FnrLIwCaPQxzto15TnSq4jtLJb5Hyw8ZKp0fIn8yNoTOCQ-i3aB_DQ_qNiRY-pzaxA7LRtQWBSH46TifErN59lYQ2zJ6BqLJbUFdpIMr8I_PDt75qgaaU_tKPDIX3ySgXn4IKV5o69TF9Ha4psKLjbpOrsHUaR-I4My65p3z?purpose=fullsize" alt="Food Cover">
+      <div class="img-caption"><strong>2. Protect Food from Contamination:</strong> Mesh coverings shielding meals from fly contact</div>
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/wSXXmvAtmaYBibpL5NeUwVCq5bnS0R7ArjelpiYGpjA-uY-mbn487dAxwOWfz1T5ctHFY_NM2KTbpPnRN3-5aeF5MfO7ScGAHSDU_sa14B8btKwmcwvtg7dFDORDAZWAuJHPQg5XWnljFxMX4DreI2bEQ_yUWECUyVN7vhP6e6ok23o_ISSRl5HWOQtT9d60?purpose=fullsize" alt="Clean Equipment">
+      <div class="img-caption"><strong>3. Keep Equipment Clean:</strong> Sterilizing knives, boards, and surfaces after each food item</div>
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/pVS9IjkbBBn_aWGkTNhH-WaGTcE6H-kUdIcg-6xseuE1D-DkuLJe4q1yGyzFj4dx2SOKszwO3g8YMlDjemid0lZQUFokde39VV-R8TUuyLJu_Ft8mf8_o7mxZjkW3_ewPwCJWZV8WSaTnRwgYKIIQ7duSg_JXeK4x7jINPgHy5w_m6QQEjWakanvZkoya9ad?purpose=fullsize" alt="Thorough Cooking">
+      <div class="img-caption"><strong>4. Cook Food Thoroughly:</strong> Reaching adequate core temperature to kill vegetative pathogens</div>
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/jHhTgdghmRNE9Gjz9huCN1unKKfgqXGCZHc-q6V4_JUkE-G1SqbsTydVy8gg2YNBuJe7tWHr7mhWXLAo-Tamj1ybp015i7sSJYD2zUtwwKrarQxdtI0894ONhiX0srj4KIRsvoWYDraNaPFZtUnZ_oSJcaWpWOmYTP36GzmF_SGd8wXvShm2GlNIsRvqVuMv?purpose=fullsize" alt="Keep Hot Food Hot">
+      <div class="img-caption"><strong>5. Keep Hot Food Hot:</strong> Consume meals immediately while hot; avoid lukewarm storage</div>
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/2gueXtXtSFRY5Lq9Wy12F83ZIuB_MM0b-etDHOQVsvYhS1l0gTV3m4kcwuVxpCRaKfJIkubPAFs_lGIxYCs-Y7TiohrgyCJTfJUMQK-gwPlQ_ApazzvfagTvWrjJy2m1k-aXQAWk2XpkXtyWQPsECB21B6Vl_YpaHJlJM6ByJFYcshDya6h7w1kX7gXV6sOw?purpose=fullsize" alt="Refrigeration">
+      <div class="img-caption"><strong>6. Store Food Safely:</strong> Rapid cooling and refrigeration within 90 minutes; temp below 5°C</div>
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/fnUbIOtalbyjLQpqNVdlyoikNKlAiYwKdv2PJyp7Na6W_xZAzKRJ91yRgl1CPvdHjetuXEb3Ym51ef6TMvm6ZdMcj0D4IeTXsjqqG1Of_rDTDmad0ynqt6TliDI604onLtm6if05DGsBrQz-oSUbqw5QT8lKlZBrENOd4L1fshR-pToEnkKzfaxooePlcv8P?purpose=fullsize" alt="Separate Raw and Cooked">
+      <div class="img-caption"><strong>7. Separate Raw and Cooked Food:</strong> Prevent transfer of pathogens from raw meat to ready-to-eat food</div>
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/Tnji4zF3Uk0Z2Vb2EI4KXgKdLnHwccslvlo4fwHQRxRqJA5jhQ5dv8dE7qFbHbXV0Wzu5UpTAS1kD12KPF5fV4goMB_E4P8VcEzLFCgBMZaVLfVVFSRhOJBhBOdyIUvZPPiimqxInjpiEpOjIubVJuou9qKWRP_t1uMemFw7aTOo9Eld3GQ2-Syiy2TYUopb?purpose=fullsize" alt="Safe Water for Food">
+      <div class="img-caption"><strong>8. Choose and Wash Food Carefully:</strong> Wash fruits and vegetables in potable water</div>
+    </div>
+  </div>
+
+  <!-- 12. Cross-Contamination -->
+  <div class="card">
+    <h2>11. Cross-Contamination (Crucial Exam Concept)</h2>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/W38IbuD6HvPtAJA59Vwlzy-gfr5MmidEVDawDS_Gt3mZua58HG0IDZOAqQOYWs-V6dFSa2ZASx1YLytEyQ5-euHUjRFWrNGIIZe_4VAkc6a1blkJ9Py4L4dzId1VjBixxqUSGcp8cAExxMw49-D9ePQFFe7EK02WEXnzvElQGJsK1C0s1VvJyJRPzLqcf6_L?purpose=fullsize" alt="Cutting Board Cross-Contamination">
+      <div class="img-caption">Cross-contamination: Pathogen transfer via shared cutting boards</div>
+    </div>
+
+    <div class="analogy-box">
+      🔪 <strong>Classic Clinical Scenario:</strong><br>
+      • You cut raw chicken contaminated with <em>Salmonella</em> on a wooden chopping board.<br>
+      • Without washing the board and knife, you slice raw lettuce and tomatoes for salad.<br>
+      • The live bacteria transfer from the chicken juices onto the salad vegetables, which are eaten raw without cooking.<br>
+      • <strong>Result:</strong> Severe salmonellosis food poisoning!
+    </div>
+
+    <div class="alert-box">
+      ⚠️ <strong>Exam Trap:</strong> Thoroughly washing salad vegetables will <strong>NOT</strong> protect consumers if they are subsequently cut on a knife or board previously contaminated with raw meat fluids.
+    </div>
+  </div>
+
+  <!-- 13. Interactive Quiz -->
+  <div class="quiz-container">
+    <div class="quiz-header">📝 Self-Assessment Quiz (Click to Check)</div>
+    <div id="quiz-mount"></div>
+  </div>
+
+</div>
+
+<script>
+  const quizData = [
+    {
+      q: "Question 1. A common housefly (Musca domestica) lands on human excreta and subsequently walks across uncovered dinner bread, transferring enteric bacteria on its legs. What transmission mode is this?",
+      options: [
+        "A. Biological transmission",
+        "B. Mechanical transmission",
+        "C. Cyclo-propagative transmission",
+        "D. Transovarian transmission"
+      ],
+      correct: 1,
+      exp: "Correct! Mechanical transmission involves passive physical carriage of pathogens on external appendages without multiplication or development inside the insect."
+    },
+    {
+      q: "Question 2. A malaria parasite (Plasmodium) enters a female Anopheles mosquito, undergoes complex sexual cyclic transformation, and multiplies exponentially. Which transmission category does this represent?",
+      options: [
+        "A. Propagative transmission",
+        "B. Cyclo-developmental transmission",
+        "C. Cyclo-propagative transmission",
+        "D. Transovarian transmission"
+      ],
+      correct: 2,
+      exp: "Correct! Cyclo-propagative transmission occurs when the pathogen undergoes both developmental changes in form and significant multiplication in numbers inside the biological vector."
+    },
+    {
+      q: "Question 3. Municipal sanitation teams drain roadside ditches and clear discarded automotive tires containing rainwater to eliminate mosquito breeding. Which vector control strategy is being deployed?",
+      options: [
+        "A. Genetic sterile insect technique",
+        "B. Biological predation",
+        "C. Environmental manipulation (Source reduction)",
+        "D. Chemical fogging"
+      ],
+      correct: 2,
+      exp: "Correct! Environmental manipulation (source reduction) focuses on physically draining, removing, or modifying standing water bodies to eliminate larval breeding sites."
+    },
+    {
+      q: "Question 4. A group of university students develops acute nausea, severe vomiting, and abdominal cramps within 4 hours after consuming leftover fried rice kept unrefrigerated. Which pathogen is classic for this presentation?",
+      options: [
+        "A. Plasmodium falciparum",
+        "B. Bacillus cereus",
+        "C. Wuchereria bancrofti",
+        "D. Mycobacterium tuberculosis"
+      ],
+      correct: 1,
+      exp: "Correct! Bacillus cereus produces heat-stable emetic enterotoxins in cooked starchy foods (classic leftover fried rice) allowed to sit at room temperature."
+    },
+    {
+      q: "Question 5. A kitchen worker slices raw unwashed poultry and then immediately uses the exact same unwashed knife and cutting board to prepare fresh ready-to-eat salad. What major food safety failure occurred?",
+      options: [
+        "A. Pre-formed chemical intoxication",
+        "B. Cross-contamination",
+        "C. Biological vector colonization",
+        "D. Unpreventable enzymatic spoilage"
+      ],
+      correct: 1,
+      exp: "Correct! Cross-contamination is the direct or indirect transfer of biological pathogens from raw foods (poultry) to ready-to-eat items (salad) via shared knives or surfaces."
+    }
+  ];
+
+  const quizMount = document.getElementById('quiz-mount');
+
+  quizData.forEach((item, qIdx) => {
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block';
+
+    const title = document.createElement('div');
+    title.className = 'question-title';
+    title.innerText = item.q;
+    qBlock.appendChild(title);
+
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+
+    item.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = optText;
+
+      btn.addEventListener('click', () => {
+        const allBtns = qBlock.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+
+        if (optIdx === item.correct) {
+          btn.classList.add('correct');
+          feedback.className = 'feedback show correct-text';
+          feedback.innerHTML = "✅ " + item.exp;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+          feedback.className = 'feedback show wrong-text';
+          feedback.innerHTML = "❌ ትክክለኛው መልስ፦ " + item.options[item.correct] + "<br>" + item.exp;
+        }
+      });
+
+      qBlock.appendChild(btn);
+    });
+
+    qBlock.appendChild(feedback);
+    quizMount.appendChild(qBlock);
+  });
+</script>
+
+</body>
+</html>

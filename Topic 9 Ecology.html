@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 9: Occupational Health and Safety</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin: 16px 0 8px 0;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin: 10px 0 4px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Images */
+    .img-box {
+      margin: 14px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: #f1f5f9;
+      text-align: center;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    @media (max-width: 480px) {
+      .img-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 12px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Callout Boxes */
+    .alert-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    .analogy-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Interactive Quiz */
+    .quiz-container {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 24px;
+    }
+    .quiz-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .question-block {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: var(--primary);
+    }
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: bold;
+    }
+    .option-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+    .feedback {
+      display: none;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .feedback.show {
+      display: block;
+    }
+    .feedback.correct-text {
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .feedback.wrong-text {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>🏭 TOPIC 9: Occupational Health and Safety</h1>
+    <p>Workplace Hazards, Occupational Pathology, Risk Evaluation & Hierarchy of Controls</p>
+  </header>
+
+  <!-- 1. What is OHS? -->
+  <div class="card">
+    <h2>1. What is Occupational Health and Safety (OHS)?</h2>
+    
+    <div class="analogy-box">
+      ⚙️ <strong>Industrial Worker Scenario:</strong> A factory technician operates high-speed unguarded stamping machinery, breathes solvent fumes daily, labors under unventilated furnace heat, and faces chronic shift-work stress. All these environmental stressors directly affect his health, well-being, and longevity.
+    </div>
+
+    <p><strong>Occupational Health and Safety (OHS)</strong> is the multi-disciplinary science and art devoted to the anticipation, recognition, evaluation, and control of environmental factors or stresses arising in or from the workplace that may cause sickness, impaired health and well-being, or significant discomfort among workers or citizens of the surrounding community.</p>
+
+    <h3>Occupational Safety vs. Occupational Health</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Domain</th><th>Primary Focus</th><th>Characteristic Examples</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Occupational Safety</strong></td>
+            <td>Preventing immediate, acute workplace accidents and mechanical injuries.</td>
+            <td>Falls from scaffolds, lacerations from rotating blades, electrocution, burns from molten metal.</td>
+          </tr>
+          <tr>
+            <td><strong>Occupational Health</strong></td>
+            <td>Preserving overall physiological and mental well-being; preventing acute and chronic occupational diseases.</td>
+            <td>Pneumoconiosis from silica dust, noise-induced hearing loss, benzene-induced leukemia, occupational stress.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert-box">
+      🧠 <strong>Memory Trick:</strong><br>
+      • <strong>Safety</strong> = Prevent immediate accidents and traumatic injuries.<br>
+      • <strong>Health</strong> = Prevent systemic illnesses and preserve long-term physical/mental well-being.
+    </div>
+  </div>
+
+  <!-- 2. Scope of OHS & Walk-through Survey -->
+  <div class="card">
+    <h2>2. Scope of OHS & Hazard Recognition</h2>
+    <p>The operational scope of OHS comprises three core progressive stages:</p>
+    <ul>
+      <li><strong>1. Recognition & Anticipation:</strong> Identifying existing or potential workplace hazards before harm manifests.</li>
+      <li><strong>2. Evaluation:</strong> Quantitative monitoring, air sampling, and risk analysis to evaluate exposure severity.</li>
+      <li><strong>3. Corrective Action:</strong> Designing and implementing engineering, administrative, and personal safeguards.</li>
+    </ul>
+
+    <h3>The Walk-Through Survey:</h3>
+    <p>A systematic on-site walkthrough inspection designed to identify workplace hazards. Key investigative questions:</p>
+    <ul>
+      <li>What final commodities and byproducts are being manufactured?</li>
+      <li>What raw chemical materials, heavy metals, or biological agents are used?</li>
+      <li>What machines, mechanical tools, and physical energy sources are involved?</li>
+      <li>What specific operating procedures and shifts are followed by workers?</li>
+      <li>Is general dilution and local exhaust ventilation adequate?</li>
+      <li>Are emergency eyewash stations, safety showers, and appropriate respirators functional?</li>
+      <li>Are standard safety operating procedures consistently practiced?</li>
+    </ul>
+  </div>
+
+  <!-- 3. Classification of Occupational Hazards -->
+  <div class="card">
+    <h2>3. The Six Classes of Occupational Hazards</h2>
+    <p>Your PDF establishes six major classes of workplace hazards:</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Hazard Class</th><th>Underlying Factors & Stressors</th><th>Workplace Examples</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>1. Physical</strong></td><td>Extreme thermal conditions, radiation, acoustic noise, vibration</td><td>Furnaces, X-ray tubes, high-decibel generators</td></tr>
+          <tr><td><strong>2. Mechanical</strong></td><td>Unguarded moving parts, sharp blades, pinch points</td><td>Pulleys, conveyor belts, rotating saws</td></tr>
+          <tr><td><strong>3. Chemical</strong></td><td>Inorganic dusts, organic vapors, toxic gases, solvents</td><td>Asbestos, silica, lead, benzene, acids</td></tr>
+          <tr><td><strong>4. Biological</strong></td><td>Pathogenic microbes, bloodborne viruses, molds, vectors</td><td>Needles (Hepatitis B/HIV), anthrax in wool</td></tr>
+          <tr><td><strong>5. Ergonomic</strong></td><td>Repetitive motions, poor biomechanics, awkward postures</td><td>Heavy manual lifting, poorly adjusted seating</td></tr>
+          <tr><td><strong>6. Psychosocial</strong></td><td>Work overload, shift work, harassment, lack of control</td><td>Chronic psychological stress, burnout</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 4. Physical Hazards -->
+  <div class="card">
+    <h2>4. Physical Hazards Detailed</h2>
+
+    <h3>A. Extreme Temperature (Heat Stress Spectrum)</h3>
+    <p>When exposed to severe ambient heat, the body attempts thermoregulation by increasing cardiac output, dilating cutaneous capillaries, and producing sweat. Failure leads to four heat syndromes:</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Condition</th><th>Pathophysiology & Presentation</th><th>Clinical Distinctions</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Heat Stress</strong></td>
+            <td>The overall physiological load; the body struggles to maintain normal core temperature.</td>
+            <td>Early discomfort and fatigue.</td>
+          </tr>
+          <tr>
+            <td><strong>Heat Cramps</strong></td>
+            <td>Painful skeletal muscle spasms following heavy physical exertion in heat.</td>
+            <td>Caused by profuse sweating and <strong>loss of sodium chloride and fluids</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Heat Exhaustion</strong></td>
+            <td>Systemic volume depletion secondary to prolonged sweating without adequate fluid/salt replacement.</td>
+            <td>Manifests with <strong>weakness, vertigo, headache, and profuse diaphoresis</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Heat Stroke</strong></td>
+            <td>A catastrophic medical emergency; core temperature rises (&gt;104°F/40°C) with thermoregulatory failure.</td>
+            <td>Complete cessation of sweating, hot dry skin, delirium, and coma.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>B. Ionizing vs. Non-Ionizing Radiation</h3>
+    <ul>
+      <li><strong>Ionizing Radiation:</strong> High-energy radiation with sufficient energy to strip orbital electrons from atoms, creating mutagenic ions that damage DNA.
+        <ul>
+          <li><em>Forms:</em> X-rays, Gamma rays, Alpha particles, Beta particles, Neutrons, Protons.</li>
+          <li><em>Exposure Routes:</em> <strong>External</strong> (source outside body) vs. <strong>Internal</strong> (inhalation, ingestion, or contaminated wounds).</li>
+        </ul>
+      </li>
+      <li><strong>Non-Ionizing Radiation:</strong> Lower-energy electromagnetic waves incapable of ionizing biological molecules.
+        <ul>
+          <li><em>Sources:</em> Radio broadcast towers, microwave ovens, power transmission lines, lasers, infrared heaters.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>C. Excessive Acoustic Noise</h3>
+    <ul>
+      <li><strong>Auditory Impacts:</strong> Temporary Threshold Shift (TTS) and irreversible permanent sensorineural hearing loss.</li>
+      <li><strong>Non-Auditory Impacts:</strong> Chronic fatigue, impaired communication, elevated blood pressure, autonomic nervous system stress, and reduced workplace vigilance.</li>
+    </ul>
+  </div>
+
+  <!-- 5. Mechanical & Chemical Hazards -->
+  <div class="card">
+    <h2>5. Mechanical & Chemical Hazards</h2>
+
+    <h3>Mechanical Hazards</h3>
+    <p>Result from direct physical contact with machinery, moving components, and tools:</p>
+    <ul>
+      <li>Crush injuries, limb amputations, and entanglement of loose clothing in drive belts.</li>
+      <li>Repetitive physical pressure from manual tools causing tenosynovitis of the hands, prepatellar bursitis (beat knee), and olecranon bursitis (beat elbow).</li>
+    </ul>
+
+    <h3>Chemical Hazards</h3>
+    <p>Chemical substances occurring as dusts, mists, fumes, gases, and vapors. The severity of toxic injury depends on chemical potency, concentration, and exposure duration.</p>
+
+    <h3>Three Primary Routes of Occupational Chemical Exposure:</h3>
+    <div class="img-grid">
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/mQKpAG_JHUKxl3R8Hxk_n9icGTwgSARax7akodtnQpqeAejLY3WKHAvqQFUqpcDysiddEX_613MzOo8AEoq9NkdD-fzYVKLgO7hZ6SOe5S9cL2bXjY4efq6qQWwojQXf25TCco4F2oc_y0a39NkdVcn29hMnUnMJz6i3uNg0JZtKkMNiiTNl4Lz7_aFTR69T?purpose=fullsize" alt="Inhalation Exposure">
+        <div class="img-caption"><strong>1. Inhalation:</strong> The fastest, most critical occupational route</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/dln3Gr4UOt6vKEy5hqAV4A0wOz0Sbh7WSFW-efyyx3h8hjRka4jjiVN1ijsnC6LQRhTc6P-nDn8fuTZDi2GESbU4RiI5kj3xVZiQiOWPFjZIF8uRtv7_sULmEKAMU_UjlA3scx7H0HznfoLfEMLuMpynz-h4vZzKJn7mxqtTTEn5Rg_fIA3DvvF46H3QrR7l?purpose=fullsize" alt="Skin Absorption Exposure">
+        <div class="img-caption"><strong>2. Skin Absorption:</strong> Dermal penetration of solvents and pesticides</div>
+      </div>
+    </div>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/IPn6KhtZtDJQRs8M8vFUIH2PsLr63mqID-w6QryB1UhKx6ZCAVG-R3c36iYwYchwd-MO2Ao4QnHMCGWfDbYaeUSuGqcmpoH7Yj3sDm6FztZ6Yd6fbYdcrGbs07T7eIMwtjuuobaUHeyLO5iLtRmC3rYnUyAerwXlVZZXqvAyzc5egl9dmC9lLCRTjrTb3ktS?purpose=fullsize" alt="Ingestion Hazard">
+      <div class="img-caption"><strong>3. Ingestion:</strong> Accidental oral ingestion via contaminated hands, food, or smoking</div>
+    </div>
+  </div>
+
+  <!-- 6. Biological, Ergonomic & Psychosocial Hazards -->
+  <div class="card">
+    <h2>6. Biological, Ergonomic & Psychosocial Hazards</h2>
+
+    <h3>Biological Hazards</h3>
+    <p>Living infectious pathogens (viruses, bacteria, fungi) and bio-aerosols. Clinical example: Accidental percutaneous puncture of a healthcare worker's finger with a hollow-bore needle contaminated with <strong>Hepatitis B, Hepatitis C, or HIV</strong>.</p>
+
+    <h3>Ergonomic Hazards</h3>
+    <p>Derived from Greek <em>Ergon</em> (work) and <em>Nomos</em> (laws). The scientific discipline of fitting the workplace, machines, and tools to the worker's physical body—<strong>not forcing the human body to adapt to poor design</strong>.</p>
+    <ul>
+      <li><em>Poor ergonomics causes:</em> Chronic lumbosacral strain, carpal tunnel syndrome, cervical tension, and musculoskeletal fatigue.</li>
+    </ul>
+
+    <h3>Psychosocial Hazards</h3>
+    <p>Organizational factors inducing mental and emotional strain: unmanageable work pace, lack of operational control, shift work, and hostile workplace relationships leading to burnout, depression, and cardiovascular hypertension.</p>
+  </div>
+
+  <!-- 7. Health Impacts Table -->
+  <div class="card">
+    <h2>7. Major Occupational Diseases (High-Yield Table)</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Occupational Pathology</th><th>Etiological Agent / Industrial Exposure</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Silicosis</strong></td><td>Crystalline free silica dust (quarrying, stone cutting, mining)</td></tr>
+          <tr><td><strong>Asbestosis & Mesothelioma</strong></td><td>Inhaled asbestos silicate fibers (insulation, demolition, brakes)</td></tr>
+          <tr><td><strong>Byssinosis ("Monday Fever")</strong></td><td>Inhaled cotton, flax, or hemp dust (textile mills)</td></tr>
+          <tr><td><strong>Bagassosis</strong></td><td>Sugarcane bagasse residue contaminated with thermophilic fungi</td></tr>
+          <tr><td><strong>Coal Workers' Pneumoconiosis (Black Lung)</strong></td><td>Chronic inhalation of coal mine dust</td></tr>
+          <tr><td><strong>Occupational Asthma</strong></td><td>Isocyanates, grain dust, animal dander, chemical fumes</td></tr>
+          <tr><td><strong>Leukemia</strong></td><td>Occupational exposure to <strong>Benzene</strong> solvents</td></tr>
+          <tr><td><strong>Acute Hemolysis</strong></td><td>Exposure to <strong>Arsine gas</strong> in metallurgy</td></tr>
+          <tr><td><strong>Hepatitis B & C</strong></td><td>Percutaneous sharps injuries among healthcare personnel</td></tr>
+          <tr><td><strong>Occupational Dermatitis</strong></td><td>Direct skin contact with industrial acids, alkalis, detergents, nickel</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="analogy-box">
+      🧠 <strong>High-Yield Exam Pairs:</strong><br>
+      • <strong>Silica</strong> → Silicosis<br>
+      • <strong>Cotton Dust</strong> → Byssinosis<br>
+      • <strong>Sugarcane Residue</strong> → Bagassosis<br>
+      • <strong>Coal Dust</strong> → Black Lung<br>
+      • <strong>Benzene</strong> → Leukemia
+    </div>
+  </div>
+
+  <!-- 8. Control of Occupational Hazards -->
+  <div class="card">
+    <h2>8. Control of Workplace Hazards (Hierarchy of Controls)</h2>
+    <p>Occupational hygiene prioritizes eliminating or controlling the hazard at its physical source before relying on worker-level protection:</p>
+
+    <h3>A. Substitution (Source Elimination)</h3>
+    <p>Replacing a hazardous material or machine with an inherently safer alternative. <em>Examples:</em> Substituting lead pigments with non-toxic titanium dioxide; replacing lead solder with tin solder; substituting toxic benzene with toluene.</p>
+
+    <h3>B. Isolation</h3>
+    <p>Placing a physical barrier between the dangerous process and workers, or operating high-radiation/high-noise operations inside acoustic/lead-lined containment booths.</p>
+
+    <h3>C. Engineering Controls</h3>
+    <p>Physical plant modifications such as automated machine guards, interlocks, and local exhaust ventilation capturing fumes directly at the generation point.</p>
+
+    <h3>D. Industrial Ventilation</h3>
+    <ul>
+      <li><strong>Local Exhaust Ventilation (LEV):</strong> Captures air contaminants directly at the point of origin before they disperse into breathing zones.</li>
+      <li><strong>Dilution Ventilation:</strong> Introduces large volumes of fresh outdoor air to dilute contaminant concentrations.</li>
+    </ul>
+
+    <h3>E. Administrative Controls</h3>
+    <p>Modifying work schedules and organizational behaviors: job rotation to limit individual exposure time, mandatory rest breaks in heat, employee training, and scheduled preventative maintenance.</p>
+
+    <h3>F. Personal Protective Equipment (PPE)</h3>
+    <p>The last line of defense, employed when engineering controls cannot completely eliminate exposure:</p>
+
+    <div class="img-grid">
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/-rU7dB1WyJF80VpRJTZCw3O6pZooltnpK_vN32GzI9lSGlsPOoQ3FSsQWvuMLTK-uCZG-d0zIy4qdex97Upb5hNuCpNvfydDsKE_gSStjtG7AZL6I1Q4APo8nrtJIFVNodtXdc6MECi9WZuohLyiTt2Bc9pyu7EsfwHmfAC2A2mM4XTp9KyA3kV6j7fstqm0?purpose=fullsize" alt="Respiratory Protection">
+        <div class="img-caption"><strong>1. Respiratory:</strong> Half/full-face elastomeric respirators & particulate filters</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/duACWmtxds3qYdAEgoTnXrWjLBdhe-HWCM0JK6c7ZnKb5AP0FpnxyMfVLMU2GBeMc3qFTFT1huuu1kI2mC5-K3cBOtxVyMefkm00PRTKDaDCYPtEY8c2hlKAWt7mmG6964LN8j-JnycLqGbsjJoCW_NVqCexJR8W0hQ2wLfUvR2L45LRMpGzBrJ1N_DtWqlk?purpose=fullsize" alt="Eye Protection">
+        <div class="img-caption"><strong>2. Eye & Face:</strong> Chemical splash goggles and face shields</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/CYhdLDk1u5l8nsTsgpisalqH_W7iO9XnCziKqNqSaHYAFUElA2CLftdQd8Uk0SE4jWKmTEHmbc0tSnzPF2f87u_om8_UF4AeHH4nqgYWGKZqs5A_RiMA8HjGZnsxmd2uXU1pJiHvSczzfyIGgk-WlCbsStTmFW-2mEA3v7fWBDcUSN-CC86d2TkZwti973ei?purpose=fullsize" alt="Protective Clothing">
+        <div class="img-caption"><strong>3. Dermal:</strong> Impermeable chemical suits, aprons, and nitrile gloves</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/hE_riCJx3Ep_bg8jPYY5zNCaQhegVaeJE0NE_r7Y-0sRkrFc7nnW9DZtF22JUM-ULULlhlS2Ee38Al-m9lMG_cTHtNyJQbpxYDFx1cV7mk-2y9NR-DZ76XARp57eRtGQZro9zt5lBRgzU4IdFSerC95TRZHDoylrEgAwJv79E7P5t_ABnkTmyPLImWLjDAi3?purpose=fullsize" alt="Hearing Protection">
+        <div class="img-caption"><strong>4. Acoustic:</strong> Acoustic earplugs and noise-attenuating earmuffs</div>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      ⚠️ <strong>Exam Golden Rule (Hierarchy of Control):</strong> Eliminating or substituting a hazard (e.g., using water-based paint instead of toxic solvent paint) is vastly superior to providing a respirator, because PPE relies entirely on human compliance and fit.
+    </div>
+  </div>
+
+  <!-- 9. Quick Revision Table -->
+  <div class="card">
+    <h2>9. High-Yield Revision Table</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Concept</th><th>High-Yield Takeaway</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Safety vs. Health</strong></td><td>Safety = acute injuries; Health = chronic diseases and general well-being</td></tr>
+          <tr><td><strong>Walk-Through Survey</strong></td><td>On-site visual and procedural inspection to recognize hazards</td></tr>
+          <tr><td><strong>Heat Cramps vs. Stroke</strong></td><td>Cramps = salt/water depletion; Stroke = life-threatening core cooling failure</td></tr>
+          <tr><td><strong>Ionizing Radiation</strong></td><td>X-rays, gamma, alpha, beta (removes electrons and damages DNA)</td></tr>
+          <tr><td><strong>Silicosis</strong></td><td>Caused by free crystalline silica dust in miners and stonecutters</td></tr>
+          <tr><td><strong>Byssinosis</strong></td><td>Caused by cotton dust in textile mill workers ("Monday fever")</td></tr>
+          <tr><td><strong>Bagassosis</strong></td><td>Caused by moldy sugarcane bagasse dust</td></tr>
+          <tr><td><strong>Benzene</strong></td><td>Industrial solvent linked specifically to bone marrow toxicity and leukemia</td></tr>
+          <tr><td><strong>Ergonomics</strong></td><td>Designing equipment and tasks to fit human biological capabilities</td></tr>
+          <tr><td><strong>Control Priority</strong></td><td>Substitution & Engineering controls &gt; Administrative &gt; PPE</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 10. Interactive Quiz -->
+  <div class="quiz-container">
+    <div class="quiz-header">📝 Self-Assessment Quiz (Click to Check)</div>
+    <div id="quiz-mount"></div>
+  </div>
+
+</div>
+
+<script>
+  const quizData = [
+    {
+      q: "Question 1. A hard-rock tunnel miner presents with chronic progressive dyspnea and pulmonary fibrosis following 15 years of exposure to crystalline rock dust. What is the diagnosis?",
+      options: [
+        "A. Byssinosis",
+        "B. Silicosis",
+        "C. Bagassosis",
+        "D. Asbestosis"
+      ],
+      correct: 1,
+      exp: "Correct! Inhalation of free crystalline silica dust in mining and quarrying produces silicosis, characterized by fibrotic pulmonary nodules."
+    },
+    {
+      q: "Question 2. An industrial plant replaces a highly neurotoxic solvent with a water-based non-toxic detergent. According to the hierarchy of controls, this intervention is:",
+      options: [
+        "A. Physical isolation",
+        "B. Personal protective equipment",
+        "C. Chemical substitution",
+        "D. Administrative work rotation"
+      ],
+      correct: 2,
+      exp: "Correct! Substitution involves replacing a hazardous chemical or agent with an inherently safer alternative, eliminating the hazard at its source."
+    },
+    {
+      q: "Question 3. A surgical nurse sustains a deep finger puncture from a hollow-bore needle while suturing a patient with acute Hepatitis B. Which hazard class is this?",
+      options: [
+        "A. Mechanical hazard",
+        "B. Ergonomic hazard",
+        "C. Psychosocial hazard",
+        "D. Biological hazard"
+      ],
+      correct: 3,
+      exp: "Correct! Pathogenic organisms, including bloodborne viruses (Hepatitis B, HIV), represent biological occupational hazards."
+    },
+    {
+      q: "Question 4. A warehouse worker repeatedly twists his torso while manually lifting heavy boxes from floor to overhead racks, resulting in chronic lumbosacral disc herniation. This hazard is:",
+      options: [
+        "A. Physical hazard",
+        "B. Ergonomic hazard",
+        "C. Chemical hazard",
+        "D. Biological hazard"
+      ],
+      correct: 1,
+      exp: "Correct! Ergonomic hazards arise from a mismatch between physical job demands (repetitive heavy lifting, twisting) and human biomechanics."
+    },
+    {
+      q: "Question 5. A facility installs local exhaust hoods directly over open electroplating tanks to capture acid vapors prior to atmospheric dispersal. What control category is this?",
+      options: [
+        "A. Engineering control",
+        "B. Personal Protective Equipment (PPE)",
+        "C. Administrative job rotation",
+        "D. Biological surveillance"
+      ],
+      correct: 0,
+      exp: "Correct! Local exhaust ventilation is an engineering control that physically isolates or captures airborne contaminants directly at their point of generation."
+    }
+  ];
+
+  const quizMount = document.getElementById('quiz-mount');
+
+  quizData.forEach((item, qIdx) => {
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block';
+
+    const title = document.createElement('div');
+    title.className = 'question-title';
+    title.innerText = item.q;
+    qBlock.appendChild(title);
+
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+
+    item.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = optText;
+
+      btn.addEventListener('click', () => {
+        const allBtns = qBlock.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+
+        if (optIdx === item.correct) {
+          btn.classList.add('correct');
+          feedback.className = 'feedback show correct-text';
+          feedback.innerHTML = "✅ " + item.exp;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+          feedback.className = 'feedback show wrong-text';
+          feedback.innerHTML = "❌ ትክክለኛው መልስ፦ " + item.options[item.correct] + "<br>" + item.exp;
+        }
+      });
+
+      qBlock.appendChild(btn);
+    });
+
+    qBlock.appendChild(feedback);
+    quizMount.appendChild(qBlock);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 10: Infection Prevention and Control (IPC)</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin: 16px 0 8px 0;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin: 10px 0 4px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Images */
+    .img-box {
+      margin: 14px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: #f1f5f9;
+      text-align: center;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    @media (max-width: 480px) {
+      .img-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 12px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Callout Boxes */
+    .alert-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    .analogy-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Interactive Quiz */
+    .quiz-container {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 24px;
+    }
+    .quiz-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .question-block {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: var(--primary);
+    }
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: bold;
+    }
+    .option-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+    .feedback {
+      display: none;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .feedback.show {
+      display: block;
+    }
+    .feedback.correct-text {
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .feedback.wrong-text {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>🛡️ TOPIC 10: Infection Prevention and Control (IPC)</h1>
+    <p>Nosocomial Infections, Chain of Transmission, Standard Precautions & Isolation Protocols</p>
+  </header>
+
+  <!-- 1. What is infection? -->
+  <div class="card">
+    <h2>1. What is Infection?</h2>
+    <p>According to your lecture PDF, <strong>infection</strong> is the invasion and active multiplication of microorganisms such as:</p>
+    <ul>
+      <li>Bacteria</li>
+      <li>Viruses</li>
+      <li>Fungi</li>
+      <li>Parasites</li>
+    </ul>
+    <p>inside the tissues of a host, which can disrupt normal physiological body functions and precipitate clinical disease.</p>
+
+    <div class="analogy-box">
+      🏠 <strong>House Intruder Analogy:</strong> Imagine your body is a secure home. Microorganisms are uninvited intruders that enter, replicate without permission, and damage household furnishings. If they disrupt domestic routines, an infection is established. <em>Example:</em> Pathogenic bacteria entering a cutaneous laceration and multiplying to cause an acute, purulent wound infection.
+    </div>
+  </div>
+
+  <!-- 2. What is IPC & Nosocomial Infections -->
+  <div class="card">
+    <h2>2. Infection Prevention and Control & Nosocomial Infections</h2>
+    <p><strong>Infection Prevention and Control (IPC)</strong> is a systematic, evidence-based approach designed to prevent the transmission of infections in healthcare facilities, long-term care homes, and community settings.</p>
+
+    <div class="alert-box">
+      ⏱️ <strong>Nosocomial Infections (Healthcare-Associated Infections - HAIs):</strong><br>
+      Defined as infections that <strong>arise more than 48 hours after admission</strong> to a healthcare facility, which were neither present nor incubating at the time of patient admission.
+    </div>
+
+    <h3>Major Clinical Manifestations of HAIs:</h3>
+    <ul>
+      <li><strong>Catheter-Associated Urinary Tract Infections (CAUTI)</strong></li>
+      <li><strong>Hospital-Acquired Pneumonia (HAP / Ventilator-Associated Pneumonia)</strong></li>
+      <li><strong>Surgical Site Infections (SSI)</strong> in post-operative incisions</li>
+      <li><strong>Catheter-Related Bloodstream Infections (CRBSI / Bacteremia)</strong></li>
+      <li><strong>Gastrointestinal infections</strong> (e.g., healthcare-associated <em>Clostridioides difficile</em>)</li>
+      <li><strong>Cutaneous and subcutaneous soft-tissue infections</strong></li>
+    </ul>
+
+    <div class="analogy-box">
+      🏥 <strong>Clinical Vignette:</strong> A patient is hospitalized for surgical fixation of a closed tibial fracture. On day 4 (well beyond 48 hours post-admission), he develops dysuria, fever, and leukocytosis, yielding <em>Pseudomonas</em> in urine cultures. This represents a classic nosocomial infection.
+    </div>
+  </div>
+
+  <!-- 3. Reservoirs of hospital infections -->
+  <div class="card">
+    <h2>3. Reservoirs of Nosocomial Infections</h2>
+    <p>A <strong>reservoir</strong> is any person, animal, arthropod, plant, soil, or substance (or combination of these) in which an infectious agent normally lives and multiplies.</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Reservoir Category</th><th>Physical Nature</th><th>Hospital Examples</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Animate Sources</strong></td>
+            <td>Living biological entities harboring pathogens</td>
+            <td>Infected patients, asymptomatic colonized medical personnel, visitors, insects</td>
+          </tr>
+          <tr>
+            <td><strong>Inanimate Sources (Fomites)</strong></td>
+            <td>Non-living physical substrates and environmental media</td>
+            <td>Contaminated surgical instruments, bedside rails, IV drip stands, sinks, tap water, medications, dressings</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="img-grid">
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/4o_NFaXO_4R6Nqk7ZaBAAj6grZWJACBRVNvx75RmaYSwVG_qbi1Da4YKxPNkK--Si0FB-7LRwea3aOcNsLu44RzTMrlGdfbQoEKMFxzT3hpfvimdpcgemBSTeoqHe4s8Er4K4NQKMpxc9ZAfyuU7CbPkdQ4KkLUJbM-VML0fDUNh8g8TqFVqsICNe_GiULpT?purpose=fullsize" alt="Animate Reservoir HCW">
+        <div class="img-caption">Animate sources: Healthcare workers and patients</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/msJANkfyPbtgMQJlzQSE_haRX5pTx5B-jKNDvGQn95USXJfiTXn2P_63I6zNI_7VjqywHadvydJC5NLBIqRpf6N1I6ryTLHgNKH6iuitapGYW6FTTUhOHS_WltiTYvx06jeZ-stLGoTnQfaQvx_lzmozvZ15ygad5I77zzhpdu4dLDeigGThcFa6B_62U4_C?purpose=fullsize" alt="Inanimate Hospital Ward">
+        <div class="img-caption">Inanimate sources: Wards, clinical surfaces, and medical equipment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Portals of Entry & Modes of Transmission -->
+  <div class="card">
+    <h2>4. Portals of Entry/Exit & Modes of Transmission</h2>
+
+    <h3>Portals of Entry and Exit:</h3>
+    <ul>
+      <li>Broken skin and intact mucous membranes</li>
+      <li>Respiratory tract (inhalation/exhalation)</li>
+      <li>Urinary tract (catheters, instrumentation)</li>
+      <li>Gastrointestinal tract (ingestion/fecal excretion)</li>
+      <li>Reproductive tract (urogenital secretions)</li>
+      <li>Bloodstream (parenteral puncture, vascular cannulas)</li>
+    </ul>
+
+    <h3>Five Major Modes of Disease Transmission:</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Mode</th><th>Mechanism</th><th>Clinical Example</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Direct Contact</strong></td>
+            <td>Direct physical body surface-to-body surface transfer</td>
+            <td>Skin-to-skin transfer during patient repositioning or bathing</td>
+          </tr>
+          <tr>
+            <td><strong>Indirect Contact</strong></td>
+            <td>Transfer via an intermediate contaminated inanimate object (fomite)</td>
+            <td>Unwashed clinician hands transferring MRSA between consecutive patients</td>
+          </tr>
+          <tr>
+            <td><strong>Droplet</strong></td>
+            <td>Large respiratory droplets (&gt;5 µm) projected short distances (&le;1 meter)</td>
+            <td>Meningococcus or influenza expelled during coughing or sneezing</td>
+          </tr>
+          <tr>
+            <td><strong>Airborne</strong></td>
+            <td>Tiny droplet nuclei (&le;5 µm) remaining suspended in air currents for hours</td>
+            <td>Inhaling aerosolized <em>Mycobacterium tuberculosis</em> or measles</td>
+          </tr>
+          <tr>
+            <td><strong>Vehicles & Vectors</strong></td>
+            <td>Contaminated bulk media (water, food, drugs) or living vectors</td>
+            <td>Contaminated multi-dose medication vials or hospital insects</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert-box">
+      🔗 <strong>The IPC Goal:</strong> To intentionally <strong>break the chain of infection</strong> by blocking transmission routes between reservoirs and vulnerable host portals.
+    </div>
+  </div>
+
+  <!-- 5. Standard Precautions -->
+  <div class="card">
+    <h2>5. Standard Precautions: The Universal Baseline</h2>
+    <div class="alert-box">
+      ⭐ <strong>The Universal Golden Rule:</strong> Standard Precautions represent the minimum infection prevention practices that <strong>must be applied to ALL patients at all times</strong>, in all healthcare settings, regardless of suspected or confirmed infection status.
+    </div>
+
+    <h3>Core Components of Standard Precautions:</h3>
+    <ul>
+      <li>Hand hygiene (the single most effective measure)</li>
+      <li>Personal protective equipment (PPE) selected according to risk assessment</li>
+      <li>Respiratory hygiene and cough etiquette</li>
+      <li>Safe injection practices (single-use disposables; zero recapping)</li>
+      <li>Safe cleaning and reprocessing of equipment and environmental surfaces</li>
+    </ul>
+
+    <h3>WHO 5 Moments of Hand Hygiene:</h3>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/HBgU2fWEnW6ZE3qibqEU4qwK4_EVUDApYhrJT05jU8zpjP0EEWvnmEQsOHw-RO7tx8ymi_qDRilx0sddtWI3-yBz-xwPHrsabzNwfaJTX8XM3APkikFOy-JUFo_AZZldmVWV290r-k6gk9xE1CA-MNWQOOVW1carWz98t_0OuRcACPyPLaxYbiej1NuGsEhT?purpose=fullsize" alt="WHO 5 Moments of Hand Hygiene">
+      <div class="img-caption">The WHO 5 Moments: 1. Before patient contact, 2. Before clean procedure, 3. After body fluid risk, 4. After patient contact, 5. After touching surroundings</div>
+    </div>
+
+    <ol>
+      <li><strong>Before touching a patient</strong> (protects patient from germs on clinician hands)</li>
+      <li><strong>Before a clean or aseptic procedure</strong> (protects patient from inward pathogen entry)</li>
+      <li><strong>After body fluid exposure risk</strong> (protects clinician and environment)</li>
+      <li><strong>After touching a patient</strong> (protects clinician and healthcare setting)</li>
+      <li><strong>After touching patient surroundings</strong> (protects against contaminated fomites)</li>
+    </ol>
+
+    <h3>Personal Protective Equipment (PPE):</h3>
+    <div class="img-grid">
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/vdVhP89zdSd_k7T28qiUxhDNaRb5VX99CbPQF5ruHa1i4A94jdR3ZDVA_E9Fo5rHEft4RD-0j1nzZjEr72eSJ4-3mbcdr9fB2voqXk3zcbxxspuXk1kToQ0kj2ZiS3f1833pjcce1y6z0_uMiYsR2ibzUvsx-tbmhMyU2nFYLCi4G8TrtAvztPOIVKNGXeqp?purpose=fullsize" alt="Medical Gloves">
+        <div class="img-caption">Medical gloves: Barrier for blood and body fluids</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/qGzFD-t6KnEFhxyIHo-qvIQCZUojRJxDqEieDSoJgFd9Sw1hxsuJV0_ueAm1fx0MpBQqijMzwJ-qk9oeueTgoKdgEskuByfcSN_9q4z6R1KlJIpl_5CUmtnP3WFoTjHmAoYkco7ZomQp-BXjUupXBJJipuyLToKvP_K8dppMqolK-6mec7YlXW0YFlfGai8l?purpose=fullsize" alt="N95 Respirator">
+        <div class="img-caption">Particulate respirators (N95 / FFP2) for airborne isolation</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/Oa6d676rzTdXZntJclzeDlb_eCR1Z8pUVFZqaKHjGbwslAhVte6S3W9k22i8Geq0B7_7yGOfkkwFlYYQgYYDQxZ1eLlbi_nhWmgNPskHYPuOXUI1ZpXMTj-L7boiMSvQPvzTy5jsdRukOBxB9Ck8IixV8366DuwuOLOxSYcsDlsOxxNxlrENGRo5mfNIMKCZ?purpose=fullsize" alt="Face Shield">
+        <div class="img-caption">Face shields & goggles: Mucosal splash protection</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/xrH29Qp-4H2nGitdu2Jkd9xx2dGx7fpWkpTi0rLaAdCKulrLOQhd4Lash2nqo6359uGIrGZmxWnZr1w1f_i2LEfKdqqunDEAFvjX4iZySc_Od851afEiiNC4pnieKGeoHHyy3hloqT-vvEgZeBykW0necUVkTKQZO_c47sZDdsLkShHP94Tivdkp72g7O5hz?purpose=fullsize" alt="Isolation Gown">
+        <div class="img-caption">Protective fluid-resistant isolation gowns</div>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      ⚠️ <strong>Vital Exam Rule:</strong> Wearing gloves does <strong>NOT replace hand hygiene</strong>! Hands must be sanitized immediately before donning and immediately after doffing gloves.
+    </div>
+  </div>
+
+  <!-- 6. Transmission-Based Precautions -->
+  <div class="card">
+    <h2>6. Transmission-Based Precautions (Second Tier)</h2>
+    <p>Applied in addition to Standard Precautions for patients suspected or confirmed to be infected with highly transmissible pathogens:</p>
+
+    <h3>A. Contact Precautions</h3>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/BCj0STQ03vRDpJDT8zgChd1OKFk9su_PahLTjk8CGUrAqO9UO0n492yDsJzAOWfLhoSUpPY-6qkVTTcsvxN1OYWQQV5mvplxe-V9LhVCOpoZkcxcS3BIwzZ_9rbQsuI4f9SWopQcYQh6zuY05azg9707g1m0zqHTsBcpJHE0-4IdtNBLJ3bNccvwXPXbWDTP?purpose=fullsize" alt="Contact Precautions Gown">
+      <div class="img-caption">Contact precautions: Gloves and disposable gown upon room entry</div>
+    </div>
+    <ul>
+      <li><strong>Indications:</strong> Colonization or infection with multidrug-resistant bacteria (e.g., <strong>MRSA</strong>, VRE), draining abscesses, uncontrolled wound exudate, norovirus, <em>C. diff</em>.</li>
+      <li><strong>Required PPE & Protocol:</strong> Single room (or cohorting); wear <strong>clean non-sterile gloves and gown</strong> upon entering; dedicated patient-care equipment (e.g., stethoscope).</li>
+    </ul>
+
+    <h3>B. Droplet Precautions</h3>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/HvgT0y84XAQt5hRK25EDqMeOykXJDRdkuGztbYXXMmUvqMvKK7PZ1GYYgYbpPcZ8Dh9u4yIAJcI4YHxFkbbe2tORu3sqVgOcIhCYyggoEJcja6LMBXs_rY8CIGOJNAbkcJv0hhsr0S2fBiXucgnK4C-xcW_j4c60nLWi9Ypb6j0yTqyd1MgOoKlxR8pvtD05?purpose=fullsize" alt="Droplet Precautions">
+      <div class="img-caption">Droplet precautions: Surgical mask required within close proximity</div>
+    </div>
+    <ul>
+      <li><strong>Indications:</strong> Inhaled large respiratory droplets from pathogens: <strong>Meningococcal meningitis</strong>, <strong>Pertussis</strong> (whooping cough), <strong>Mumps</strong>, and <strong>Influenza</strong>.</li>
+      <li><strong>Required PPE & Protocol:</strong> Wear a standard <strong>fluid-resistant surgical mask</strong> upon entry or when within 1–2 meters; patient wears surgical mask during transport.</li>
+    </ul>
+
+    <h3>C. Airborne Precautions</h3>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/I2l-WE4rzoI-U9tcFR6WpW-qKN5ocwd4hXtqpgxedWECzxoMkbjMrcpuRE_CDxIc_-uqCnNz3DIHJG8_PHXXpPvt9z8GkNVZEPCWXt4Kz-_PQrGM8hP5RkAO4x9LSdQC2PPclVhxWU-rcUasaDC190oM1upS6-LJ5r7EfNiBGOHZ-Pp3UinD4_0fQIsCbWDw?purpose=fullsize" alt="Airborne Precautions Isolation">
+      <div class="img-caption">Airborne isolation: Negative-pressure room and N95 particulate respirators</div>
+    </div>
+    <ul>
+      <li><strong>Indications:</strong> Pathogens transmitted via fine, lingering airborne nuclei: Active <strong>Pulmonary or Laryngeal Tuberculosis (TB)</strong>, <strong>Measles (Rubeola)</strong>, Chickenpox (Varicella).</li>
+      <li><strong>Required Engineering & PPE:</strong> Airborne Infection Isolation Room (AIIR) with <strong>monitored negative air pressure</strong> (6–12 air changes/hour), air exhausted outside or HEPA-filtered, closed doors, and healthcare workers donning a fit-tested <strong>N95 or FFP2 particulate respirator</strong>.</li>
+    </ul>
+
+    <h3>Comparison Matrix:</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Precaution Type</th><th>Transmission Vector</th><th>Key PPE Required</th><th>Key Pathogen Examples</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Contact</strong></td>
+            <td>Direct skin contact & fomites</td>
+            <td>Gloves + Gown</td>
+            <td>MRSA, VRE, Norovirus</td>
+          </tr>
+          <tr>
+            <td><strong>Droplet</strong></td>
+            <td>Large respiratory droplets</td>
+            <td>Surgical Mask</td>
+            <td>Meningococcus, Pertussis, Mumps, Influenza</td>
+          </tr>
+          <tr>
+            <td><strong>Airborne</strong></td>
+            <td>Small suspended droplet nuclei</td>
+            <td>Fit-tested N95 Respirator + Negative Pressure Room</td>
+            <td>Pulmonary TB, Measles, Varicella</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. Standard Infection Control Precautions (SICPs) -->
+  <div class="card">
+    <h2>7. Standard Infection Control Precautions (SICPs)</h2>
+    <p>Your PDF emphasizes ten integrated occupational and clinical domains mandated across all healthcare encounters:</p>
+    <ol>
+      <li>Patient placement and infection-risk assessment</li>
+      <li>Hand hygiene compliance</li>
+      <li>Respiratory hygiene and cough etiquette</li>
+      <li>Personal protective equipment selection</li>
+      <li>Safe decontamination of the healthcare care environment</li>
+      <li>Safe reprocessing and sterilization of medical care equipment</li>
+      <li>Safe handling and laundering of healthcare linen</li>
+      <li>Safe containment and cleaning of blood and body fluid spillages</li>
+      <li>Segregated clinical waste and sharps management</li>
+      <li>Occupational safety and prophylaxis against percutaneous exposures</li>
+    </ol>
+  </div>
+
+  <!-- 8. Applying IPC in Facilities -->
+  <div class="card">
+    <h2>8. Institutional IPC Application & Facility Logistics</h2>
+    <p>Your PDF outlines three essential operational policies to eliminate cross-contamination:</p>
+    <ul>
+      <li><strong>Separation of Clean and Contaminated Traffic:</strong> Physical workflow segregation ensuring used, contaminated surgical instruments and linen never intersect with sterile supplies.</li>
+      <li><strong>Establishment of Clear Written Policies:</strong> Defining clinical accountability, daily disinfection schedules, and standard operating procedures.</li>
+      <li><strong>Zoning & Movement Control:</strong> Physical demarcations (signage, red demarcation lines, closed isolation doors) restricting traffic flow of visitors, patients, and staff.</li>
+    </ul>
+  </div>
+
+  <!-- 9. Big Picture Summary -->
+  <div class="card">
+    <h2>9. High-Yield Revision Summary</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Concept</th><th>High-Yield Takeaway</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Infection Definition</strong></td><td>Invasion and multiplication of microorganisms within host tissues</td></tr>
+          <tr><td><strong>Nosocomial Infection</strong></td><td>Infections developing <strong>&gt;48 hours after hospital admission</strong></td></tr>
+          <tr><td><strong>Standard Precautions</strong></td><td>Mandatory universal baseline applied to <strong>all patients at all times</strong></td></tr>
+          <tr><td><strong>WHO 5 Moments</strong></td><td>Before patient, Before clean procedure, After fluid risk, After patient, After surroundings</td></tr>
+          <tr><td><strong>Gloves & Hygiene</strong></td><td>Gloves do NOT substitute for handwashing; wash hands after doffing</td></tr>
+          <tr><td><strong>Contact Precautions</strong></td><td>Gloves + Gown (for MRSA, draining purulent wounds)</td></tr>
+          <tr><td><strong>Droplet Precautions</strong></td><td>Surgical mask within 1–2m (for Pertussis, Meningococcus)</td></tr>
+          <tr><td><strong>Airborne Precautions</strong></td><td>N95 / FFP2 respirator + Negative-pressure isolation room (for TB, Measles)</td></tr>
+          <tr><td><strong>Traffic Segregation</strong></td><td>Strict separation of clean sterile supplies from used, soiled items</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 10. Interactive Quiz -->
+  <div class="quiz-container">
+    <div class="quiz-header">📝 Self-Assessment Quiz (Click to Check)</div>
+    <div id="quiz-mount"></div>
+  </div>
+
+</div>
+
+<script>
+  const quizData = [
+    {
+      q: "Question 1. A nurse completes dressing changes on an infected surgical incision, removes her gloves, and immediately starts palpatory examination of an adjacent patient without washing her hands. What critical IPC failure occurred?",
+      options: [
+        "A. Failure of environmental terminal cleaning",
+        "B. Hand hygiene omission between patients",
+        "C. Inappropriate patient isolation cohorting",
+        "D. Ineffective waste segregation"
+      ],
+      correct: 1,
+      exp: "Correct! Hand hygiene must be executed immediately after removing gloves and before touching another patient (WHO Moments 4 and 1) to prevent indirect contact transmission."
+    },
+    {
+      q: "Question 2. A patient admitted for an elective hip replacement develops a symptomatic catheter-associated urinary tract infection 72 hours after hospitalization. Under PDF criteria, how is this infection classified?",
+      options: [
+        "A. Community-acquired infection",
+        "B. Foodborne intoxication",
+        "C. Nosocomial (healthcare-associated) infection",
+        "D. Vector-borne parasitic disease"
+      ],
+      correct: 2,
+      exp: "Correct! Nosocomial infections are healthcare-associated infections arising more than 48 hours following admission to a medical facility."
+    },
+    {
+      q: "Question 3. A patient is admitted with confirmed smear-positive pulmonary tuberculosis. Which additional transmission-based isolation protocol is mandatory?",
+      options: [
+        "A. Standard contact precautions alone",
+        "B. Standard droplet precautions with surgical mask",
+        "C. Airborne precautions with N95 respirator and negative-pressure room",
+        "D. No additional precautions required"
+      ],
+      correct: 2,
+      exp: "Correct! Pulmonary TB is transmitted via droplet nuclei requiring Airborne Precautions: an Airborne Infection Isolation Room (negative pressure) and fit-tested N95 respirators."
+    },
+    {
+      q: "Question 4. Which of the following statements most accurately defines the operational scope of Standard Precautions?",
+      options: [
+        "A. They are applied exclusively to patients confirmed to carry bloodborne pathogens",
+        "B. They are universal measures applied to all patients at all times, regardless of suspected or confirmed infection status",
+        "C. They are restricted strictly to surgical operating theaters and intensive care units",
+        "D. They are temporary measures used only when sterile examination gloves are out of stock"
+      ],
+      correct: 1,
+      exp: "Correct! Standard Precautions represent the universal foundational level of infection control applied across all patient encounters, regardless of presumed infection status."
+    },
+    {
+      q: "Question 5. A hospital's central sterile services department establishes strictly separated spatial corridors for receiving contaminated surgical instruments versus dispatching sterile sets. Which IPC strategy is being enforced?",
+      options: [
+        "A. Physical separation of contaminated and clean/sterile workflows",
+        "B. Droplet barrier containment",
+        "C. Nutritional screening protocol",
+        "D. Airborne dilution ventilation"
+      ],
+      correct: 0,
+      exp: "Correct! Separating contaminated and clean traffic flows prevents accidental cross-contamination between used biological items and reprocessed sterile instruments."
+    }
+  ];
+
+  const quizMount = document.getElementById('quiz-mount');
+
+  quizData.forEach((item, qIdx) => {
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block';
+
+    const title = document.createElement('div');
+    title.className = 'question-title';
+    title.innerText = item.q;
+    qBlock.appendChild(title);
+
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+
+    item.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = optText;
+
+      btn.addEventListener('click', () => {
+        const allBtns = qBlock.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+
+        if (optIdx === item.correct) {
+          btn.classList.add('correct');
+          feedback.className = 'feedback show correct-text';
+          feedback.innerHTML = "✅ " + item.exp;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+          feedback.className = 'feedback show wrong-text';
+          feedback.innerHTML = "❌ ትክክለኛው መልስ፦ " + item.options[item.correct] + "<br>" + item.exp;
+        }
+      });
+
+      qBlock.appendChild(btn);
+    });
+
+    qBlock.appendChild(feedback);
+    quizMount.appendChild(qBlock);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 7: Sanitation and Waste Management</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin: 16px 0 8px 0;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin: 10px 0 4px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Images */
+    .img-box {
+      margin: 14px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: #f1f5f9;
+      text-align: center;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 12px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Color Coding Boxes */
+    .color-card {
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .box-black {
+      background-color: #1e293b;
+      color: #f8fafc;
+      border-left: 6px solid #0f172a;
+    }
+    .box-yellow {
+      background-color: #fef9c3;
+      color: #854d0e;
+      border-left: 6px solid #eab308;
+    }
+    .box-safety {
+      background-color: #fee2e2;
+      color: #991b1b;
+      border-left: 6px solid #dc2626;
+    }
+
+    /* Callout Boxes */
+    .alert-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    .analogy-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Interactive Quiz */
+    .quiz-container {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 24px;
+    }
+    .quiz-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .question-block {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: var(--primary);
+    }
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: bold;
+    }
+    .option-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+    .feedback {
+      display: none;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .feedback.show {
+      display: block;
+    }
+    .feedback.correct-text {
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .feedback.wrong-text {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>🗑️ TOPIC 7: Sanitation and Waste Management</h1>
+    <p>Solid Waste Streams, Landfills, Excreta Systems & Healthcare Waste Protocols</p>
+  </header>
+
+  <!-- 1. What is waste? -->
+  <div class="card">
+    <h2>1. What is Waste?</h2>
+    <p>According to your lecture PDF, <strong>waste</strong> is any unwanted or unusable material discarded after primary use.</p>
+    
+    <div class="analogy-box">
+      🏠 <strong>Everyday Domestic Example:</strong> After cooking, you discard vegetable trimmings, plastic wrappings, packaging boxes, and food scraps. These discarded residuals constitute solid waste.
+    </div>
+
+    <h3>Public Health Risks of Mismanaged Waste:</h3>
+    <ul>
+      <li>Creates abundant breeding sites and harborages for disease vectors (rats, flies, and mosquitoes).</li>
+      <li>Pollutes the biosphere (leachate contaminating groundwater, open burning polluting air).</li>
+      <li>Poses direct acute hazards, including fires, explosions, physical cuts, and chemical toxicity.</li>
+      <li>Contributes significantly to the transmission of communicable, waterborne, and vector-borne diseases.</li>
+    </ul>
+
+    <div class="alert-box">
+      🦟 <strong>Epidemiological Chain:</strong> Uncovered domestic organic waste attracts houseflies. Flies feed on decomposing matter and mechanically transport enteric pathogens directly to uncovered family food, driving diarrheal outbreaks.
+    </div>
+  </div>
+
+  <!-- 2. Functional elements of solid waste management -->
+  <div class="card">
+    <h2>2. Functional Elements of Solid Waste Management</h2>
+    <p>Your PDF outlines four sequential operational stages governing solid waste management:</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Functional Stage</th><th>Operational Activities</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Waste Generation</strong></td>
+            <td>Waste is produced by domestic households, commercial shops, institutions, and industrial activities. Composition directly reflects socioeconomic activities.</td>
+          </tr>
+          <tr>
+            <td><strong>2. Storage & Collection</strong></td>
+            <td>Temporary sanitary storage in closed bins at or near generation sites, followed by scheduled municipal lifting and transport.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Processing & Recovery</strong></td>
+            <td>Resource extraction through sorting, material reuse, industrial recycling, and biological composting.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Final Disposal</strong></td>
+            <td>Safe, engineered isolation of residual non-recoverable waste in designated facilities (e.g., sanitary landfills).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="analogy-box">
+      🧠 <strong>Sequential Flow:</strong> <strong>Generate</strong> → <strong>Store & Collect</strong> → <strong>Process & Recover</strong> → <strong>Dispose</strong>.
+    </div>
+
+    <p><em>Socioeconomic Composition Trend:</em> Agrarian communities in developing countries generate a higher fraction of biodegradable <strong>organic waste</strong>, whereas industrialized urban centers generate significantly higher proportions of manufactured <strong>inorganic waste</strong> (plastics, metals, packaging).</p>
+  </div>
+
+  <!-- 3. Waste processing and recovery -->
+  <div class="card">
+    <h2>3. Waste Processing and Recovery</h2>
+    <p>Prior to final disposal, valuable materials are diverted through three recovery strategies:</p>
+
+    <h3>A. Reuse</h3>
+    <p>Using an existing item repeatedly for its original or new purpose without industrial reprocessing. <em>Example:</em> Refilling clean glass containers or reusing durable plastic buckets.</p>
+
+    <h3>B. Recycling</h3>
+    <p>Collecting and physically or chemically reprocessing discarded materials to manufacture entirely new goods. <em>Example:</em> Melting waste plastics into utility pipes; repulping discarded paper into cartons.</p>
+
+    <h3>C. Composting</h3>
+    <p>The controlled, biological decomposition of biodegradable organic matter (food scraps, animal manure, agricultural leaves) by aerobic and anaerobic microorganisms.</p>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/hvFSuf6vZz3xgucsZuweuPIthpTuLwJhu3WEZUg0VaZPbg4QeJc1z3WMObGdAdv4NEJtDcXzVelCkFOzEmToRehE_8SGQldgGu7OyiJRXRPRtI4wYDKJ_8v28D7joylp24AlOdw4Mmqkj_ZTCYqiay6t-zvfim1sYlAgg8tyu9tro3dnQwsZHpYYUkV2aSEd?purpose=fullsize" alt="Organic Composting">
+      <div class="img-caption">Composting: Biological recycling of organic matter into nutrient-rich humus</div>
+    </div>
+
+    <h3>Benefits of Composting Listed in PDF:</h3>
+    <ul>
+      <li>Substantially reduces the bulk volume of waste routed to final disposal sites.</li>
+      <li>Enables energy recovery through the capture of biogas (methane) in biodigesters.</li>
+      <li>Yields an organic soil conditioner that enhances soil texture, water retention, and crop yield.</li>
+    </ul>
+  </div>
+
+  <!-- 4. Final disposal methods -->
+  <div class="card">
+    <h2>4. Final Disposal Methods for Municipal Waste</h2>
+    <p>Your PDF emphasizes two primary engineered disposal modalities:</p>
+
+    <h3>A. Sanitary Landfill</h3>
+    <p>An engineered waste burial facility designed to isolate municipal solid waste from the surrounding environment while minimizing public health risks.</p>
+    
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/ySBgH0PBajgNXVAV3JHai60ycc58-KuNUDDDDfTwNRyZWtaT-jHXG99qxam6lvIwyjhFBiEV0VnJA7ZM-lEf6lkT5KX0FxveQZeuKZVXwWqkmY3-fPcAb0TkgHFong_TESkX8xMWaXLHoMVtKQu57JXLNCA-eM59U7tAWnrNRb7iwMbmOvm1vLjjU47J8fgq?purpose=fullsize" alt="Sanitary Landfill Design">
+      <div class="img-caption">Sanitary landfill: Engineered liner, leachate collection, and daily soil cover</div>
+    </div>
+    <p>Unlike open dumping, sanitary landfills incorporate impermeable bottom liners to protect groundwater aquifers, active leachate treatment systems, daily soil compaction to eliminate vectors, and landfill gas extraction.</p>
+
+    <h3>B. Incineration</h3>
+    <p>Controlled, high-temperature thermal oxidation of combustible solid waste.</p>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/B8C28Jw8Xx2GG-JrAvVxtDpT86_pRFVanDLA6ZWoXU4EVdQK3kIGsx5WC2PSMc3dxc_RElZAcqBcc73lMjSaStRNcv80jEeVIeSx8U-MAcYLnVTyaUhkvbDHmGqoJb2awy5X7wGJETKit-qwKtp15r0X_jq4brZSYY37oluaLF9WsZODuhVagcKKhgIa6H1i?purpose=fullsize" alt="Thermal Incineration">
+      <div class="img-caption">High-temperature industrial incineration facility</div>
+    </div>
+
+    <p><em>Advantages:</em> Drastically reduces the physical volume (up to 90%) and weight of waste, leaving sterile residual bottom ash.</p>
+    <p><em>Environmental Liabilities:</em> Generates hazardous flue gas emissions, including <strong>carbon monoxide (CO)</strong>, acid gases, <strong>dioxins</strong>, and <strong>furans</strong>.</p>
+
+    <div class="alert-box">
+      🚫 <strong>Wastes Unsuitable for Incineration (High-Yield):</strong>
+      <ul>
+        <li>Pressurized aerosol cans and gas cylinders (explosion hazard).</li>
+        <li>Reactive chemical wastes containing heavy metals such as <strong>mercury</strong> and <strong>cadmium</strong>.</li>
+        <li>Photographic or radiographic chemical reagents.</li>
+        <li><strong>PVC plastics</strong> (thermal degradation releases toxic dioxins and hydrochloric acid).</li>
+        <li>Hermetically sealed glass ampoules containing heavy metals (shatter hazard).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5. Liquid waste and latrines -->
+  <div class="card">
+    <h2>5. Liquid Waste and Human Excreta Management</h2>
+    <p>Safe sanitation requires isolating human excreta so it cannot contaminate water tables, food chains, or soil. Your PDF identifies two primary sanitation modalities:</p>
+
+    <h3>A. Dry Pit Latrines (On-Site Sanitation)</h3>
+    <p>Includes simple pit latrines and <strong>Ventilated Improved Pit (VIP) latrines</strong>.</p>
+    <ul>
+      <li><strong>VIP Latrine Mechanism:</strong> Designed with a continuous vertical ventilation pipe fitted with a fine insect mesh screen at the top.</li>
+      <li>Wind passing across the top of the vent pipe pulls foul odors out of the pit via negative suction, keeping the squatting cabin odorless.</li>
+      <li>Flies attracted to the pit climb toward the daylight at the top of the vent pipe, are trapped by the screen, and perish.</li>
+    </ul>
+
+    <h3>B. Water-Carriage Systems (Off-Site Sanitation)</h3>
+    <p>Employs flush water to hydraulically convey human waste and sullage through a subterranean network of sewer pipes to municipal wastewater treatment facilities or septic tanks.</p>
+
+    <div class="img-grid">
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/lBvTbvYobLNWfTpiZX-HYxg7b4m3HgzUl-01QKrmSD_CQ9PcSY_BGh75udrXbVMdtRk72_GFuQWqrpDph2CL9981KaR2-JKBEmcA--_nZZdXf6k5UJehAyeb8lufTY-hcXDOrCx7V82AUgocwLN6Vj42aXZ8ejvSlLhSiY1fDCYo1wnkI38TDPxwSKrxgxqX?purpose=fullsize" alt="Double VIP Latrine">
+        <div class="img-caption">Ventilated Improved Pit (VIP) Latrine: Fly screen and odor-exhaust pipe</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/q4JcG3wpiZ5EgH4ZinlSOAKEWCwc4juB6wr5XQP30R8U_6OiPnYWyoIP1BI3YwkU0y3k-W_k6UdruLiughBKbnlySuSfTsh72VuD5uQF-d9hIqsXQdC7JAXTNDAWo1E1N9hZgy2ZN4nZJoRZawTD94Z9nPLJTkQhDOrgR2YQBq8yWbi_ypDqYBBlv2coYtZ3?purpose=fullsize" alt="WEDC On-Site Sanitation">
+        <div class="img-caption">Sanitary pit slab and superstructure design</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/km5sQ2fJP3qkyIC12xiPy3U9F5QM27OSutgDA6vQGYSOSOd6djXQOIKuEDzXu4HiSzNfHq1g0HS_SKtSqbWCmJp35NJ5CZxAP-_IC4kO6TF6JDj8nZ9bdQB_N4x2y4FivaDnF4_fr0S3l0CIRi97nssoQl4_tMLQitN47kDO5H3eGPLH_U-8Ho2yHUjkPiEB?purpose=fullsize" alt="Conservancy vs Water Carriage">
+        <div class="img-caption">Comparative mechanics: Conservancy dry pit vs. Water-carriage piped sewerage</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.openai.com/static-rsc-4/D9AO1UYNxTfKWPbM6t_abHNmKODgqnycXRm1daQ1WLzLntu_c-1lRxxuBli-LIfaem-ib1zXEJabFAxi714lkSRGEHNvr0SJ-DSxs-nygvnRnaJf8UhVaPYBaOlgjZytvCG5xXPYGLsKySo00TWUrZp-l2u1Z9UeEcOEKoguoWfkOp7p6kE63-gLx4zHBzrP?purpose=fullsize" alt="Piped Sewage System">
+        <div class="img-caption">Municipal sewer pipeline transport and treatment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Healthcare or medical waste -->
+  <div class="card">
+    <h2>6. Healthcare and Medical Waste Management</h2>
+    <p>Healthcare waste comprises all discarded byproducts from healthcare establishments, diagnostic laboratories, and biomedical research centers.</p>
+
+    <div class="alert-box">
+      📊 <strong>Waste Proportion in Health Facilities:</strong><br>
+      • <strong>75–90%:</strong> General, non-hazardous municipal waste (paper packaging, office waste, clean carton).<br>
+      • <strong>10–25%:</strong> Hazardous or infectious clinical waste requiring specialized segregation and disposal.
+    </div>
+
+    <h3>Classification of Healthcare Waste Categories:</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Definitions & Hospital Examples</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Infectious Waste</strong></td>
+            <td>Items contaminated with blood, pus, cultures, or infected secretions (e.g., blood-soaked gauze, dressings, laboratory culture plates).</td>
+          </tr>
+          <tr>
+            <td><strong>Pathological Waste</strong></td>
+            <td>Identifiable human anatomical tissues, organs, body parts, placentas, biopsy specimens, and animal carcasses.</td>
+          </tr>
+          <tr>
+            <td><strong>Sharps Waste</strong></td>
+            <td>Any rigid item capable of puncturing or cutting skin (e.g., hypodermic needles, scalpel blades, lancets, broken glass ampoules).</td>
+          </tr>
+          <tr>
+            <td><strong>Chemical Waste</strong></td>
+            <td>Discarded laboratory reagents, solvent solutions, heavy-metal disinfectants, battery acids.</td>
+          </tr>
+          <tr>
+            <td><strong>Pharmaceutical Waste</strong></td>
+            <td>Expired, contaminated, unsealed, or surplus medications and biologicals.</td>
+          </tr>
+          <tr>
+            <td><strong>Cytotoxic Waste</strong></td>
+            <td>Antineoplastic chemotherapeutic drugs, toxic metabolites, and contaminated infusion tubing.</td>
+          </tr>
+          <tr>
+            <td><strong>Radioactive Waste</strong></td>
+            <td>Liquids, glassware, and swabs contaminated with diagnostic or therapeutic radionuclides.</td>
+          </tr>
+          <tr>
+            <td><strong>General (Non-Risk) Waste</strong></td>
+            <td>Domestic-grade waste presenting no biological, physical, or chemical hazard.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Hazards of Unsafe Healthcare Waste:</h3>
+    <ul>
+      <li>Needlestick accidents transmitting bloodborne viruses (<strong>HIV, Hepatitis B, and Hepatitis C</strong>).</li>
+      <li>Chemical burns and accidental toxic poisoning among sanitation personnel.</li>
+      <li>Dispersal of multi-drug-resistant superbugs into the community.</li>
+      <li>Toxic air pollution resulting from open low-temperature burning of medical plastics.</li>
+    </ul>
+  </div>
+
+  <!-- 7. Infectious waste management: the essential steps -->
+  <div class="card">
+    <h2>7. The 4 Essential Steps of Medical Waste Management</h2>
+
+    <p><strong>Step 1 — Waste Minimization:</strong> Reducing the source generation of clinical waste through inventory management and selective purchasing.</p>
+
+    <p><strong>Step 2 — Segregation at Source:</strong> The most crucial step. Waste must be separated directly at the point of generation by the healthcare provider.</p>
+
+    <p><strong>Step 3 — Safe Collection & Storage:</strong> Using color-coded, labeled, leak-proof containers stored in a dedicated, secure enclosure.</p>
+
+    <p><strong>Step 4 — Treatment & Final Disposal:</strong> Applying certified destruction methods tailored to each specific waste stream.</p>
+
+    <h3>Color-Coding Protocols (From Lecture PDF):</h3>
+
+    <div class="color-card box-black">
+      ⬛ BLACK BAG / CONTAINER: Non-infectious General Waste<br>
+      <span style="font-size:0.82rem; font-weight:normal;">Kitchen waste, paper cartons, clean plastic packaging, office sweeps.</span>
+    </div>
+
+    <div class="color-card box-yellow">
+      🟨 YELLOW BAG / CONTAINER: Infectious & Pathological Waste<br>
+      <span style="font-size:0.82rem; font-weight:normal;">Blood-soaked gauze, dressings, laboratory cultures, infectious body fluids.</span>
+    </div>
+
+    <div class="color-card box-safety">
+      🟥 PUNCTURE-PROOF SAFETY BOX: Sharps Waste<br>
+      <span style="font-size:0.82rem; font-weight:normal;">Used hypodermic needles, IV cannulas, scalpel blades, broken glass ampoules.</span>
+    </div>
+
+    <div class="alert-box">
+      ⚠️ <strong>Universal Safety Rule:</strong><br>
+      • <strong>NEVER recap, bend, or break used needles</strong> prior to disposal.<br>
+      • Discard needles immediately into puncture-resistant safety boxes at the point of generation.<br>
+      • Seal safety boxes when they are <strong>three-quarters (3/4) full</strong>.
+    </div>
+  </div>
+
+  <!-- 8. Final disposal of healthcare waste -->
+  <div class="card">
+    <h2>8. Final Disposal of Healthcare Waste</h2>
+    <p>Your PDF specifies the following authorized terminal disposal pathways:</p>
+    <ul>
+      <li><strong>Deep Burial Pit:</strong> Authorized for pathological tissues, placentas, and anatomical secretions in lined, covered burial trenches.</li>
+      <li><strong>Incineration / Burning:</strong> Dedicated high-temperature destruction of infectious dressings, gauzes, disposable syringes, and pathological specimens.</li>
+      <li><strong>Sanitary Sewer Discharge:</strong> Restricted exclusively to liquid medical wastes <strong>only after validated chemical decontamination</strong> (e.g., sodium hypochlorite treatment).</li>
+      <li><strong>Municipal Landfills:</strong> Restricted strictly to segregated, non-risk general black-bag waste.</li>
+    </ul>
+  </div>
+
+  <!-- 9. Quick revision table -->
+  <div class="card">
+    <h2>9. High-Yield Revision Summary</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Concept</th><th>High-Yield Takeaway</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Solid Waste Sequence</strong></td><td>Generate → Store/Collect → Process/Recover → Final Disposal</td></tr>
+          <tr><td><strong>Composting</strong></td><td>Aerobic/anaerobic recycling of organics into fertile soil conditioner</td></tr>
+          <tr><td><strong>Sanitary Landfill</strong></td><td>Engineered isolation facility with bottom liners and leachate capture</td></tr>
+          <tr><td><strong>Incineration Restrictions</strong></td><td>Do NOT incinerate mercury, cadmium, pressurized cans, or PVC plastics</td></tr>
+          <tr><td><strong>VIP Latrine</strong></td><td>Vertical vent pipe + mesh screen eliminates flies and foul odors</td></tr>
+          <tr><td><strong>Medical Waste Ratio</strong></td><td>75–90% general non-risk vs. 10–25% hazardous/infectious</td></tr>
+          <tr><td><strong>Black Container</strong></td><td>General domestic-type non-infectious waste</td></tr>
+          <tr><td><strong>Yellow Container</strong></td><td>Infectious clinical dressings, gauze, and laboratory cultures</td></tr>
+          <tr><td><strong>Safety Box</strong></td><td>Puncture-resistant container for needles, blades, and sharps (No recapping!)</td></tr>
+          <tr><td><strong>Sewer Discharge</strong></td><td>Allowed for infectious liquid waste ONLY after chemical decontamination</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 10. Interactive Quiz -->
+  <div class="quiz-container">
+    <div class="quiz-header">📝 Self-Assessment Quiz (Click to Check)</div>
+    <div id="quiz-mount"></div>
+  </div>
+
+</div>
+
+<script>
+  const quizData = [
+    {
+      q: "Question 1. A community collects organic kitchen trimmings, leaves, and biodegradable waste. Which process converts this organic fraction into a rich soil conditioner?",
+      options: [
+        "A. High-temperature incineration",
+        "B. Biological composting",
+        "C. Open field burning",
+        "D. Paved landfilling"
+      ],
+      correct: 1,
+      exp: "Correct! Composting is the natural biological decomposition of organic biodegradable waste to generate a nutrient-rich soil conditioner."
+    },
+    {
+      q: "Question 2. A hospital cleaner sustains a percutaneous needlestick injury from an uncapped needle placed into an ordinary black plastic bag. Which protocol failure directly caused this injury?",
+      options: [
+        "A. Failure of biological composting",
+        "B. Failure of waste segregation at source and improper sharps collection",
+        "C. Failure of landfill leachate treatment",
+        "D. Inadequate recycling of plastics"
+      ],
+      correct: 1,
+      exp: "Correct! Needles must never enter standard waste bags; they must be segregated immediately into puncture-resistant safety boxes without recapping."
+    },
+    {
+      q: "Question 3. Which of the following statements most accurately defines an engineered sanitary landfill?",
+      options: [
+        "A. An uncontrolled open dump where waste is periodically burned",
+        "B. A processing plant where all incoming waste is converted into compost",
+        "C. An engineered facility designed to isolate waste and minimize public health and environmental hazards",
+        "D. A detention pond where liquid chemical effluent is allowed to evaporate"
+      ],
+      correct: 2,
+      exp: "Correct! A sanitary landfill is an engineered facility equipped with liners, leachate management, and soil cover to minimize environmental and health risks."
+    },
+    {
+      q: "Question 4. A hospital aims to dispose of infectious liquid laboratory secretions into the municipal sewerage system. According to health regulations, what must occur first?",
+      options: [
+        "A. Mix the liquid with dry municipal paper waste",
+        "B. Decontaminate the liquid chemically or physically",
+        "C. Transfer the liquid into an open compost pit",
+        "D. Allow the liquid to evaporate in ambient sunlight"
+      ],
+      correct: 1,
+      exp: "Correct! Infectious liquid waste must undergo verified decontamination (e.g., autoclaving or chemical disinfection) prior to municipal sewer discharge."
+    },
+    {
+      q: "Question 5. According to healthcare waste classifications presented in the lecture, which statement is factually accurate?",
+      options: [
+        "A. Every item generated inside a hospital is infectious",
+        "B. Used disposable needles belong inside black waste bags",
+        "C. The vast majority (75–90%) of healthcare waste is general, non-risk waste",
+        "D. Expired antineoplastic drugs should be flushed into household drains"
+      ],
+      correct: 2,
+      exp: "Correct! Between 75% and 90% of healthcare facility waste is comparable to ordinary domestic trash and poses no infectious risk."
+    }
+  ];
+
+  const quizMount = document.getElementById('quiz-mount');
+
+  quizData.forEach((item, qIdx) => {
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block';
+
+    const title = document.createElement('div');
+    title.className = 'question-title';
+    title.innerText = item.q;
+    qBlock.appendChild(title);
+
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+
+    item.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = optText;
+
+      btn.addEventListener('click', () => {
+        const allBtns = qBlock.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+
+        if (optIdx === item.correct) {
+          btn.classList.add('correct');
+          feedback.className = 'feedback show correct-text';
+          feedback.innerHTML = "✅ " + item.exp;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+          feedback.className = 'feedback show wrong-text';
+          feedback.innerHTML = "❌ ትክክለኛው መልስ፦ " + item.options[item.correct] + "<br>" + item.exp;
+        }
+      });
+
+      qBlock.appendChild(btn);
+    });
+
+    qBlock.appendChild(feedback);
+    quizMount.appendChild(qBlock);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 1: Introduction to Ecology and Environmental Health</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin: 16px 0 8px 0;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin: 10px 0 4px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Images */
+    .img-box {
+      margin: 14px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: #f1f5f9;
+      text-align: center;
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 12px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Callout Boxes */
+    .alert-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    .analogy-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Interactive Quiz */
+    .quiz-container {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 24px;
+    }
+    .quiz-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .question-block {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: var(--primary);
+    }
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: bold;
+    }
+    .option-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+    .feedback {
+      display: none;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .feedback.show {
+      display: block;
+    }
+    .feedback.correct-text {
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .feedback.wrong-text {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>🌍 TOPIC 1: Introduction to Ecology and Environmental Health</h1>
+    <p>Ecological Principles, Levels of Organization & Environmental Health Practice</p>
+  </header>
+
+  <!-- 1. What is ecology? -->
+  <div class="card">
+    <h2>1. What is Ecology?</h2>
+    
+    <p>Let's begin with a simple question.</p>
+    <p>Imagine a mosquito living near a stagnant pond:</p>
+    <ul>
+      <li>It needs water to reproduce.</li>
+      <li>It needs a suitable temperature to survive.</li>
+      <li>It interacts with humans and other animals.</li>
+      <li>Humans may create or remove its breeding sites.</li>
+    </ul>
+
+    <p>Can you see something interesting? The mosquito does not live independently. Its life depends on its surroundings and interactions with other organisms. <strong>That is the central idea of ecology!</strong></p>
+
+    <h3>Definition</h3>
+    <p><strong>Ecology</strong> is the scientific study of the interactions between living organisms and their environment.</p>
+    <p>The word ecology comes from two Greek words:</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Word</th><th>Meaning</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Oikos</strong></td><td>House or home</td></tr>
+          <tr><td><strong>Logos</strong></td><td>Study</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Therefore, ecology literally means the study of our home or surroundings.</p>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/oZ-vpVLSmdSf7io0tUTZmFU9bDTrCO4zUiRaXeDpTWVUcKzAQcUidqqg9VgO8gCgDKY5aPRyIKPiSMzxO-kKe0jLn3eD_8LIml6nG7s6IQm9OVtZNnmk8iMY-j3mmdwnZLeg8tuR2M5tTpLx6Rv5AVl36PiaE5R1S4FgQI_Cdphg2sa_DnQPp528rEF9WfS_?purpose=fullsize" alt="Concept of ecosystem">
+      <div class="img-caption">Concept of ecosystem: Organisms interacting with their environment</div>
+    </div>
+
+    <h3>Understand the Definition in Two Parts</h3>
+    <p>Ecology studies:</p>
+    <ul>
+      <li><strong>Organisms:</strong> Humans, animals, plants, bacteria and other living things.</li>
+      <li><strong>Environment:</strong> Everything surrounding those organisms that affects their lives.</li>
+    </ul>
+
+    <div class="analogy-box">
+      🌾 <strong>For example, consider a farmer:</strong>
+      <ul>
+        <li>The farmer is the organism.</li>
+        <li>Soil, rainfall, temperature, sunlight and other organisms are parts of the environment.</li>
+        <li>Their interactions determine how successfully crops grow.</li>
+      </ul>
+    </div>
+
+    <div class="alert-box">
+      📌 <strong>Important:</strong> Ecology does not simply study organisms. It studies the relationships between organisms and their surroundings.
+    </div>
+  </div>
+
+  <!-- 2. What is the environment? -->
+  <div class="card">
+    <h2>2. What is the Environment?</h2>
+    <p>Think of the environment as the entire neighborhood in which an organism lives. It includes living and non-living things.</p>
+    <p>We classify environmental components into two major groups:</p>
+
+    <h3>A. Biotic Factors (Living Components)</h3>
+    <p><em>Biotic</em> means living. Examples:</p>
+    <ul>
+      <li>Humans</li>
+      <li>Animals</li>
+      <li>Plants</li>
+      <li>Bacteria</li>
+      <li>Fungi</li>
+      <li>Parasites</li>
+    </ul>
+
+    <h3>B. Abiotic Factors (Non-Living Components)</h3>
+    <p><em>Abiotic</em> means non-living physical and chemical components. Examples:</p>
+    <ul>
+      <li>Water</li>
+      <li>Air</li>
+      <li>Temperature</li>
+      <li>Sunlight</li>
+      <li>Soil</li>
+      <li>Humidity</li>
+      <li>Minerals</li>
+    </ul>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/rcTbPBGNEYHVxJ1_Rgs-woRtRW9yYpYzIgRvNggB5AnWzZLXUFp0y0_dEaSGysVQSsR7BzXqbDNJgfowWObyCYJGboeBCawhWPAl66qzxHwWORvc87_eOX_4QjjBzUdJfmueGqNYW59YFGV00-dMJ8zBGv7wgtlPYIXahEjHidx5BbpShngzD-6eMy-kLmBf?purpose=fullsize" alt="Ecosystem Diagram">
+      <div class="img-caption">Ecosystem diagram: Biotic and abiotic components</div>
+    </div>
+
+    <h3>Let's Apply It to Malaria</h3>
+    <p>Imagine a community where malaria is common:</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Component</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Biotic</strong></td><td>Humans, mosquitoes and <em>Plasmodium</em> parasites</td></tr>
+          <tr><td><strong>Abiotic</strong></td><td>Temperature, rainfall and stagnant water</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Why does this matter?</strong> Because malaria transmission depends on interactions between living organisms and environmental conditions. For example, rainfall may create mosquito breeding sites, increasing the opportunity for transmission.</p>
+
+    <div class="alert-box">
+      ⚠️ <strong>Exam trick:</strong> Mosquito = biotic. Stagnant water = abiotic. Do not confuse them!
+    </div>
+  </div>
+
+  <!-- 3. Levels of ecological organization -->
+  <div class="card">
+    <h2>3. Levels of Ecological Organization</h2>
+    <p>This is one of the most important classification sections. Imagine starting with one person and gradually expanding your view until you see the entire planet. Ecology organizes living systems into different levels.</p>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/kQ2_BL2lpSraBBQPSqZk5NviBfXTfjQVpIcqTxaQGAxz1p85Y8Dzlr1zaJ9QiLuSwaOIAtcX6SodCA8z1FG0Of4nnsWw06odbkJWJYC0zGzts02c6NSkqULVrkZ4QVcN-maJE7qCddrJRMkGmMmcciTV1uc5H6Q8UwkgmTqFF6bvaOZeLJCqEeV1c-u6ibc6?purpose=fullsize" alt="Ecosystems Levels">
+      <div class="img-caption">Hierarchy: Organism up to the global Biosphere</div>
+    </div>
+
+    <p>Let's understand each level using humans and other organisms:</p>
+
+    <h3>Level 1: Organism</h3>
+    <p>A single living individual.<br><em>Example:</em> One human, one mosquito or one bacterium.</p>
+
+    <h3>Level 2: Species</h3>
+    <p>A group of organisms similar to one another, belonging to the same biological species.<br><em>Example:</em> Humans (<em>Homo sapiens</em>).</p>
+
+    <h3>Level 3: Population</h3>
+    <p>A group of individuals of the same species living in the same area.<br><em>Example:</em> All mosquitoes of one species living around a particular pond.<br><strong>Key:</strong> Same species + same area = population.</p>
+
+    <h3>Level 4: Community</h3>
+    <p>Different populations living together in a defined area.<br><em>Example:</em> Mosquitoes, frogs, fish, algae and bacteria living around a pond.<br><strong>Key:</strong> Different populations living together = community.</p>
+
+    <h3>Level 5: Ecosystem</h3>
+    <p>A collection of organisms interacting with one another and with the non-living environment.<br><em>Example:</em> A pond containing fish, frogs, algae, water, sunlight, minerals and soil.</p>
+    <div class="analogy-box">
+      🔍 <strong>Notice the difference:</strong><br>
+      • <strong>Community</strong> = living populations.<br>
+      • <strong>Ecosystem</strong> = living populations + non-living environment + interactions.
+    </div>
+
+    <h3>Level 6: Biome</h3>
+    <p>A group of ecosystems with similar climates and similar dominant biological communities.<br><em>Examples:</em> Tropical rainforest, desert and grassland.</p>
+
+    <h3>Level 7: Biosphere</h3>
+    <p>The broadest level: the global zone of Earth where life exists. It includes all Earth's ecosystems.</p>
+
+    <h3>Remember the Order from Smallest to Largest</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Level</th><th>Summary Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Organism</strong></td><td>One living individual</td></tr>
+          <tr><td><strong>Species</strong></td><td>Similar organisms belonging to a species</td></tr>
+          <tr><td><strong>Population</strong></td><td>Same species in one area</td></tr>
+          <tr><td><strong>Community</strong></td><td>Different populations living together</td></tr>
+          <tr><td><strong>Ecosystem</strong></td><td>Living + non-living components + interactions</td></tr>
+          <tr><td><strong>Biome</strong></td><td>Similar ecosystems and climate</td></tr>
+          <tr><td><strong>Biosphere</strong></td><td>All regions of Earth where life exists</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 4. Branches of ecology -->
+  <div class="card">
+    <h2>4. Branches of Ecology</h2>
+    <p>Think of ecology as a big subject with different departments. Each department studies a different level of interaction.</p>
+
+    <h3>A. Population Ecology</h3>
+    <p>Studies how populations of the same species grow, decrease and reproduce in relation to environmental factors.</p>
+    <p><em>Example:</em> Why does the mosquito population increase during the rainy season? Scientists may investigate:</p>
+    <ul>
+      <li>Food availability</li>
+      <li>Breeding sites</li>
+      <li>Predators</li>
+      <li>Competition</li>
+      <li>Environmental conditions</li>
+    </ul>
+
+    <h3>B. Community Ecology</h3>
+    <p>Studies interactions between different populations within an environment.<br><em>Example:</em> How do mosquitoes, frogs, fish and plants interact in a pond?</p>
+
+    <h3>C. Landscape Ecology</h3>
+    <p>Studies relationships between ecological processes and the landscape, including landscape diversity.<br><em>Example:</em> How does deforestation in one area affect surrounding ecosystems?</p>
+
+    <h3>D. Ecosystem Ecology</h3>
+    <p>Studies the integrated interactions between living and non-living components of an ecosystem.<br><em>Example:</em> How do sunlight, soil, water, plants and animals work together in a forest?</p>
+
+    <h3>Branch Comparison</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Branch</th><th>Main Focus</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Population ecology</strong></td><td>One species' population</td></tr>
+          <tr><td><strong>Community ecology</strong></td><td>Different populations</td></tr>
+          <tr><td><strong>Landscape ecology</strong></td><td>Ecological processes across landscapes</td></tr>
+          <tr><td><strong>Ecosystem ecology</strong></td><td>Living and non-living interactions</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert-box">
+      ⚠️ <strong>Exam trick:</strong> If a question mentions the interaction of fish and frogs, think <strong>community ecology</strong>. If it includes water, sunlight and soil too, think <strong>ecosystem ecology</strong>.
+    </div>
+  </div>
+
+  <!-- 5. What is environmental health? -->
+  <div class="card">
+    <h2>5. What is Environmental Health?</h2>
+    <p>Now let's connect ecology to medicine and public health.</p>
+    <p>Imagine a village where:</p>
+    <ul>
+      <li>People drink contaminated water.</li>
+      <li>Waste is dumped near houses.</li>
+      <li>Mosquitoes breed in stagnant water.</li>
+      <li>Houses have poor ventilation.</li>
+    </ul>
+    <p>People living there may develop diarrhea, malaria and respiratory diseases. A doctor can treat sick individuals, but can treatment alone solve all these problems? <strong>No! We must also improve the environment.</strong> This is where environmental health becomes important.</p>
+
+    <h3>Definition</h3>
+    <p><strong>Environmental health</strong> comprises the physical, chemical, biological, social and psychosocial aspects of the environment that affect human health and survival.</p>
+    <p>It also refers to the theory and practice of:</p>
+    <ul>
+      <li><strong>Assessing</strong> environmental factors.</li>
+      <li><strong>Correcting</strong> harmful factors.</li>
+      <li><strong>Controlling</strong> environmental hazards.</li>
+      <li><strong>Preventing</strong> environmental factors that may affect the health of present and future generations.</li>
+    </ul>
+
+    <h3>Understand the Five Environmental Aspects</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Aspect</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Physical</strong></td><td>Temperature, noise, radiation</td></tr>
+          <tr><td><strong>Chemical</strong></td><td>Pesticides, toxic gases, chemicals</td></tr>
+          <tr><td><strong>Biological</strong></td><td>Bacteria, viruses, parasites</td></tr>
+          <tr><td><strong>Social</strong></td><td>Housing conditions, community relationships</td></tr>
+          <tr><td><strong>Psychosocial</strong></td><td>Stress, fear, social pressure</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="analogy-box">
+      🏭 <strong>Let's apply them to a practical scenario:</strong><br>
+      A factory releases toxic chemicals near a residential area:
+      <ul>
+        <li><strong>Chemical:</strong> Toxic substances.</li>
+        <li><strong>Physical:</strong> Noise from machinery.</li>
+        <li><strong>Biological:</strong> Possible microbial contamination of nearby water.</li>
+        <li><strong>Social:</strong> Displacement or disruption of the community.</li>
+        <li><strong>Psychosocial:</strong> Stress and anxiety among residents.</li>
+      </ul>
+      <em>One environment can affect health through several pathways simultaneously.</em>
+    </div>
+  </div>
+
+  <!-- 6. Scope of environmental health -->
+  <div class="card">
+    <h2>6. Scope of Environmental Health</h2>
+    <p><em>Scope</em> means the areas covered by a subject. Your lecture identifies these major areas:</p>
+
+    <h3>1. Safe Water Supply</h3>
+    <p>Providing adequate, accessible and safe water to communities.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/Hl2qRbXWpyv1SlX8rbnrdX5NZH0AmF3nDs9mBBM5rmRT9d_KJfZ1PXOdCGgCVZsNtslMDKG9J6Na7SDZSwtDykKU7l5tZ_8qmP2UXtBjlpP8IRBt3ySz2v0GbzAjnw8YsNRepKwlOh0YTPJRt72n1bj_8bcDtXSI8l5hjH1Jm3oqY4O-GtTtnkjxVl27uNJF?purpose=fullsize" alt="Safe water supply">
+      <div class="img-caption">Safe water testing and municipal distribution</div>
+    </div>
+
+    <h3>2. Waste Management</h3>
+    <p>Proper management of solid and liquid waste.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/OKlIPmlpGJ9PinviKrrNwBfIsNiJydaiGcNTKRNNV9hYTkIARpbHcQF2DTSrk-fjqXOtrq0p5esOeyaBXHMZM7N6YZALC918qt7WCICd15orzxM6mmblaU_5HgvO64lznTkBFzlEwWFtRqc_X7_EqDLk-PJkoeu3ArbTP2agT7cps8LG8T8vf4vWaTJc-Fxf?purpose=fullsize" alt="Waste management">
+      <div class="img-caption">Proper solid and liquid waste management</div>
+    </div>
+
+    <h3>3. Vector Control</h3>
+    <p>Controlling insects, rodents and other disease vectors.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/ItwJN0KZAgbvV4dQHy0oEfxoHqG5AAN6ObnE6O1Y6RYbBH65tYJ1XoVYFsscwlmkbrJLsRjeobZrEe_n14Oik2Q8psN7uVKi4C5w8iLw8CUuTM5JFRfXNHFrM9lMydjNWdw0fvTcLMsAWbDQ55JmJwX21lgVBGVbK4KvUEs3i7uf6J7ay4LGeFeauTjjDF_u?purpose=fullsize" alt="Vector control">
+      <div class="img-caption">Mosquito and disease vector abatement</div>
+    </div>
+
+    <h3>4. Food Hygiene</h3>
+    <p>Preventing food contamination and foodborne illness.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/9Zsrsl-PqZJvS3N2sSyzH4Lx1fPbLlPB_km-Bym6-IsWVdHiG3QE6v6fS85PRw4esM1cWti2mfjSYfw6Ork6pFj2RaPrndHNM2PljG-PPYs2bNzswbwCqi8GHbiA-SRNdBEUYEaCUbgjz25KnQ7cl8O1DJUovUa89_DCbMfRKPYkrYfGFyz1ivtB2YGgnRT?purpose=fullsize" alt="Food hygiene">
+      <div class="img-caption">Food safety practices and contamination prevention</div>
+    </div>
+
+    <h3>5. Residential and Institutional Health</h3>
+    <p>Maintaining healthy homes, schools, hospitals and other institutions.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/tzo47Y1nUhiv71_oOcJJsHfeGuxkv06ZVd8jQEwYnqbebCDhmq4SlrSwxMa-9hxYjAd8wasRewaGdlR6i1p1jJWhZIaPEuXF2ldjfaIIIaVObObCh6ayrlo6lSUI_seyd9Ax8p5EORbdauSCmGJlMNkWFxwgjPlmSvxU-aLd2F83exiHB9kdV4NI96fCDO1t?purpose=fullsize" alt="Residential health">
+      <div class="img-caption">Healthy housing conditions and proper ventilation</div>
+    </div>
+
+    <h3>6. Occupational Health and Safety</h3>
+    <p>Protecting workers against workplace hazards.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/jDDjMsTjpz5HSRrkSBKJZ5GXQBjE3ESkNH1Fn_fU-aNnRj5-eJ4UBvJh5zGMxiY8QCpbpzrzyqafIu7qTLMUZvIfRZt69KjnAApSKP0Kan_JRE6xckiiiK63asnX_RCOXj5k1DpGf7gO5xhftv2iVIKq7xBLi5w-AcG541Ylu7Kan300UPUeoUv_LE_2mz0v?purpose=fullsize" alt="Occupational safety">
+      <div class="img-caption">Occupational health protection in the workplace</div>
+    </div>
+
+    <h3>7. Prevention of Biosphere Pollution</h3>
+    <p>Preventing pollution of air, water and soil.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/BhEGvKlyPd5eqIqC1n59o1rkSFIhAsdcGJUEbZG8R-vW3zhmQTXrNi4sJ4d6NAbibCKyPNvGIvafCy5bDJQPuj3ii59j1-yAhU7cymESQukFj6GEd3iZVyebfZuZxueLq88pryG6LOBjzzMjWgYUlhSecnK4MyYw6Ef-QaAt77HBOPf6A6sB6X29ZR-oFC-5?purpose=fullsize" alt="Pollution prevention">
+      <div class="img-caption">Air, water, and soil pollution abatement</div>
+    </div>
+
+    <div class="alert-box">
+      📌 <strong>Important Distinction:</strong><br>
+      • <strong>Ecology</strong> studies relationships between organisms and their environment.<br>
+      • <strong>Environmental health</strong> focuses on assessing and managing environmental factors that affect human health.<br>
+      <em>They are closely related, but they are not exactly the same subject.</em>
+    </div>
+  </div>
+
+  <!-- 7. Clinical and public-health application -->
+  <div class="card">
+    <h2>7. Clinical and Public-Health Application</h2>
+    <p>Let's test whether you can connect the concepts.</p>
+    <p><strong>A community experiences frequent diarrhea outbreaks.</strong></p>
+    <p>Investigation reveals:</p>
+    <ul>
+      <li>Drinking water comes from a contaminated river.</li>
+      <li>Human waste is disposed of near the river.</li>
+      <li>People do not consistently wash their hands.</li>
+    </ul>
+
+    <p>An environmental health professional may:</p>
+    <ul>
+      <li>Assess the water source.</li>
+      <li>Identify contamination pathways.</li>
+      <li>Improve sanitation.</li>
+      <li>Promote hand hygiene.</li>
+      <li>Ensure safe drinking water.</li>
+    </ul>
+
+    <div class="analogy-box">
+      💡 <strong>Notice something important:</strong> Instead of treating only the patients, we also address the environmental causes of disease. <strong>That's the practical importance of environmental health.</strong>
+    </div>
+  </div>
+
+  <!-- 8. Quick revision table -->
+  <div class="card">
+    <h2>8. Quick Revision — What Must You Remember?</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Concept</th><th>Remember This</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Ecology</strong></td><td>Organism–environment interactions</td></tr>
+          <tr><td><strong>Oikos</strong></td><td>House or home</td></tr>
+          <tr><td><strong>Biotic</strong></td><td>Living</td></tr>
+          <tr><td><strong>Abiotic</strong></td><td>Non-living</td></tr>
+          <tr><td><strong>Population</strong></td><td>Same species, same area</td></tr>
+          <tr><td><strong>Community</strong></td><td>Different populations</td></tr>
+          <tr><td><strong>Ecosystem</strong></td><td>Living + non-living interactions</td></tr>
+          <tr><td><strong>Biome</strong></td><td>Similar ecosystems and climate</td></tr>
+          <tr><td><strong>Biosphere</strong></td><td>Global zone of life</td></tr>
+          <tr><td><strong>Environmental health</strong></td><td>Environment and human health</td></tr>
+          <tr><td><strong>Scope</strong></td><td>Water, waste, vectors, food, housing, occupational health and pollution</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 9. Interactive Practice Quiz -->
+  <div class="quiz-container">
+    <div class="quiz-header">📝 Exam Practice — Topic 1 (Click to Check)</div>
+    <div id="quiz-mount"></div>
+  </div>
+
+</div>
+
+<script>
+  const quizData = [
+    {
+      q: "Question 1. A researcher studies how the population of mosquitoes increases during rainy seasons in a particular village. Which branch of ecology is most directly involved?",
+      options: [
+        "A. Community ecology",
+        "B. Population ecology",
+        "C. Landscape ecology",
+        "D. Ecosystem ecology"
+      ],
+      correct: 1,
+      exp: "Correct! Population ecology studies how populations of the same species grow, decrease, and reproduce in relation to environmental factors."
+    },
+    {
+      q: "Question 2. A pond contains fish, frogs, algae, bacteria, water, sunlight and minerals. Which ecological level does this represent?",
+      options: [
+        "A. Population",
+        "B. Community",
+        "C. Ecosystem",
+        "D. Species"
+      ],
+      correct: 2,
+      exp: "Correct! An ecosystem is a collection of living organisms (fish, frogs, algae, bacteria) interacting with one another and with the non-living environment (water, sunlight, minerals)."
+    },
+    {
+      q: "Question 3. Which of the following is correctly classified?",
+      options: [
+        "A. Mosquito — abiotic; water — biotic",
+        "B. Bacteria — abiotic; soil — biotic",
+        "C. Temperature — biotic; fish — abiotic",
+        "D. Mosquito — biotic; temperature — abiotic"
+      ],
+      correct: 3,
+      exp: "Correct! Mosquitoes are living organisms (biotic), while temperature is a physical non-living factor (abiotic)."
+    },
+    {
+      q: "Question 4. A public health officer assesses contaminated water, poor sanitation and improper waste disposal to prevent disease. This activity mainly belongs to:",
+      options: [
+        "A. Environmental health",
+        "B. Population genetics",
+        "C. Community ecology only",
+        "D. Taxonomy"
+      ],
+      correct: 0,
+      exp: "Correct! Environmental health focuses on assessing, correcting, controlling, and preventing environmental factors (water, sanitation, waste) that affect human health."
+    },
+    {
+      q: "Question 5. A researcher studies fish, frogs, algae and bacteria living together in a lake, but does not study water or sunlight. What is the main ecological level?",
+      options: [
+        "A. Ecosystem",
+        "B. Community",
+        "C. Biome",
+        "D. Biosphere"
+      ],
+      correct: 1,
+      exp: "Correct! A community consists of different populations living together in a defined area, without including the non-living (abiotic) physical environment."
+    }
+  ];
+
+  const quizMount = document.getElementById('quiz-mount');
+
+  quizData.forEach((item, qIdx) => {
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block';
+
+    const title = document.createElement('div');
+    title.className = 'question-title';
+    title.innerText = item.q;
+    qBlock.appendChild(title);
+
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+
+    item.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = optText;
+
+      btn.addEventListener('click', () => {
+        const allBtns = qBlock.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+
+        if (optIdx === item.correct) {
+          btn.classList.add('correct');
+          feedback.className = 'feedback show correct-text';
+          feedback.innerHTML = "✅ " + item.exp;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+          feedback.className = 'feedback show wrong-text';
+          feedback.innerHTML = "❌ ትክክለኛው መልስ፦ " + item.options[item.correct] + "<br>" + item.exp;
+        }
+      });
+
+      qBlock.appendChild(btn);
+    });
+
+    qBlock.appendChild(feedback);
+    quizMount.appendChild(qBlock);
+  });
+</script>
+
+</body>
+</html>

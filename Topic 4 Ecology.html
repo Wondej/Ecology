@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 4: Ecology of Health and Disease</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin: 16px 0 8px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Images */
+    .img-box {
+      margin: 14px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: #f1f5f9;
+      text-align: center;
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 12px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Callout Boxes */
+    .alert-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    .analogy-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Interactive Quiz */
+    .quiz-container {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 24px;
+    }
+    .quiz-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .question-block {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: var(--primary);
+    }
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: bold;
+    }
+    .option-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+    .feedback {
+      display: none;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .feedback.show {
+      display: block;
+    }
+    .feedback.correct-text {
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .feedback.wrong-text {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>🌍 TOPIC 4: Ecology of Health and Disease</h1>
+    <p>Dynamic Equilibrium, Maladaptation, Epidemiological Triangle & Natural History of Disease</p>
+  </header>
+
+  <!-- Intro Card -->
+  <div class="card">
+    <div class="analogy-box">
+      🔥 <strong>The Fire Analogy:</strong> Think of disease like a fire: a fire needs fuel, oxygen, and suitable conditions. Similarly, disease occurrence depends on the interaction of an <strong>infectious agent</strong>, a <strong>host</strong>, and the <strong>environment</strong>.
+    </div>
+    <p>This topic explains why diseases occur, how environmental changes can create disease risks, and how we can predict and control them.</p>
+  </div>
+
+  <!-- 1. Historical theories of disease -->
+  <div class="card">
+    <h2>1. Historical Theories of Disease</h2>
+    <p>Your PDF introduces two important theories:</p>
+
+    <h3>A. Spontaneous Generation Theory</h3>
+    <p>This was the belief that life and disease could arise directly from non-living matter.</p>
+    <ul>
+      <li><em>Simple example:</em> People once believed that maggots appeared spontaneously from rotting meat rather than developing from fly eggs.</li>
+      <li><em>The important idea:</em> People believed living things could emerge from non-living materials without coming from existing life.</li>
+    </ul>
+
+    <h3>B. Germ Theory</h3>
+    <p>The view that disease is the product of a particular pathogen infecting a particular patient.</p>
+    <ul>
+      <li><em>Example:</em> Tuberculosis occurs when a person becomes infected with <em>Mycobacterium tuberculosis</em>.</li>
+      <li><strong>Pathogen:</strong> The disease-causing microorganism.</li>
+      <li><strong>Patient / Host:</strong> The person who can become infected.</li>
+      <li><strong>Infection:</strong> Invasion and multiplication of the microorganism in the body.</li>
+    </ul>
+
+    <div class="alert-box">
+      📌 <strong>Exam Distinction:</strong><br>
+      • <strong>Spontaneous generation:</strong> An obsolete belief about the origin of life and disease from non-living matter.<br>
+      • <strong>Germ theory:</strong> Links infectious disease to specific biological pathogens.
+    </div>
+  </div>
+
+  <!-- 2. Disease ecology and dynamic equilibrium -->
+  <div class="card">
+    <h2>2. Disease Ecology & Dynamic Equilibrium</h2>
+    <p><strong>Disease ecology</strong> studies how humans, society, and the physical and biological environment interact in relation to disease.</p>
+    <p>Your PDF emphasizes that these components exist in <strong>dynamic equilibrium</strong>.</p>
+
+    <div class="analogy-box">
+      ⚖️ <strong>What does dynamic equilibrium mean?</strong><br>
+      Imagine a community where:
+      <ul>
+        <li>People live in a certain environment.</li>
+        <li>Their activities affect the environment.</li>
+        <li>Animals, insects, and microorganisms also live there.</li>
+        <li>Natural and social conditions influence everyone's health.</li>
+      </ul>
+      <em>These components continuously affect one another. The balance is not fixed; it is dynamic and changes over time.</em>
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/-y0lrO5oBDCH9LS9M7daeQpF-yV4YOPnuI0356S9E0VWtqdYsYkX9F7ZvdcHgIpQCxDhBTEnCVNnhoRhSlgQuF0Xn90B1bc22R9v_M_ENBFrVnpkOuw83KxmbKEWeQRyv1IxIaDAi-sxlObTGU9zbXANOe828OkjWvMY4xZJpP_MYwW64J9piSFBERj0eZQz?purpose=fullsize" alt="Vector-borne disease and climate">
+      <div class="img-caption">Interplay of climate, ecology, and vector-borne diseases</div>
+    </div>
+
+    <h3>What Happens When Equilibrium is Disturbed?</h3>
+    <p>Major changes such as:</p>
+    <ul>
+      <li>Land-use changes</li>
+      <li>Migration</li>
+      <li>Population pressure</li>
+      <li>Other environmental stressors</li>
+    </ul>
+    <p>can disturb the human–environment relationship. This may cause <strong>maladaptation</strong>, which can manifest as the emergence or spread of infectious diseases.</p>
+
+    <div class="analogy-box">
+      🌊 <strong>Analogy:</strong> Imagine a river valley. If people build a dam and create stagnant-water habitats, mosquito and snail populations increase. More vectors mean a greater risk of vector-borne illnesses.
+    </div>
+  </div>
+
+  <!-- 3. Maladaptation: when environmental change increases disease -->
+  <div class="card">
+    <h2>3. Maladaptation: When Environmental Change Increases Disease</h2>
+    <p><strong>Maladaptation</strong> in this context means a harmful mismatch or disturbance in the relationship between humans and their environment, which creates or amplifies disease risks.</p>
+
+    <p>Your PDF highlights five classic global examples:</p>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Environmental Change</th><th>Disease Consequence (in PDF)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Construction of dams</strong></td><td>Increased schistosomiasis (bilharzia)</td></tr>
+          <tr><td><strong>Volta River project in Africa</strong></td><td>Malaria and other vector-borne diseases</td></tr>
+          <tr><td><strong>Land clearance for rubber plantations in Malaysia</strong></td><td>Malaria</td></tr>
+          <tr><td><strong>Construction of transportation routes in Brazil</strong></td><td>Increased vector-borne diseases</td></tr>
+          <tr><td><strong>Reforestation in suburban northeastern USA</strong></td><td>Appearance / Surge of Lyme disease</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert-box">
+      🧠 <strong>Understand the Pattern:</strong> Humans modify the physical environment → ecological parameters shift (vector habitats proliferate) → disease transmission intensifies.
+    </div>
+  </div>
+
+  <!-- 4. Vector-borne disease: epidemic vs non-epidemic conditions -->
+  <div class="card">
+    <h2>4. Vector-Borne Disease: Epidemic vs. Non-Epidemic Conditions</h2>
+    <p>A <strong>vector</strong> is a living organism that transmits an infectious agent from one host to another (e.g., mosquitoes, ticks, snails).</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Condition</th><th>Spatial/Ecological Relationship</th><th>Disease Transmission Risk</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Non-epidemic Environment</strong></td>
+            <td><strong>No overlap</strong> between vector habitats and human populations</td>
+            <td>Low / Minimal risk of transmission</td>
+          </tr>
+          <tr>
+            <td><strong>Epidemic Environment</strong></td>
+            <td><strong>Active spatial & temporal overlap</strong> between vectors and humans</td>
+            <td>High risk; promotes outbreaks and transmission</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/4KfgskCQhJjofNqjKcVbk2vmyDTxfCPAhWOIi1DegqOF74otgf92Hcachuksi6tb-lpbg-RJ9qTxmdfVbSJWC_fHklOZMWRJIQISugfx2v0YmFVlzdSJLJFCC0KpQ1V9kcQdCHhdAA614S7ZBbnAk2LXNe5NPyqGh-lpE7-t3dF_pydJWrllXTM2ZGwQlFSa?purpose=fullsize" alt="Protection and Non-epidemic">
+      <div class="img-caption">Barrier protection preventing human-vector contact</div>
+    </div>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/en3iZuxLOxtcftTuwQ2xuKpXAJcsYEAoy4P_hMz6U7Pa-2y05CuGCzB4Yz-fOkBGiOE3CgnI13tH_WDWVBsCnF3GtFdvElsYl40w_ZXQeu4zo2Spf8g6UHFAGz8jXWKVpG3PiZgW4Ou7JZHAY2UMuK3hTbAabAD3dN1fu0VTVMAT2OJexMrtSq4_LlhG70W1?purpose=fullsize" alt="Epidemic Vector Season">
+      <div class="img-caption">Vector proliferation creating human-vector overlap and epidemic risk</div>
+    </div>
+
+    <h3>Measuring Seasonal Epidemics:</h3>
+    <p>Seasonal epidemics can be assessed by tracking changes in human-vector overlap across two dimensions:</p>
+    <ul>
+      <li><strong>Time:</strong> <em>When</em> the overlap occurs (e.g., peak rainy season months).</li>
+      <li><strong>Space:</strong> <em>Where</em> the overlap occurs (e.g., lowlands near standing water pools).</li>
+    </ul>
+    <p><em>Example:</em> During rainy seasons, mosquito breeding sites proliferate. If people are in close contact with infected mosquitoes, malaria transmission surges.</p>
+  </div>
+
+  <!-- 5. The agent–host–environment model -->
+  <div class="card">
+    <h2>5. The Agent–Host–Environment Model (Epidemiological Triangle)</h2>
+    <p>Disease results from the continuous, complex interaction of three fundamental elements:</p>
+
+    <h3>A. Agent (The "What")</h3>
+    <p>The factor that is necessary to cause disease.</p>
+    <ul>
+      <li><strong>Biological:</strong> Bacteria, viruses, parasites, fungi.</li>
+      <li><strong>Chemical:</strong> Toxic pollutants, poisons, heavy metals.</li>
+      <li><strong>Physical:</strong> Excessive heat, radiation, mechanical trauma.</li>
+    </ul>
+
+    <h3>B. Host (The "Who")</h3>
+    <p>The person or organism capable of acquiring or developing the disease. Host factors include:</p>
+    <ul>
+      <li>Age and sex</li>
+      <li>Genetic characteristics</li>
+      <li>Nutritional status</li>
+      <li>Immunological competence</li>
+      <li>Pre-existing health conditions</li>
+      <li>Personal habits and behaviors</li>
+    </ul>
+
+    <h3>C. Environment (The "Where")</h3>
+    <p>External physical, biological, and socioeconomic conditions influencing both agent and host:</p>
+    <ul>
+      <li>Temperature, humidity, and rainfall</li>
+      <li>Housing quality and sanitation facilities</li>
+      <li>Safe water availability</li>
+      <li>Population density and crowding</li>
+      <li>Socioeconomic status and health services</li>
+    </ul>
+
+    <h3>Applying the Triangle: Malaria</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Triangle Element</th><th>Specific Factor in Malaria</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Agent</strong></td><td><em>Plasmodium</em> parasite</td></tr>
+          <tr><td><strong>Host</strong></td><td>Human (immunity, age, bednet usage)</td></tr>
+          <tr><td><strong>Environment</strong></td><td>Rainfall, temperature supporting <em>Anopheles</em> mosquitoes & breeding sites</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert-box">
+      ⚖️ <strong>How Does Imbalance Cause Disease?</strong><br>
+      The agent and host are in a constant struggle for survival. When the environment maintains equilibrium between them, disease is contained. But when an environmental disturbance shifts the balance in favor of the agent (or weakens the host), disease outbreaks occur.
+    </div>
+  </div>
+
+  <!-- 6. Disease as maladjustment to the environment -->
+  <div class="card">
+    <h2>6. Disease as Maladjustment to the Environment</h2>
+    <p>The PDF gives an overarching ecological definition:</p>
+    <div class="analogy-box">
+      📖 <strong>Key Concept:</strong> Disease is <strong>"maladjustment of the humans to the environment"</strong>.
+    </div>
+    <p>In simple language, illness emerges when the harmonious relationship between a person and their surrounding environment is disrupted.</p>
+    <p><em>Example:</em> Poor community sanitation contaminates drinking water with human feces. A person drinks the water and develops severe diarrhea:</p>
+    <ul>
+      <li><strong>Agent:</strong> Enteric pathogen (e.g., <em>Vibrio cholerae</em>, <em>E. coli</em>).</li>
+      <li><strong>Host:</strong> Susceptible person consuming the water.</li>
+      <li><strong>Environment:</strong> Unsafe water source, absent latrines, poor hygiene.</li>
+    </ul>
+    <p><em>This demonstrates why environmental health measures (sanitation and clean water) are fundamental to disease prevention.</em></p>
+  </div>
+
+  <!-- 7. Disease distribution and natural history of disease -->
+  <div class="card">
+    <h2>7. Disease Distribution & Natural History of Disease</h2>
+
+    <h3>Disease Distribution</h3>
+    <p>Defined as the pattern and frequency of health events across a population, analyzed according to three core epidemiological dimensions:</p>
+    <ul>
+      <li><strong>Time (When?):</strong> In which month, season, or year does the disease peak?</li>
+      <li><strong>Place (Where?):</strong> In which village, town, geographic region, or topography?</li>
+      <li><strong>Person (Who?):</strong> Which age bracket, sex, occupation, or socioeconomic group?</li>
+    </ul>
+
+    <div class="analogy-box">
+      🧠 <strong>Memory Trick: T–P–P</strong> = <strong>T</strong>ime, <strong>P</strong>lace, <strong>P</strong>erson.<br><br>
+      <em>Application:</em> If malaria cases spike during the rainy season in a specific district, especially among children under five:
+      <ul>
+        <li><strong>Time:</strong> Rainy season</li>
+        <li><strong>Place:</strong> That specific district</li>
+        <li><strong>Person:</strong> Children under 5 years of age</li>
+      </ul>
+    </div>
+
+    <h3>Natural History of Disease</h3>
+    <p>Your PDF also equates disease ecology with understanding the <strong>natural history of disease</strong>. It enables epidemiologists and public health leaders to:</p>
+    <ul>
+      <li><strong>Predict when</strong> a disease outbreak is likely to happen.</li>
+      <li><strong>Predict where</strong> it will manifest spatially.</li>
+      <li><strong>Design targeted interventions</strong> before transmission accelerates.</li>
+    </ul>
+    <p><em>Example:</em> Knowing that malaria increases during specific post-rainy months in a district allows public health teams to pre-position rapid diagnostic tests, artemisinin combination therapy (ACT), and insecticide-treated bed nets (ITNs) well in advance.</p>
+  </div>
+
+  <!-- 8. Quick revision table -->
+  <div class="card">
+    <h2>8. Quick Revision Table</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Concept</th><th>Main Takeaway</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Spontaneous generation</strong></td><td>Obsolete theory that life/disease arises from non-living matter</td></tr>
+          <tr><td><strong>Germ theory</strong></td><td>Specific pathogenic microorganisms produce specific infectious diseases</td></tr>
+          <tr><td><strong>Disease ecology</strong></td><td>Interactions between humans, society, pathogens, and physical/biological environments</td></tr>
+          <tr><td><strong>Dynamic equilibrium</strong></td><td>A fluid, changing balance between hosts, agents, and environmental conditions</td></tr>
+          <tr><td><strong>Maladaptation</strong></td><td>Environmental disturbances that increase vulnerability and disease spread</td></tr>
+          <tr><td><strong>Epidemiological triangle</strong></td><td>Agent + Host + Environment dynamic model</td></tr>
+          <tr><td><strong>Disease distribution</strong></td><td>Time + Place + Person (T-P-P)</td></tr>
+          <tr><td><strong>Natural history of disease</strong></td><td>Predicts occurrence patterns and guides preventive public health measures</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 9. Interactive Practice Quiz -->
+  <div class="quiz-container">
+    <div class="quiz-header">📝 Self-Assessment Quiz (Click to Check)</div>
+    <div id="quiz-mount"></div>
+  </div>
+
+</div>
+
+<script>
+  const quizData = [
+    {
+      q: "Question 1. A community believes that maggots develop directly and spontaneously from decaying meat without coming from insect eggs. Which historical concept does this illustrate?",
+      options: [
+        "A. Germ theory of disease",
+        "B. Spontaneous generation theory",
+        "C. Disease ecology model",
+        "D. Natural history of disease"
+      ],
+      correct: 1,
+      exp: "Correct! Spontaneous generation is the historical belief that living organisms and diseases arise directly from non-living matter."
+    },
+    {
+      q: "Question 2. Following the construction of an artificial dam and irrigation canal, schistosomiasis infections surge in the local population. This ecological disturbance is an example of:",
+      options: [
+        "A. Dynamic equilibrium",
+        "B. Maladaptation",
+        "C. Germ theory",
+        "D. Disease eradication"
+      ],
+      correct: 1,
+      exp: "Correct! Maladaptation refers to an environmental disturbance or alteration that creates new ecological opportunities for disease transmission."
+    },
+    {
+      q: "Question 3. In the classical epidemiological triangle, an individual's nutritional status, age, and immunological competence are categorized under:",
+      options: [
+        "A. Agent",
+        "B. Environment",
+        "C. Host",
+        "D. Vector"
+      ],
+      correct: 2,
+      exp: "Correct! Host factors encompass intrinsic human characteristics including age, genetic traits, nutritional state, and immune defenses."
+    },
+    {
+      q: "Question 4. A public health officer notes that malaria surges every rainy season in a lowland district, predominantly sickening children under five. Which epidemiological dimensions are identified?",
+      options: [
+        "A. Agent, host, and vector",
+        "B. Time, place, and person",
+        "C. Incidence, prevalence, and mortality",
+        "D. Water, air, and soil"
+      ],
+      correct: 1,
+      exp: "Correct! Rainy season (Time), lowland district (Place), and children under five (Person) represent the three core dimensions of disease distribution (T-P-P)."
+    },
+    {
+      q: "Question 5. An epidemiologist analyzes ecological parameters to forecast seasonal malaria transmission windows and deploy bed nets in advance. This approach utilizes:",
+      options: [
+        "A. Spontaneous generation",
+        "B. Natural history of disease",
+        "C. Economic determinism",
+        "D. Lithospheric weathering"
+      ],
+      correct: 1,
+      exp: "Correct! Understanding the natural history and ecology of a disease allows public health workers to predict outbreaks and implement preventive controls ahead of time."
+    }
+  ];
+
+  const quizMount = document.getElementById('quiz-mount');
+
+  quizData.forEach((item, qIdx) => {
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block';
+
+    const title = document.createElement('div');
+    title.className = 'question-title';
+    title.innerText = item.q;
+    qBlock.appendChild(title);
+
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+
+    item.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = optText;
+
+      btn.addEventListener('click', () => {
+        const allBtns = qBlock.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+
+        if (optIdx === item.correct) {
+          btn.classList.add('correct');
+          feedback.className = 'feedback show correct-text';
+          feedback.innerHTML = "✅ " + item.exp;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+          feedback.className = 'feedback show wrong-text';
+          feedback.innerHTML = "❌ ትክክለኛው መልስ፦ " + item.options[item.correct] + "<br>" + item.exp;
+        }
+      });
+
+      qBlock.appendChild(btn);
+    });
+
+    qBlock.appendChild(feedback);
+    quizMount.appendChild(qBlock);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 5: Housing and Institutional Health</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin: 16px 0 8px 0;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin: 10px 0 4px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Images */
+    .img-box {
+      margin: 14px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: #f1f5f9;
+      text-align: center;
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 12px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Callout Boxes */
+    .alert-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    .analogy-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Interactive Quiz */
+    .quiz-container {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 24px;
+    }
+    .quiz-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .question-block {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: var(--primary);
+    }
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: bold;
+    }
+    .option-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+    .feedback {
+      display: none;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .feedback.show {
+      display: block;
+    }
+    .feedback.correct-text {
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .feedback.wrong-text {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>🏠 TOPIC 5: Housing and Institutional Health</h1>
+    <p>Housing Standards, Basic Needs, Disease & Accident Prevention, and Institutional Hygiene</p>
+  </header>
+
+  <!-- Intro Card -->
+  <div class="card">
+    <div class="analogy-box">
+      💡 <strong>Core Principle:</strong> A house is not healthy simply because it has a roof and walls. It must provide safe surroundings, sufficient living space, clean indoor air, potable water, sanitary waste disposal, and protection from physical hazards.
+    </div>
+    <p>This topic explores how the spaces where people live, study, work, and receive medical care can either protect health or expose inhabitants to disease and injury.</p>
+  </div>
+
+  <!-- 1. Meaning of housing -->
+  <div class="card">
+    <h2>1. Meaning of Housing</h2>
+    <p>According to the <strong>WHO Expert Committee</strong> definition quoted in your lecture, housing encompasses three integrated elements:</p>
+    <ul>
+      <li>The physical residential structure used as shelter.</li>
+      <li>The environment and land surrounding that structure.</li>
+      <li>All necessary community services, facilities, equipment, and devices that support physical, mental, and social wellbeing.</li>
+    </ul>
+    <p><em>Examples of residential structures:</em> Caves, simple sheds, traditional huts or tukuls, tents, caravans, mobile vans, and modern residential buildings.</p>
+
+    <div class="alert-box">
+      📌 <strong>Important Exam Point:</strong> Housing is far more than just the building itself—it incorporates the <strong>surrounding residential environment</strong> and <strong>essential municipal services</strong>.
+    </div>
+  </div>
+
+  <!-- 2. Types of housing: important definitions -->
+  <div class="card">
+    <h2>2. Types of Housing: Key Classifications</h2>
+    <p>Your PDF distinguishes between four critical concepts:</p>
+
+    <h3>A. Standard Housing</h3>
+    <p>A properly planned and constructed dwelling that is comfortable, secure, and preserves the physical, mental, and social wellbeing of its inhabitants.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/4yysZZUHVYUPq3HStCbwEq_My_Tc3HTyazYDesfvfn1J-ZdRSzX8pS7yKRFA9rF1tlb1hmPwG5H4bcval8fJ6rGwTpwGoA5que52dDVgnh3yk1lfnnTXWQqR_4vFUL41oiAETGrJZUE-1KOi3inY5d1gt3qccFOO4OgPgHYz0fi1LcVSae8KdFegnWhYwNTs?purpose=fullsize" alt="Standard Housing">
+      <div class="img-caption">Standard housing: Planned, safe, and fully serviced</div>
+    </div>
+
+    <h3>B. Substandard Housing</h3>
+    <p>A house that is poorly sited, planned, constructed, or maintained, and fundamentally lacks most basic sanitary principles of healthy housing.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/-yC1iCGLx8TeRYDC9wTDoDOilqE9G70BdTAIcrxkQVwRFk3KzlSImZ620oaaarCyAmmknTzh5iFqQrsrSJRr1sAtlRK7SiXWE891EbDF7cWhzmyQ5rQE_9SsP2eVUGfPGaR6SkxfMxQc3Uc08O71rrx1hgtYeOkgeB_LhOKiQHqnD05A80KlMJkjFLvTcZ-m?purpose=fullsize" alt="Substandard Housing">
+      <div class="img-caption">Substandard housing: Structural deficiencies and lack of services</div>
+    </div>
+
+    <h3>C. Slum</h3>
+    <p>An entire residential neighborhood or urban sector dominated by substandard housing and frequently accompanied by severe overcrowding.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/sy359FnW7aDmG_eLqqMLuoAvC8JEeVDd6bC2VT6lWl86bPEfkUV3zq5HWLQAMTmO4IZhFSrRQ5eCJl91HuELQlwWFogvRaK06_YZLAxDBfWObMG4g3WTmb3QoWXPLkxi5cz7XW9x9ylvmwsaDnGuI4HhyCUPbEFtg1cUEWqlpQrpScKhdlFscgqrSSkqhBas?purpose=fullsize" alt="Slum Area">
+      <div class="img-caption">Slum: Area-wide concentration of substandard, overcrowded housing</div>
+    </div>
+
+    <h3>D. Blighted Area</h3>
+    <p>A tract of land that is fundamentally undesirable or unsuited for residential, agricultural, commercial, industrial, or recreational purposes (e.g., marshlands, steep rocky terrain, flood plains).</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/x74MS0EVQvdkcCkaxD_0jg__IbN64Fq_rdUY0Y7b6PDf6TvHKilqAgu-jJrJ75hypcYFQyT4auJqlA-cZkjHDEQw3TLFLa-HMAbV_wJRr-ZF5AZ6hsZ_1LutlG6tzaPS5SPTSPRAuKirv_sUc7F5KgoBPVfEdrSeRbVMfBrCDw4-fuRVwYwojORnWdbxkrlE?purpose=fullsize" alt="Blighted Area">
+      <div class="img-caption">Blighted area: Inhospitable, rocky, or marshy terrain unsuitable for settlement</div>
+    </div>
+
+    <div class="alert-box">
+      ⚠️ <strong>Don't Confuse These Terms:</strong><br>
+      • <strong>Substandard housing:</strong> Refers to an individual deficient physical structure.<br>
+      • <strong>Slum:</strong> Refers to an entire community or geographical area dominated by substandard dwellings and overcrowding.<br>
+      • <strong>Blighted area:</strong> Refers to land intrinsically unsuited for development.<br>
+      <em>A single substandard house does not automatically classify the entire neighborhood as a slum!</em>
+    </div>
+  </div>
+
+  <!-- 3. Public health importance of housing -->
+  <div class="card">
+    <h2>3. Public Health Importance of Housing (5 WHO Principles)</h2>
+    <p>Your PDF presents five foundational WHO principles connecting housing design to human health:</p>
+    <ol>
+      <li>Satisfaction of fundamental physiological needs.</li>
+      <li>Satisfaction of fundamental psychological needs.</li>
+      <li>Protection against communicable and noncommunicable diseases.</li>
+      <li>Protection against accidents and physical injuries.</li>
+      <li>Protection against excessive noise pollution.</li>
+    </ol>
+  </div>
+
+  <!-- 4. Satisfaction of physiological needs -->
+  <div class="card">
+    <h2>4. Satisfaction of Physiological Needs</h2>
+    <p>Physiological needs represent basic bodily requirements for normal metabolic and biological functioning.</p>
+
+    <h3>A. Proper Thermal Environment</h3>
+    <p>The dwelling must maintain comfortable thermal homeostasis to avoid excessive heat gain or loss.</p>
+    <ul>
+      <li><strong>Standard operative temperature:</strong> A minimum indoor temperature of <strong>65°F (18.5°C)</strong> should be maintained in regularly occupied rooms for clothed, healthy adults at rest.</li>
+      <li><strong>Vulnerable groups:</strong> A minimum of <strong>70°F (21.3°C)</strong> measured at knee height is recommended for rooms occupied by young children and elderly individuals.</li>
+      <li><strong>Hypothermia:</strong> Occurs when core body temperature drops below <strong>95°F (35°C)</strong>.</li>
+    </ul>
+
+    <h3>B. Adequate Ventilation</h3>
+    <p>Facilitates continuous air exchange, diluting indoor moisture, odors, and respiratory aerosols while promoting thermoregulation.</p>
+    <ul>
+      <li><strong>Natural ventilation:</strong> Air exchange via operable doors and windows. The PDF guideline specifies that openable window area should equal <strong>10–20% of floor area</strong>.</li>
+      <li><strong>Artificial ventilation:</strong> Mechanical systems (fans, air conditioning).</li>
+      <li><strong>Hyperthermia:</strong> Occurs when body core temperature rises above <strong>104°F (40.32°C)</strong>, manifesting as heat exhaustion or fatal <strong>heat stroke</strong> (which requires emergency medical cooling).</li>
+    </ul>
+
+    <h3>C. Reasonable Chemical Purity of Indoor Air</h3>
+    <p>Indoor atmospheres must be free from toxic combustion products (e.g., carbon monoxide, particulate soot from biomass stoves, tobacco smoke).</p>
+
+    <h3>D. Adequate Illumination</h3>
+    <p>Natural and artificial illumination should allow visual performance without eye strain or excessive glare. PDF standards:</p>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Location / Activity</th><th>Minimum Illumination Standard</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Minimum natural illumination</td><td><strong>6 foot-candles</strong></td></tr>
+          <tr><td>General habitable rooms</td><td><strong>6 foot-candles</strong></td></tr>
+          <tr><td>Reading or close indoor work</td><td><strong>At least 10 foot-candles</strong></td></tr>
+          <tr><td>Stairs, hallways, and passageways</td><td><strong>At least 1 foot-candle</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><em>Window area guideline: Window glass area should exceed 15% of floor area when interior walls and ceilings are finished with light-colored paint.</em></p>
+
+    <h3>E. Direct Sunlight</h3>
+    <p>Promotes endogenous <strong>vitamin D synthesis</strong> in skin and exerts a natural bactericidal/antimicrobial cleansing effect on indoor surfaces.</p>
+
+    <h3>F. Exercise and Playground Space</h3>
+    <p>Urban planning guidelines quoted in the PDF specify <strong>3–5 acres of open park and playground space per 1,000 residents</strong>.</p>
+  </div>
+
+  <!-- 5. Satisfaction of psychological needs -->
+  <div class="card">
+    <h2>5. Satisfaction of Psychological Needs</h2>
+    <p>A healthy house supports emotional, cognitive, and social wellbeing. Your PDF highlights seven specific psychological requirements:</p>
+    <ul>
+      <li><strong>Privacy:</strong> Essential space for personal solitude, dressing, and contemplation.</li>
+      <li><strong>Normal Family Life:</strong> Adequate space fostering healthy familial bonds and care.</li>
+      <li><strong>Normal Community Life:</strong> Integration with neighborhood social networks.</li>
+      <li><strong>Work Performance:</strong> Conditions allowing study or domestic tasks without chronic fatigue.</li>
+      <li><strong>Cleanliness:</strong> Facilities enabling effortless personal, laundry, and kitchen hygiene.</li>
+      <li><strong>Aesthetic Satisfaction:</strong> Visually pleasing, orderly home design and landscape.</li>
+      <li><strong>Concordance with Social Standards:</strong> Dwelling standards in harmony with prevailing local cultural norms.</li>
+    </ul>
+
+    <h3>Overcrowding: English Legislative Standard (Quoted in PDF)</h3>
+    <p>Overcrowding leads to loss of privacy, chronic sleep deprivation, and accelerated airborne disease transmission.</p>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Number of Habitable Rooms</th><th>Maximum Permitted Occupants</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2 Rooms</td><td>3 Persons</td></tr>
+          <tr><td>3 Rooms</td><td>5 Persons</td></tr>
+          <tr><td>4 Rooms</td><td>7 Persons</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert-box">
+      📌 <strong>Occupancy Counting Rules (PDF):</strong><br>
+      • Maximum of <strong>2 persons per sleeping room</strong>.<br>
+      • Infants under 1 year of age are <strong>not counted</strong>.<br>
+      • Children aged 1 to 10 years count as <strong>half a person (0.5)</strong>.
+    </div>
+  </div>
+
+  <!-- 6. Protection against communicable diseases -->
+  <div class="card">
+    <h2>6. Protection Against Communicable Diseases</h2>
+    <p>Proper housing acts as a protective barrier against infectious diseases related to water, sanitation, vectors, and indoor air.</p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Clinical Category</th><th>Associated Pathologies Mentioned in PDF</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Diarrheal Diseases</strong></td>
+            <td>Acute watery diarrhea, dysentery, shigellosis, typhoid fever</td>
+          </tr>
+          <tr>
+            <td><strong>Respiratory Infections</strong></td>
+            <td>Tuberculosis, measles, acute droplet respiratory infections</td>
+          </tr>
+          <tr>
+            <td><strong>Chronic Lung Conditions</strong></td>
+            <td>Acute bronchitis, chronic obstructive respiratory illnesses</td>
+          </tr>
+          <tr>
+            <td><strong>Ocular Pathologies</strong></td>
+            <td>Trachoma, acute conjunctival irritation and infections</td>
+          </tr>
+          <tr>
+            <td><strong>Dermatological Infections</strong></td>
+            <td>Scabies, ringworm (fungal tinea infections)</td>
+          </tr>
+          <tr>
+            <td><strong>Vector-borne Infections</strong></td>
+            <td>Louse-borne relapsing fever, malaria, typhus</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="analogy-box">
+      🦟 <strong>Applied Fly-Food Chain:</strong> Absence of a sanitary latrine + open uncollected garbage attracts houseflies. Flies mechanical-vector enteric pathogens onto uncovered food, triggering outbreaks of bacterial dysentery and typhoid fever within the household.
+    </div>
+  </div>
+
+  <!-- 7. Protection against accidents and injuries -->
+  <div class="card">
+    <h2>7. Protection Against Accidents and Injuries</h2>
+    <p>Defective architectural design, poor lighting, and deferred maintenance contribute directly to domestic trauma.</p>
+
+    <h3>Common Domestic Accidents:</h3>
+    <ul>
+      <li>Falls (stairs lacking handrails, slick untextured flooring).</li>
+      <li>Fires and burns (open hearth cooking, uninsulated electrical wires).</li>
+      <li>Accidental poisoning (storage of kerosene, pesticides, or medications within reach of children).</li>
+      <li>Structural collapse, electrocution, gas asphyxiation, and mechanical cuts.</li>
+    </ul>
+
+    <h3>High-Risk Demographics:</h3>
+    <ul>
+      <li>Infants and young toddlers</li>
+      <li>Elderly individuals (osteoporosis, impaired balance)</li>
+      <li>Residents of temporary/transitional shelters</li>
+      <li>Inhabitants of multiple-occupancy houses</li>
+    </ul>
+  </div>
+
+  <!-- 8. Protection against excessive noise -->
+  <div class="card">
+    <h2>8. Protection Against Excessive Noise</h2>
+    <p>Noise is defined as unwanted, uncomfortable, or damaging sound. It is significantly more severe in dense urban environments.</p>
+
+    <h3>Health Impacts of Chronic Noise Exposure:</h3>
+    <ul>
+      <li>Severe disruption of sleep cycles, chronic fatigue, and reduced worker productivity.</li>
+      <li>Permanent sensorineural hearing loss (exposures <strong>&gt;85 dB</strong>).</li>
+      <li>Cardiovascular strain (hypertension, elevated resting heart rate).</li>
+      <li>Digestive neuroses, irritability, chronic psychological stress, and developmental delays in infants.</li>
+    </ul>
+
+    <h3>Comparative Sound Intensity Decibel (dB) Scale:</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Sound Source</th><th>Intensity (dB)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Just audible sound threshold</td><td>0 dB</td></tr>
+          <tr><td>Low whisper</td><td>20 dB</td></tr>
+          <tr><td>Average quiet residence</td><td>35 dB</td></tr>
+          <tr><td>Ordinary conversation</td><td>40–60 dB</td></tr>
+          <tr><td>Noisy commercial street</td><td>70 dB</td></tr>
+          <tr><td>Heavy street traffic / loud radio</td><td>80 dB</td></tr>
+          <tr><td>Motorcycle exhaust</td><td>90 dB</td></tr>
+          <tr><td>Loud automobile horn</td><td>100 dB</td></tr>
+          <tr><td>Airplane propeller</td><td>120 dB</td></tr>
+          <tr><td>Threshold of physical pain</td><td>130 dB</td></tr>
+          <tr><td>Jet aircraft engine takeoff</td><td>140 dB</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Ethiopian Standards for Permissible Noise Levels:</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Zoning Classification</th><th>Permissible Noise Ceiling</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Residential / Dwelling Areas</strong></td><td><strong>55 dB</strong></td></tr>
+          <tr><td><strong>Commercial / Business Areas</strong></td><td><strong>65 dB</strong></td></tr>
+          <tr><td><strong>Industrial Areas</strong></td><td><strong>75 dB</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 9. Institutional health -->
+  <div class="card">
+    <h2>9. Institutional Health</h2>
+    <p>An <strong>institution</strong> is an organized establishment founded for educational, social, medical, religious, or political purposes (e.g., schools, universities, hospitals, orphanages, prisons, military barracks).</p>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/oSNlX9VjZwlRinWGQLESrW6WvYfQ7B2hD2NCeDxlv02Bq9LnA5nTIoshXoubo7rg1HI3o-ZESW0bDCCKjdgzj-utm5GBcY_QSAUKx-wBYBvutTUeopCpZiLl_j6Y_mBnoirZCDOPj9FbUTr6HP9dwk5IieDZSe9SJp93-gju5UQq6TplJhaMxUcs0lp-qhxJ?purpose=fullsize" alt="Healthy College Campus">
+      <div class="img-caption">Healthy institution: Planned layout, green space, accessibility, and sanitation</div>
+    </div>
+
+    <h3>Fundamental Criteria of a Healthy Institution:</h3>
+    <ul>
+      <li><strong>Site Selection:</strong> Stable, dry subsoil free from seasonal flooding.</li>
+      <li><strong>Community Accessibility:</strong> Located within practical reach of the target population.</li>
+      <li><strong>Isolation from Environmental Hazards:</strong> Safe setback from heavy traffic, industrial air emissions, and acoustic noise.</li>
+      <li><strong>WASH Infrastructure:</strong> Ample potable water supplies, segregated sanitary flush toilets, and handwashing basins.</li>
+      <li><strong>Vector & Rodent Control:</strong> Proofed building design preventing entry of vermin and insects.</li>
+      <li><strong>Circulation & Fire Safety:</strong> Emergency egress routes, fire extinguishers, and clear perimeter access roads.</li>
+    </ul>
+
+    <div class="alert-box">
+      🏥 <strong>Clinical Hospital Scenario:</strong> A healthcare facility with deficient water supplies and improper medical waste segregation directly exposes patients, staff, and visitors to multidrug-resistant nosocomial (hospital-acquired) infections.
+    </div>
+  </div>
+
+  <!-- 10. Quick revision table -->
+  <div class="card">
+    <h2>10. Quick Revision Key</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Concept</th><th>High-Yield Takeaway</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Housing Definition</strong></td><td>Physical shelter + surrounding residential environment + municipal services</td></tr>
+          <tr><td><strong>Standard vs. Substandard</strong></td><td>Planned and comfortable vs. structurally defective and unhygienic</td></tr>
+          <tr><td><strong>Slum</strong></td><td>Area-wide concentration of substandard housing characterized by overcrowding</td></tr>
+          <tr><td><strong>Blighted Area</strong></td><td>Land unsuited for human use (marshy, mountainous, rocky)</td></tr>
+          <tr><td><strong>Thermal Homeostasis</strong></td><td>65°F (18.5°C) general; 70°F (21.3°C) for elderly/children; Hypothermia &lt;95°F</td></tr>
+          <tr><td><strong>Natural Ventilation</strong></td><td>Operable window area equal to 10–20% of floor space</td></tr>
+          <tr><td><strong>Adequate Lighting</strong></td><td>6 foot-candles general rooms; 10 foot-candles reading; 1 foot-candle stairs</td></tr>
+          <tr><td><strong>Psychological Needs</strong></td><td>Privacy, family/community life, cleanliness, aesthetic satisfaction</td></tr>
+          <tr><td><strong>Accident Prevention</strong></td><td>Handrails, safe electrical wiring, secured poison storage</td></tr>
+          <tr><td><strong>Noise Exposure Limit</strong></td><td>Hearing loss risk above 85 dB; Ethiopian residential standard is 55 dB</td></tr>
+          <tr><td><strong>Institutional Health</strong></td><td>Sanitary site selection, accessibility, hazard buffer, WASH, and fire safety</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 11. Interactive Quiz -->
+  <div class="quiz-container">
+    <div class="quiz-header">📝 Self-Assessment Quiz (Click to Check)</div>
+    <div id="quiz-mount"></div>
+  </div>
+
+</div>
+
+<script>
+  const quizData = [
+    {
+      q: "Question 1. A community neighborhood is characterized by poorly planned, dilapidated residential dwellings and severe overcrowding. Which term best designates this area?",
+      options: [
+        "A. Standard housing estate",
+        "B. Blighted area",
+        "C. Slum",
+        "D. Institutional compound"
+      ],
+      correct: 2,
+      exp: "Correct! A slum is an entire area or district dominated by substandard, deficient housing accompanied by high population density and overcrowding."
+    },
+    {
+      q: "Question 2. A home has adequate floor space but lacks openable windows, causing indoor air to become excessively hot, humid, and stagnant. Which physiological need is failing?",
+      options: [
+        "A. Psychological privacy",
+        "B. Proper thermal environment and ventilation",
+        "C. Aesthetic architectural satisfaction",
+        "D. Normal community life"
+      ],
+      correct: 1,
+      exp: "Correct! Thermal comfort and ventilation are physiological requirements regulating heat loss, fresh air supply, and body temperature."
+    },
+    {
+      q: "Question 3. Which of the following conditions represents a fundamental psychological need of healthy housing according to WHO principles?",
+      options: [
+        "A. Natural illumination of at least 6 foot-candles",
+        "B. Provision of grounded electrical sockets",
+        "C. Privacy for personal and individual activities",
+        "D. Openable window area of 10–20% of floor area"
+      ],
+      correct: 2,
+      exp: "Correct! Privacy is one of the seven fundamental psychological requirements supporting emotional health and personal dignity."
+    },
+    {
+      q: "Question 4. A household resides in a poorly maintained structure with an unprotected open well, open pit latrines, and abundant fly infestations. Which outcome is most likely?",
+      options: [
+        "A. Increased incidence of diarrheal diseases (shigellosis, typhoid)",
+        "B. Improved respiratory airflow dynamics",
+        "C. Reduced susceptibility to viral infections",
+        "D. Decreased domestic accident risk"
+      ],
+      correct: 0,
+      exp: "Correct! Lack of clean water, unsanitary waste disposal, and vectors (flies) directly lead to the transmission of fecal-oral diarrheal diseases."
+    },
+    {
+      q: "Question 5. According to institutional health criteria, which features best characterize a healthy educational or medical institution?",
+      options: [
+        "A. Sited on flood-prone marshes, distant from roads, and lacking tap water",
+        "B. Suitable subsoil site, accessible to community, complete WASH infrastructure, and pest control",
+        "C. Located adjacent to high-decibel industrial machinery with unventilated rooms",
+        "D. Deficient emergency fire exits and unsegregated medical waste pits"
+      ],
+      correct: 1,
+      exp: "Correct! A healthy institution requires a suitable geological site, community accessibility, proper WASH services, and vector control."
+    }
+  ];
+
+  const quizMount = document.getElementById('quiz-mount');
+
+  quizData.forEach((item, qIdx) => {
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block';
+
+    const title = document.createElement('div');
+    title.className = 'question-title';
+    title.innerText = item.q;
+    qBlock.appendChild(title);
+
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+
+    item.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = optText;
+
+      btn.addEventListener('click', () => {
+        const allBtns = qBlock.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+
+        if (optIdx === item.correct) {
+          btn.classList.add('correct');
+          feedback.className = 'feedback show correct-text';
+          feedback.innerHTML = "✅ " + item.exp;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+          feedback.className = 'feedback show wrong-text';
+          feedback.innerHTML = "❌ ትክክለኛው መልስ፦ " + item.options[item.correct] + "<br>" + item.exp;
+        }
+      });
+
+      qBlock.appendChild(btn);
+    });
+
+    qBlock.appendChild(feedback);
+    quizMount.appendChild(qBlock);
+  });
+</script>
+
+</body>
+</html>

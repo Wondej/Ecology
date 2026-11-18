@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 2: Human Ecology and Human–Environment Interaction</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --error: #dc2626;
+      --accent: #f0fdfa;
+      --border: #e2e8f0;
+      --badge-bg: #ccfbf1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 12px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d9488, #115e59);
+      color: white;
+      padding: 24px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #0f172a;
+      margin: 16px 0 8px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Images */
+    .img-box {
+      margin: 14px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      background: #f1f5f9;
+      text-align: center;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 12px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Callout Boxes */
+    .alert-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    .analogy-box {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Interactive Quiz */
+    .quiz-container {
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 24px;
+    }
+    .quiz-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+    .question-block {
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .question-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 11px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: var(--primary);
+    }
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: bold;
+    }
+    .option-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d;
+    }
+    .feedback {
+      display: none;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .feedback.show {
+      display: block;
+    }
+    .feedback.correct-text {
+      background: #f0fdf4;
+      color: #166534;
+    }
+    .feedback.wrong-text {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>🌍 TOPIC 2: Human Ecology & Human–Environment Interaction</h1>
+    <p>Core Components, Ecological Triangle, and Environmental Approaches</p>
+  </header>
+
+  <!-- Introduction Card -->
+  <div class="card">
+    <p>In Topic 1, we learned that ecology studies the relationship between living organisms and their environment. Now we will focus on one special relationship:</p>
+    <div class="analogy-box">
+      <strong>Core Question:</strong> How do humans affect their environment, and how does the environment affect human life and health?
+    </div>
+    <p>This topic is important in public health because many diseases and health problems are connected to the way people live, behave and interact with their surroundings.</p>
+  </div>
+
+  <!-- 1. What is human ecology? -->
+  <div class="card">
+    <h2>1. What is Human Ecology?</h2>
+    <p>According to your lecture, <strong>human ecology</strong> focuses on the relationship between humans and the natural, social and built environment.</p>
+
+    <div class="analogy-box">
+      🏙️ <strong>Let's make it simple — Imagine a student living in Jimma:</strong>
+      <ul>
+        <li><strong>Natural environment:</strong> rainfall, temperature, rivers, soil and vegetation.</li>
+        <li><strong>Social environment:</strong> family, friends, culture, beliefs and community relationships.</li>
+        <li><strong>Built environment:</strong> houses, roads, schools, hospitals and markets.</li>
+      </ul>
+      <p>All these things interact with the student's life and health.</p>
+      <p><em>For example:</em> Poor housing may expose someone to cold, dampness and overcrowding. These conditions can increase health risks.</p>
+    </div>
+
+    <div class="alert-box">
+      📌 <strong>Remember:</strong> Human ecology is not just about humans living in nature. It is about the <strong>two-way relationship</strong> between humans and their surroundings.
+    </div>
+  </div>
+
+  <!-- 2. Core components of human ecology -->
+  <div class="card">
+    <h2>2. Core Components of Human Ecology</h2>
+    <p>Your lecture identifies four core components:</p>
+
+    <h3>1. Human Population Dynamics</h3>
+    <p>Characteristics of the human population, such as age, gender and genetics.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/Ejv6rp_iyldFR-MSOhJqW5xMYeKdBkQm5VFjr3oKKX44hlObkRhmmkyjHBEgBjIOKNhbLPd039q85_mU76FXViJsikj61uzNolgJzTFPPqUtLQbu-Yzs6KkZBrEqg2dE18QTTnx5cetq2usps_4HbV9VrZ44bA-K8juxuwLMIlxtxBO0eVp2XLvLByqepAhN?purpose=fullsize" alt="Human population dynamics">
+      <div class="img-caption">Human population: Demographics, age, gender, and genetics</div>
+    </div>
+
+    <h3>2. Human Adaptation and Interaction</h3>
+    <p>How humans adjust to and interact with their environment through cultural practices and technological innovations.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/lrM02QQAscNNboE8RGP_cRbz2LYrFLCWV4A8QH-HAQ8LSMOdp16y3eWXv_TP3nZbCSrMnTdIQ7B6C8ReKPR5cz3_5iApumDgQwvYIZ3dgm3bgpAG-O4MxoTI1W8QJkOSuGXCtA91ucPI9h3IHUykXTBIU7bmdF45tR4Zqt572cD4T8KuxtWAtx3AvYktQKB8?purpose=fullsize" alt="Human adaptation">
+      <div class="img-caption">Adaptation through culture and technology</div>
+    </div>
+
+    <h3>3. Social and Organizational Systems</h3>
+    <p>Economic frameworks, political structures and urban planning.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/0NsbH8LvLX8FexJWM_Cv35uvJzUZ6kByTTlglk8qqXgiNGn-0iPbpiWU6BFB25pCA5UfpN9Z3PHjerhyXh36xgQ2H8ZIansFaiDPaSnk8841ZRmXMvgtACGIF7h-Ec_QER5B1-F8enGTv6I7PixhHbxvPGyRLcJbxOcwZMKA6BYAC6kI40rWfwIYQynruLAg?purpose=fullsize" alt="Urban planning">
+      <div class="img-caption">Societal infrastructure, economics, and organization</div>
+    </div>
+
+    <h3>4. Environment</h3>
+    <p>Natural landscapes and the built environment in which humans live.</p>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/6dLiU8Mx_yjZyvWToDqZ8xa0VOMj5GCdmV3xZm68NeSjCk03Z8tewOOFl00aSOMkzlzKggx4Gs5Z9QlPLbaFcMkepmAjuBYoUTtzLOFpQPUhYDFHV2fO1BrI8f7BYBTU0hRQiMCeOPbyFA6hz-x22mdTY4n0hgadjLVn3LOz0US65GkZAc9cI_ArzmBNmvSY?purpose=fullsize" alt="Built environment">
+      <div class="img-caption">Natural and built surroundings</div>
+    </div>
+
+    <div class="analogy-box">
+      🏛️ <strong>Simple Analogy:</strong> Think of a university campus. Students are the <strong>population</strong>; their habits are <strong>behavior</strong>; the campus surroundings are the <strong>habitat</strong>; and university rules and organization are part of the <strong>social system</strong>.
+    </div>
+  </div>
+
+  <!-- 3. The triangle of human ecology -->
+  <div class="card">
+    <h2>3. The Triangle of Human Ecology</h2>
+    <div class="alert-box">
+      🔥 <strong>Very Important for Exams:</strong> Your lecture identifies three main categories of factors that affect human health: <strong>Population</strong>, <strong>Behavior</strong>, and <strong>Habitat</strong>.
+    </div>
+
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/ad7Ut8dZOStRlMVoUVRz7hnw8jV-grbg1sf1qoKSbB4IfEIZFAuP_Y9IprZiRcQOI9irhavjmYJtdOsPChh2g5KNdDE0kDDPYWhSGBw8cB43NsOPdbhK01ja930MMHUxUwSGIboswsqyEFCIHUNrDW9bVvNqnw3wsrwE825qgyZS4xMXjElTeI3f6uVV83U6?purpose=fullsize" alt="Triangle of Human Ecology">
+      <div class="img-caption">The human ecology triangle: Population, Behavior, and Habitat</div>
+    </div>
+
+    <p>Think of health as a <strong>three-legged stool</strong>. If one leg becomes unstable, the whole stool may become unstable.</p>
+
+    <h3>A. Population</h3>
+    <p>This refers to characteristics of people, including:</p>
+    <ul>
+      <li><strong>Genetics:</strong> inherited characteristics and genetic susceptibility.</li>
+      <li><strong>Age:</strong> some diseases are more common in particular age groups.</li>
+      <li><strong>Gender:</strong> some health risks differ between males and females.</li>
+    </ul>
+    <p><em>Example:</em> Older adults have a higher risk of stroke than younger adults. Your lecture specifically discusses age-related stroke risk.</p>
+    <div class="alert-box">
+      ⚠️ <strong>Exam trick:</strong> Age and genetic predisposition belong to <strong>population</strong>, not behavior.
+    </div>
+
+    <h3>B. Behavior</h3>
+    <p>Behavior refers to human actions, beliefs and practices that influence health. Examples:</p>
+    <ul>
+      <li>Smoking</li>
+      <li>Handwashing</li>
+      <li>Food choices</li>
+      <li>Sexual practices</li>
+      <li>Use of health services</li>
+    </ul>
+    <p><em>Example:</em> Two people live in the same village and drink water from the same source. One consistently washes their hands before eating, while the other does not. Their behaviors may influence their risk of diarrheal disease.</p>
+    <div class="alert-box">
+      ⚠️ <strong>Exam trick:</strong> Ask yourself, <em>"What does the person do or practice?"</em> If the question focuses on actions or habits, think <strong>behavior</strong>.
+    </div>
+
+    <h3>C. Habitat</h3>
+    <p>Habitat refers to the surroundings in which people live, including the social and built environment. Examples:</p>
+    <ul>
+      <li>Housing conditions</li>
+      <li>Roads and transport</li>
+      <li>Water availability</li>
+      <li>Sanitation facilities</li>
+      <li>Social conditions surrounding people</li>
+    </ul>
+    <p><em>Example:</em> A person living in a crowded house with poor ventilation may face a greater risk of respiratory infection.</p>
+    <div class="alert-box">
+      ⚠️ <strong>Exam trick:</strong> Ask, <em>"Where and under what surroundings does the person live?"</em> That points to <strong>habitat</strong>.
+    </div>
+
+    <h3>Let's Distinguish Them:</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Situation</th><th>Triangle Component</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A 70-year-old person</td><td><strong>Population</strong></td></tr>
+          <tr><td>A person who smokes</td><td><strong>Behavior</strong></td></tr>
+          <tr><td>A family living in an overcrowded house</td><td><strong>Habitat</strong></td></tr>
+          <tr><td>Genetic susceptibility to cancer</td><td><strong>Population</strong></td></tr>
+          <tr><td>Poor handwashing practice</td><td><strong>Behavior</strong></td></tr>
+          <tr><td>Poor sanitation in a community</td><td><strong>Habitat</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Important:</strong> These three factors interact. A person's age, behavior and living conditions can combine to influence their health.</p>
+  </div>
+
+  <!-- 4. Human–environment interaction -->
+  <div class="card">
+    <h2>4. Human–Environment Interaction Across Eras</h2>
+    <p>The relationship between humans and the environment changes over time. Compare two periods:</p>
+
+    <h3>Stone Age:</h3>
+    <ul>
+      <li>Hunting and gathering.</li>
+      <li>Simple tools.</li>
+      <li>Strong dependence on natural resources.</li>
+    </ul>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/HokFzE0KAH8l64dfkpwew_N9CdGB4kEE_6UXCWl2wjzf3H-CNN3kZ1eTm0lPtZkQT9QhSOjtIChFFPzxG6Fc5oZVzOZPoZCDEM-8thvVoAGl3qvV6HqhJH8VUh2Q98EKJUZiI0TcTtoeN9JfgMMwZ_M-H268aNDfCM6hEb2vV42b_AXJwSBl1m7_MB036Mnx?purpose=fullsize" alt="Stone Age">
+      <div class="img-caption">Stone Age: High dependency on pristine natural resources</div>
+    </div>
+
+    <h3>Modern Age:</h3>
+    <ul>
+      <li>Industrialization.</li>
+      <li>Advanced technology.</li>
+      <li>Urbanization.</li>
+      <li>Greater human influence on nature.</li>
+    </ul>
+    <div class="img-box">
+      <img src="https://images.openai.com/static-rsc-4/mf3Lsi6PfjFrXAeSvUV0bU-6JCa-xKDrTbAavXEhP0HBBcbQXOB5p7wI0t5vNXpsghKMCwCCKlLWQFQBEkdZDfYx6_k3R3jiF3EiXBu6_eJevBh9xtN3cdXHmKk7HRv8vI5XFoUllBqrqWnZGCCigyVuE3pflpPeEZZmhTTdFTBGeSm39AFLREVifOZworVY?purpose=fullsize" alt="Modern Industrialization">
+      <div class="img-caption">Modern Era: Industrial expansion and environmental modification</div>
+    </div>
+
+    <h3>Ecosystem Interactions Generate Three Important Outcomes:</h3>
+    <ol>
+      <li>
+        <strong>Trophic Stages:</strong> Feeding relationships represented by food chains and food webs.<br>
+        <em>Example:</em> <strong>Grass → Grasshopper → Frog → Snake → Eagle.</strong>
+        <div class="img-box">
+          <img src="https://images.openai.com/static-rsc-4/YpoRfQ0zehvtyj0ThFnndmV8GWEYRNcL4RO1VTLu4HUM3sJP6pOTOaPQTiLaatQtU8rXgJTCHzjTCfvwVj24nb3J_DwpE56H90Rl_bn5XK77fspi6uaqfgy_yltI00XmfXzVx0UigILhuY0Y-RrDik6EEmISjBxfd0yQXkNvNpU_pRn76INrSsBvW1FqEIxq?purpose=fullsize" alt="Food Chain and Food Web">
+          <div class="img-caption">Food chains, food webs, and trophic levels</div>
+        </div>
+      </li>
+      <li>
+        <strong>Biodiversity:</strong> The variety of living organisms in an area. For example, a forest may contain trees, birds, insects, fungi and mammals.
+      </li>
+      <li>
+        <strong>Material Cycles and Energy Flow:</strong> Materials such as water, carbon, nitrogen and phosphorus move through ecosystems in cycles. Energy, however, flows through food chains and some is lost as heat at each trophic level.
+        <div class="img-box">
+          <img src="https://images.openai.com/static-rsc-4/q7ZikR0pO7Z1Ie2Ej-K22yk3U9SXOCu90PJ-6qqrVaHZeuQODk6p5hfxaN53xCT3Wmez6hUVV4QeBykjPkC_29YHrPFeErz3VsN7-nooAG2SiM1ETSc8OevvqJZvRaQU7pE665UkUYB2m4P8VIMwfJ6xLUKnVXNb1LgWXKghQeggBrWeyE1e0yp7wDA1WaJf?purpose=fullsize" alt="Biogeochemical Cycles and Energy Flow">
+          <div class="img-caption">Cyclic matter and unidirectional energy dissipation</div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="alert-box">
+      📌 <strong>Exam Distinction:</strong><br>
+      • <strong>Matter</strong> is recycled.<br>
+      • <strong>Energy</strong> flows through the ecosystem and is gradually dissipated as heat.
+    </div>
+  </div>
+
+  <!-- 5. Five approaches to human–environment interaction -->
+  <div class="card">
+    <h2>5. Five Approaches to Human–Environment Interaction</h2>
+    <p>Your lecture describes five approaches. This is an important section because exam questions may give you a situation and ask you to identify the approach.</p>
+
+    <h3>A. Deterministic Approach (Environment Controls Humans)</h3>
+    <p>The basic principle is <strong>"Earth made man."</strong> It emphasizes that the natural environment strongly controls human activities and human life.</p>
+    <div class="analogy-box">
+      ❄️ <strong>Analogy:</strong> Imagine living in a very cold region. The climate influences the clothes you wear, the type of house you build and some of your daily activities. The environment is considered dominant, while humans are subordinate to it.
+    </div>
+    <p><em>Exam clue:</em> Environment determines or controls human activities.</p>
+
+    <h3>B. Teleological Approach (Nature Exists for a Purpose)</h3>
+    <p>This approach views things as existing or happening to serve a purpose or final goal. Your lecture links this approach to the belief that humans are superior to nature and other creatures, and that nature exists for human use and enjoyment.</p>
+    <div class="analogy-box">
+      🌲 <strong>Analogy:</strong> Someone believes that forests exist mainly for humans to cut trees, build houses and obtain resources.
+    </div>
+    <p><em>Potential consequence:</em> Uncontrolled exploitation of natural resources.<br>
+    <em>Exam clue:</em> Human superiority and nature existing for human use.</p>
+
+    <h3>C. Possibilistic Approach (Humans Can Influence Nature, but Cannot Fully Control It)</h3>
+    <p>This approach emerged as a criticism of environmental determinism and the excessive human-control idea associated with teleological thinking. It recognizes two things:</p>
+    <ul>
+      <li>The physical environment influences human activities.</li>
+      <li>Humans can also influence and modify their environment.</li>
+    </ul>
+    <p><em>But humans cannot completely tame nature.</em></p>
+    <div class="analogy-box">
+      🌧️ <strong>Analogy:</strong> Humans cannot stop rainfall, but they can construct dams, irrigation systems and drainage channels to respond to it.
+    </div>
+    <p><em>Exam clue:</em> Human adjustment, response and possibilities within environmental limits.</p>
+
+    <h3>D. Economic Deterministic Approach (Economic Growth is Prioritized)</h3>
+    <p>This approach emphasizes economic and industrial expansion through modern technology. It gives greater importance to economic growth, political stability and social stability than to the associated harmful effects on environmental quality.</p>
+    <div class="analogy-box">
+      🏭 <strong>Analogy:</strong> A government allows factories to expand rapidly because they create employment and income, even though they pollute rivers and air.
+    </div>
+    <p><em>Possible consequence:</em> Overexploitation of natural resources and environmental deterioration.<br>
+    <em>Exam clue:</em> Economic growth is prioritized despite environmental damage.</p>
+
+    <h3>E. Ecological Approach (Humans and Nature Interact Mutually)</h3>
+    <p>This approach is based on the ecological principle that humans and other organisms interact with one another and with their environment. Humans are considered an integral part of nature, not separate from it.</p>
+    <div class="analogy-box">
+      👨‍🌾 <strong>Analogy:</strong> A farmer depends on soil, water, sunlight and insects. The farmer also affects the environment through farming practices. Both influence each other.
+    </div>
+    <p><em>Exam clue:</em> Mutual interaction, interdependence and reciprocal relationship.</p>
+
+    <h3>Compare All Five Approaches:</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr><th>Approach</th><th>Main Idea</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Deterministic</strong></td><td>Environment controls humans</td></tr>
+          <tr><td><strong>Teleological</strong></td><td>Nature exists for human purpose/use</td></tr>
+          <tr><td><strong>Possibilistic</strong></td><td>Humans adjust to and influence nature</td></tr>
+          <tr><td><strong>Economic deterministic</strong></td><td>Economic growth is prioritized</td></tr>
+          <tr><td><strong>Ecological</strong></td><td>Humans and nature mutually interact</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="analogy-box">
+      🧠 <strong>Memory Trick:</strong><br>
+      • <strong>Deterministic</strong> = Environment dominates.<br>
+      • <strong>Teleological</strong> = Purpose / Human superiority.<br>
+      • <strong>Possibilistic</strong> = Possibilities within limits.<br>
+      • <strong>Economic deterministic</strong> = Economy first.<br>
+      • <strong>Ecological</strong> = Exchange and mutual interaction.
+    </div>
+  </div>
+
+  <!-- 6. Harmful interactions -->
+  <div class="card">
+    <h2>6. When Human–Environment Interaction Becomes Harmful</h2>
+    <p>Human activities can disturb the natural environment, especially when environmental changes exceed the ecosystem's ability to regulate or recover from them. Examples include:</p>
+    <ul>
+      <li>Deforestation</li>
+      <li>Unplanned urbanization</li>
+      <li>Excessive exploitation of natural resources</li>
+      <li>Industrial pollution</li>
+      <li>Poor waste disposal</li>
+      <li>Destruction of natural habitats</li>
+    </ul>
+    <p>These changes can affect human health and ecological balance.</p>
+    <div class="alert-box">
+      🦟 <strong>Public Health Example:</strong> Cutting down forests and changing land use can alter mosquito habitats. This may change the risk of mosquito-borne diseases. The key idea is that human actions produce environmental changes that eventually circle back to affect human health.
+    </div>
+  </div>
+
+  <!-- 7. Exam Application Scenario -->
+  <div class="card">
+    <h2>7. Exam Application: Identify the Triangle and Approach</h2>
+    <p><strong>Scenario:</strong> Imagine a village where malaria cases increase after a new irrigation project.</p>
+    <p>Consider the following:</p>
+    <ul>
+      <li>The construction of irrigation channels changes the environment.</li>
+      <li>Standing water provides breeding sites for mosquitoes.</li>
+      <li>People's activities and exposure influence their risk.</li>
+      <li>The age and other characteristics of individuals may affect their vulnerability.</li>
+    </ul>
+    <div class="analogy-box">
+      💡 <strong>Clinical Takeaway:</strong> This example connects human–environment interaction with <strong>population</strong>, <strong>behavior</strong> and <strong>habitat</strong>. Human ecology helps us understand why health problems occur in particular populations and environments, rather than looking only at the individual patient.
+    </div>
+  </div>
+
+  <!-- Quick revision -->
+  <div class="card">
+    <h2>8. Quick Revision — Key Takeaways</h2>
+    <ul>
+      <li>Human ecology studies relationships between humans and natural, social and built environments.</li>
+      <li>Core components include population dynamics, human adaptation and interaction, social and organizational systems, and environment.</li>
+      <li>The triangle of human ecology is <strong>population, behavior and habitat</strong>.</li>
+      <li><strong>Population</strong> includes age, gender and genetic characteristics.</li>
+      <li><strong>Behavior</strong> includes actions, beliefs and practices.</li>
+      <li><strong>Habitat</strong> includes social and built surroundings.</li>
+      <li>Human–environment interaction generates trophic relationships, biodiversity, material cycles and energy flow.</li>
+      <li>Five approaches: deterministic, teleological, possibilistic, economic deterministic and ecological.</li>
+    </ul>
+  </div>
+
+  <!-- Interactive Quiz (5 Questions) -->
+  <div class="quiz-container">
+    <div class="quiz-header">📝 Self-Assessment Quiz (Click to Check)</div>
+    <div id="quiz-mount"></div>
+  </div>
+
+</div>
+
+<script>
+  const quizData = [
+    {
+      q: "Question 1. A researcher finds that older people have a greater risk of stroke than younger people. Which component of the human ecological triangle is being described?",
+      options: [
+        "A. Behavior",
+        "B. Habitat",
+        "C. Population",
+        "D. Social organization"
+      ],
+      correct: 2,
+      exp: "Correct! Age, gender, and genetic predispositions are inherent biological characteristics belonging to the Population component."
+    },
+    {
+      q: "Question 2. A person develops a higher risk of diarrheal disease because they regularly eat without washing their hands. Which factor is most directly involved?",
+      options: [
+        "A. Population",
+        "B. Behavior",
+        "C. Habitat",
+        "D. Genetics"
+      ],
+      correct: 1,
+      exp: "Correct! Handwashing is a human action/practice, which classifies directly under Behavior."
+    },
+    {
+      q: "Question 3. A theory argues that the natural environment dominantly controls human activities and human life ('Earth made man'). Which approach is this?",
+      options: [
+        "A. Ecological",
+        "B. Possibilistic",
+        "C. Teleological",
+        "D. Deterministic"
+      ],
+      correct: 3,
+      exp: "Correct! The Deterministic approach posits that physical environmental forces dictate and govern human actions and civilizations."
+    },
+    {
+      q: "Question 4. A government prioritizes industrial expansion and economic growth despite serious environmental pollution. Which approach does this illustrate?",
+      options: [
+        "A. Economic deterministic",
+        "B. Possibilistic",
+        "C. Ecological",
+        "D. Deterministic"
+      ],
+      correct: 0,
+      exp: "Correct! The Economic Deterministic approach places industrial expansion and economic progress above environmental conservation."
+    },
+    {
+      q: "Question 5. A community builds irrigation systems to adapt to dry conditions but recognizes that it cannot completely control nature. Which approach is most consistent with this idea?",
+      options: [
+        "A. Teleological",
+        "B. Possibilistic",
+        "C. Deterministic",
+        "D. Economic deterministic"
+      ],
+      correct: 1,
+      exp: "Correct! The Possibilistic approach emphasizes that humans can adapt and create opportunities within nature's boundaries without achieving total mastery over it."
+    }
+  ];
+
+  const quizMount = document.getElementById('quiz-mount');
+
+  quizData.forEach((item, qIdx) => {
+    const qBlock = document.createElement('div');
+    qBlock.className = 'question-block';
+
+    const title = document.createElement('div');
+    title.className = 'question-title';
+    title.innerText = item.q;
+    qBlock.appendChild(title);
+
+    const feedback = document.createElement('div');
+    feedback.className = 'feedback';
+
+    item.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = optText;
+
+      btn.addEventListener('click', () => {
+        const allBtns = qBlock.querySelectorAll('.option-btn');
+        allBtns.forEach(b => b.setAttribute('disabled', 'true'));
+
+        if (optIdx === item.correct) {
+          btn.classList.add('correct');
+          feedback.className = 'feedback show correct-text';
+          feedback.innerHTML = "✅ " + item.exp;
+        } else {
+          btn.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+          feedback.className = 'feedback show wrong-text';
+          feedback.innerHTML = "❌ ትክክለኛው መልስ፦ " + item.options[item.correct] + "<br>" + item.exp;
+        }
+      });
+
+      qBlock.appendChild(btn);
+    });
+
+    qBlock.appendChild(feedback);
+    quizMount.appendChild(qBlock);
+  });
+</script>
+
+</body>
+</html>
