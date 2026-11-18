@@ -108,7 +108,7 @@
       box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
     }
 
-    /* Topic Cards Grid */
+    /* Topic Cards List */
     .topics-list {
       display: flex;
       flex-direction: column;
@@ -144,7 +144,7 @@
     }
 
     .topic-title {
-      font-size: 1.08rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #0f172a;
       margin-bottom: 6px;
@@ -200,14 +200,6 @@
       border-color: #86efac;
       color: #15803d;
     }
-
-    /* Footer Note */
-    footer {
-      text-align: center;
-      margin: 28px 0 16px 0;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
   </style>
 </head>
 <body>
@@ -223,26 +215,21 @@
   <!-- Progress Tracker -->
   <div class="progress-card">
     <div class="progress-header">
-      <span>የጥናት ሂደት (Study Progress)</span>
-      <span id="progress-text">0 / 10 የተጠናቀቁ</span>
+      <span>Study Progress</span>
+      <span id="progress-text">0 / 10 Completed (0%)</span>
     </div>
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" id="progress-bar"></div>
     </div>
   </div>
 
-  <!-- Search Filter -->
+  <!-- Search Box -->
   <div class="search-box">
-    <input type="text" id="search-input" class="search-input" placeholder="🔍 በርዕስ ወይም በይዘት ፈልግ (ለምሳሌ፡ Water, Waste, Vector...)...">
+    <input type="text" id="search-input" class="search-input" placeholder="🔍 Search topics, concepts, or keywords (e.g., Water, Waste, Vector)...">
   </div>
 
   <!-- Topics List -->
   <div class="topics-list" id="topics-list"></div>
-
-  <!-- Footer -->
-  <footer>
-    <p>💡 ማሳሰቢያ፡ ይህን ፋይል ከ 10ሩ ቶፒኮች ጋር በአንድ ፎልደር ውስጥ አስቀምጠው።</p>
-  </footer>
 
 </div>
 
@@ -252,70 +239,70 @@
       num: 1,
       file: "Topic 1 Ecology.html",
       title: "TOPIC 1: Introduction to Ecology and Environmental Health",
-      desc: "የስነ-ምህዳር ፍቺ፣ ባዮቲክ እና አባዮቲክ ክፍሎች፣ 7ቱ የስነ-ምህዳር ደረጃዎች (Hierarchy)፣ 7ቱ የአካባቢ ጤና ዘርፎች።",
+      desc: "Definition of ecology, biotic & abiotic factors, 7 ecological hierarchy levels, and 7 core scopes of environmental health.",
       keywords: "ecology biotic abiotic population community ecosystem biome biosphere malaria scope water waste"
     },
     {
       num: 2,
       file: "Topic 2 Ecology.html",
       title: "TOPIC 2: Human Ecology and Human–Environment Interaction",
-      desc: "የሰው ልጅ ስነ-ምህዳር፣ የጤናው ሶስት ማዕዘን (Population, Behavior, Habitat)፣ አምስቱ የስነ-ምህዳር አመለካከቶች (Deterministic, Possibilistic...)",
+      desc: "Human ecological dynamics, the health triangle (Population, Behavior, Habitat), and 5 environmental approaches (Deterministic, Possibilistic, etc.).",
       keywords: "human ecology triangle population behavior habitat determinism teleology possibilism stone age modern age"
     },
     {
       num: 3,
       file: "Topic 3 Ecology.html",
       title: "TOPIC 3: Biosphere and Environmental Pollution",
-      desc: "የመሬት 4ቱ ከባቢዎች (Atmosphere, Hydrosphere, Lithosphere, Pedosphere)፣ Assimilative Capacity ቀመር፣ የአየር፣ የውሃ፣ የአፈር እና የድምፅ ብክለት (85dB/Ethiopian standards)።",
+      desc: "Earth's 4 spheres, Assimilative Capacity formula, Air, Water, Soil, and Noise pollution (85dB risk & standards), and toxicological impacts.",
       keywords: "biosphere pollution assimilative capacity atmosphere hydrosphere lithosphere pedosphere air water soil noise decibel lead cadmium teratogenic"
     },
     {
       num: 4,
       file: "Topic 4 Ecology.html",
       title: "TOPIC 4: Ecology of Health and Disease",
-      desc: "Spontaneous Generation vs Germ Theory፣ Dynamic Equilibrium፣ 5ቱ Maladaptation ምሳሌዎች (Dams, Volta, Brazil...)፣ የኤፒዲሚዮሎጂ ሶስት ማዕዘን (Agent, Host, Environment) እና T-P-P።",
+      desc: "Spontaneous Generation vs. Germ Theory, Dynamic Equilibrium, 5 Maladaptation examples (Dams, Volta, Brazil...), the Epidemiological Triangle, and T-P-P distribution.",
       keywords: "disease ecology spontaneous generation germ theory dynamic equilibrium maladaptation schistosomiasis agent host environment time place person"
     },
     {
       num: 5,
       file: "Topic 5 Ecology.html",
       title: "TOPIC 5: Housing and Institutional Health",
-      desc: "የመኖሪያ ቤቶች ደረጃ (Standard, Substandard, Slum, Blighted area)፣ 5ቱ የ WHO መርሆዎች፣ የሙቀት፣ የብርሃንና የመስኮት መስፈርቶች፣ የእንግሊዝ የተጠቃሚዎች ሕግ፣ የተቋማት ጤና።",
+      desc: "Housing classifications (Standard, Slum, Blighted area), 5 WHO principles, thermal/ventilation/lighting standards, English occupancy rules, and institutional hygiene.",
       keywords: "housing slum substandard blighted area physiological psychological ventilation temperature lighting foot-candles overcrowding institutional"
     },
     {
       num: 6,
       file: "Topic 6 Ecology.html",
       title: "TOPIC 6: Water Supply and WASH",
-      desc: "አራቱ የውሃ በሽታዎች (Waterborne, Water-washed, Water-based, Water-related)፣ Blue Baby Syndrome፣ የቤት ውስጥ ማጣሪያዎች (Sand >60cm, Candle, SODIS, Boiling)፣ የማዘጋጃ ቤት የውሃ ማጣሪያ 9 ደረጃዎች።",
+      desc: "4 water-associated disease categories (Waterborne, Water-washed...), Blue Baby Syndrome, household purification (Sand >60cm, SODIS, Boiling), and 9 municipal treatment stages.",
       keywords: "water supply wash waterborne water-washed water-based water-related cadmium lead nitrate blue baby sand filter candle sodis coagulation flocculation"
     },
     {
       num: 7,
       file: "Topic 7 Ecology.html",
       title: "TOPIC 7: Sanitation and Waste Management",
-      desc: "የደረቅ ቆሻሻ 4 ደረጃዎች፣ Composting፣ Sanitary Landfill፣ Incinerator ክልከላዎች፣ VIP Latrine እና Sewerage፣ የሆስፒታል ቆሻሻ የቀለም ኮዶች (Black, Yellow, Safety box)።",
+      desc: "4 functional elements of solid waste, Composting, Sanitary Landfills, Incinerator restrictions, VIP Latrines & Sewerage, and healthcare waste color codes.",
       keywords: "sanitation solid waste composting landfill incineration vip latrine water carriage healthcare waste sharps safety box segregation black yellow"
     },
     {
       num: 8,
       file: "Topic 8 Ecology.html",
       title: "TOPIC 8: Vector Control and Food Hygiene",
-      desc: "ሜካኒካል vs ባዮሎጂካል ቬክተሮች፣ 4ቱ የስርጭት ዓይነቶች (Propagative, Cyclo-developmental...)፣ 6ቱ የቁጥጥር ስልቶች፣ 3ቱ የምግብ ወለድ በሽታዎች፣ 8ቱ የምግብ ንፅህና መርሆዎች እና Cross-contamination።",
+      desc: "Mechanical vs. biological vectors, 4 biological transmission modes, 6 vector control methods, 3 foodborne illness categories, 8 hygiene rules, and cross-contamination.",
       keywords: "vector control mosquitoes housefly biological mechanical propagative food hygiene salmonella bacillus cereus intoxication cross contamination"
     },
     {
       num: 9,
       file: "Topic 9 Ecology.html",
       title: "TOPIC 9: Occupational Health and Safety",
-      desc: "Safety vs Health፣ 6ቱ የስራ ላይ አደጋዎች፣ የሙቀት ህመሞች (Cramps, Exhaustion, Stroke)፣ ጨረሮች፣ የስራ ላይ በሽታዎች (Silicosis, Byssinosis, Bagassosis, Benzene)፣ Hierarchy of Controls።",
+      desc: "Safety vs. Health, 6 workplace hazard classes, heat stress syndromes, radiation, pneumoconiosis (Silicosis, Byssinosis, Benzene), and the hierarchy of controls.",
       keywords: "occupational health safety physical mechanical chemical biological ergonomic psychosocial heat stroke radiation noise silicosis byssinosis ppe substitution"
     },
     {
       num: 10,
       file: "Topic 10 Ecology.html",
       title: "TOPIC 10: Infection Prevention and Control (IPC)",
-      desc: "Nosocomial Infections (>48 ሰዓት)፣ 5ቱ የስርጭት መንገዶች፣ Standard Precautions፣ WHO 5 Moments of Hand Hygiene፣ PPE፣ Contact/Droplet/Airborne Precautions (MRSA, Pertussis, TB)።",
+      desc: "Nosocomial infections (>48h), 5 transmission modes, Standard Precautions, WHO 5 Moments of Hand Hygiene, PPE, and Transmission-Based Precautions (MRSA, Pertussis, TB).",
       keywords: "infection prevention control ipc nosocomial hai standard precautions hand hygiene who moments ppe contact droplet airborne tuberculosis mrsa"
     }
   ];
@@ -325,7 +312,6 @@
   const progressBar = document.getElementById('progress-bar');
   const progressText = document.getElementById('progress-text');
 
-  // Load completed state from LocalStorage
   let completedTopics = JSON.parse(localStorage.getItem('completed_ecology_topics') || '[]');
 
   function updateProgress() {
@@ -333,7 +319,7 @@
     const count = completedTopics.length;
     const percent = Math.round((count / total) * 100);
     progressBar.style.width = percent + '%';
-    progressText.innerText = `${count} / ${total} የተጠናቀቁ (${percent}%)`;
+    progressText.innerText = `${count} / ${total} Completed (${percent}%)`;
   }
 
   function renderTopics(filter = '') {
@@ -361,9 +347,9 @@
         <div class="topic-title">${topic.title}</div>
         <div class="topic-desc">${topic.desc}</div>
         <div class="topic-actions">
-          <a href="${topic.file}" class="btn-open">📖 አንብብ (Open)</a>
+          <a href="${topic.file}" class="btn-open">📖 Open Topic</a>
           <button class="btn-check ${isCompleted ? 'checked' : ''}" onclick="toggleComplete(${topic.num})">
-            ${isCompleted ? '✔ ተጠናቋል' : '○ አጥንቼዋለሁ'}
+            ${isCompleted ? '✔ Completed' : '○ Mark as Done'}
           </button>
         </div>
       `;
@@ -372,7 +358,7 @@
     });
 
     if (topicsList.children.length === 0) {
-      topicsList.innerHTML = `<div style="text-align:center; padding:30px; color:#64748b;">ምንም የተገኘ ቶፒክ የለም!</div>`;
+      topicsList.innerHTML = `<div style="text-align:center; padding:30px; color:#64748b;">No matching topics found.</div>`;
     }
   }
 
@@ -391,10 +377,9 @@
     renderTopics(e.target.value);
   });
 
-  // Initial render
+  // Initial setup
   updateProgress();
   renderTopics();
 </script>
-
 </body>
 </html>
